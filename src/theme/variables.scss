@@ -1,0 +1,48 @@
+// Gray Family
+$gray-800:      #212121 !default;
+$gray-700:      #616161 !default;
+$gray-600:      #9E9E9E !default;
+$gray-500:      #BDBDBD !default;
+$gray-400:      #E0E0E0 !default;
+$gray-300:      #EEEEEE !default;
+$gray-200:      #F5F5F5 !default;
+$gray-100:      #FAFAFA !default;
+
+// Blue Family
+$blue-800:      #063F6D !default;
+$blue-700:      #0667B5 !default;
+$blue-600:      #0087F4 !default;
+$blue-500:      #64B5F6 !default;
+$blue-400:      #BBDEFB !default;
+$blue-300:      #EDF4FA !default;
+
+// Assorted Colors
+$orange-700:    #D48004 !default;
+$orange-500:    #FF9800 !default;
+$orange-300:    #FDDFB4 !default;
+
+$purple-500:    #b175e8 !default;
+
+$red-700:       #981818 !default;
+$red-500:       #D32F2F !default;
+$red-300:       #FEE9E9 !default;
+
+$green-700:     #4CAF50 !default;
+$green-500:     #61DC66 !default;
+$green-300:     #E4F7E5 !default;
+
+$yellow-700:    #B89D11 !default;
+$yellow-600:    #DCBC13 !default;
+$yellow-500:    #F9D100 !default;
+$yellow-300:    #FFF9D4 !default;
+
+// Named Colors
+$black:         $gray-800 !default;
+$white:         #fff !default;
+$primary-blue:  $blue-500 !default;
+$danger:        $red-700 !default;
+$warning:       $orange-500 !default;
+$success:       $green-700 !default;
+
+$link:          $blue-500 !default;
+$body-text:     $gray-700 !default;

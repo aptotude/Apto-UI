@@ -1,0 +1,23 @@
+{
+  "project": {
+    "name": "apto-ui"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "main": "main.ts",
+      "styles": [
+        "./theme/_build.scss"
+      ],
+      "stylePreprocessorOptions": {
+        "includePaths": ["."]
+      }
+    }
+  ],
+  "defaults": {
+    "styleExt": "scss",
+    "serve": {
+      "port": 8080
+    }
+  }
+}

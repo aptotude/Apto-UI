@@ -1,0 +1,11 @@
+.DS_STORE
+
+/dist/
+node_modules
+
+# Ignore npm/yarn debug log
+npm-debug.log
+yarn-error.log
+
+# build-analytics
+.build-analytics
