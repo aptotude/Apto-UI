@@ -5,9 +5,10 @@
     background: none;
     border: none;
     font-family: $font-family-base;
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
     border-radius: 3px;
     padding: 1rem;
+    outline: none;
     cursor: pointer;
     text-transform: uppercase;
     transition: color .15s ease-in-out, background-color .15s ease-in-out;
