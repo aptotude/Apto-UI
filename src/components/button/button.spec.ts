@@ -1,7 +1,7 @@
-import { AptoButton, ButtonKinds, ButtonTypes } from './button';
+import { AptoButton, ButtonKinds, ButtonTypes } from './button.component';
 import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 
-fdescribe('apto-button', () => {
+describe('apto-button', () => {
     let fixture: ComponentFixture<AptoButton>;
 
     beforeEach(ngAsync(() => {

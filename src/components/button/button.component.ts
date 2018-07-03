@@ -12,7 +12,8 @@ export enum ButtonTypes {
 
 @Component({
   selector: "apto-button",
-  templateUrl: "button.html"
+  templateUrl: "button.html",
+  styleUrls: [ "./apto-button.scss" ]
 })
 export class AptoButton {
   @Input() public active = true;

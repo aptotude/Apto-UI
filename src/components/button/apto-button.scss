@@ -1,0 +1,29 @@
+@import '../../theme/variables.scss';
+
+.apto-button {
+    margin: 0;
+    background: none;
+    border: none;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 1rem;
+    &[disabled] {
+        cursor: not-allowed;
+    }
+}
+.apto-button--primary {
+    color: $white;
+    background-color: $blue-500;
+    &[disabled] {
+        background-color: $gray-400;
+    }
+}
+.apto-button--secondary {
+    color: $blue-500;
+    background-color: transparent;
+    &[disabled] {
+        color: $gray-400;
+    }
+}
