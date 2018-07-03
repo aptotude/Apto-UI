@@ -7,23 +7,48 @@
     font-family: $font-family-base;
     font-size: $font-size-base;
     border-radius: 3px;
-    cursor: pointer;
     padding: 1rem;
-    &[disabled] {
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out;
+    &:disabled {
         cursor: not-allowed;
     }
 }
+
+.apto-button--link {
+    padding: 0;
+}
+
 .apto-button--primary {
     color: $white;
     background-color: $blue-500;
-    &[disabled] {
+    &:hover {
+        background-color: darken($blue-500, 15%);
+    }
+    &:disabled {
         background-color: $gray-400;
     }
 }
-.apto-button--secondary {
+
+.apto-button--link.apto-button--primary {
     color: $blue-500;
     background-color: transparent;
-    &[disabled] {
-        color: $gray-400;
+    &:hover {
+        color: darken($blue-500, 15%);
+    }
+    &:disabled {
+        color: lighten($blue-500, 15%);
+    }
+}
+
+.apto-button--link.apto-button--secondary {
+    color: $gray-500;
+    background-color: transparent;
+    &:hover {
+        color: darken($gray-500, 15%);
+    }
+    &:disabled {
+        color: lighten($gray-500, 15%);
     }
 }
