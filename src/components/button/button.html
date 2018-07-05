@@ -1,6 +1,6 @@
 <button
     type="button"
-    (click)="onClick.emit($event)"
+    (click)="clickHandler($event)"
     (mouseenter)="onMouseOver.emit($event)"
     (mouseleave)="onMouseOut.emit($event)"
     [ngClass]="classes()"

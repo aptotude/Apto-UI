@@ -3,6 +3,7 @@ import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testi
 
 describe('apto-button', () => {
     let fixture: ComponentFixture<AptoButton>;
+    let component: AptoButton;
 
     beforeEach(ngAsync(() => {
         TestBed.configureTestingModule({
@@ -10,6 +11,7 @@ describe('apto-button', () => {
         }).compileComponents();
 
         fixture = TestBed.createComponent(AptoButton);
+        component = fixture.componentInstance;
 
         fixture.detectChanges();
     }));
@@ -36,7 +38,7 @@ describe('apto-button', () => {
 
             describe('primary', () => {
                 beforeEach(() => {
-                    fixture.componentInstance.kind = ButtonKinds.Primary;
+                    component.kind = ButtonKinds.Primary;
                     fixture.detectChanges();
                 });
 
@@ -49,7 +51,7 @@ describe('apto-button', () => {
 
             describe('secondary', () => {
                 beforeEach(() => {
-                    fixture.componentInstance.kind = ButtonKinds.Secondary;
+                    component.kind = ButtonKinds.Secondary;
                     fixture.detectChanges();
                 });
 
@@ -72,7 +74,7 @@ describe('apto-button', () => {
 
             describe('button', () => {
                 beforeEach(() => {
-                    fixture.componentInstance.type = ButtonTypes.Button;
+                    component.type = ButtonTypes.Button;
                     fixture.detectChanges();
                 });
 
@@ -85,7 +87,7 @@ describe('apto-button', () => {
 
             describe('link', () => {
                 beforeEach(() => {
-                    fixture.componentInstance.type = ButtonTypes.Link;
+                    component.type = ButtonTypes.Link;
                     fixture.detectChanges();
                 });
 
@@ -102,7 +104,7 @@ describe('apto-button', () => {
         const mockText = '💩';
 
         beforeEach(() => {
-            fixture.componentInstance.text = mockText;
+            component.text = mockText;
             fixture.detectChanges();
         });
 
@@ -124,7 +126,7 @@ describe('apto-button', () => {
 
         describe('when active', () => {
             beforeEach(() => {
-                fixture.componentInstance.active = true;
+                component.active = true;
                 fixture.detectChanges();
             });
 
@@ -137,7 +139,7 @@ describe('apto-button', () => {
 
         describe('when not active', () => {
             beforeEach(() => {
-                fixture.componentInstance.active = false;
+                component.active = false;
                 fixture.detectChanges();
             });
 
@@ -154,7 +156,7 @@ describe('apto-button', () => {
             const mockText = '💩';
 
             beforeEach(() => {
-                fixture.componentInstance.title = mockText;
+                component.title = mockText;
                 fixture.detectChanges();
             });
 
@@ -171,6 +173,42 @@ describe('apto-button', () => {
 
                 expect(button.getAttribute('aria-label')).toBeNull();
             });
+        });
+    });
+
+    describe('Click Event', () => {
+        it('Should emit click if active', () => {
+            const spy = spyOn(component.onClick, 'emit');
+            const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+            button.click();
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('Should not emit click if inactive', () => {
+            const spy = spyOn(component.onClick, 'emit');
+            component.active = false;
+            const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+            button.click();
+            expect(spy).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('Mouse Events', () => {
+        it('Should emit mouseover', () => {
+            const spy = spyOn(component.onMouseOver, 'emit');
+            const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+            const event = new Event('mouseenter');
+            button.dispatchEvent(event);
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('Should emit mouseout', () => {
+            const spy = spyOn(component.onMouseOut, 'emit');
+            component.active = false;
+            const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
+            const event = new Event('mouseout');
+            button.dispatchEvent(event);
+            expect(spy).not.toHaveBeenCalled();
         });
     });
 });
