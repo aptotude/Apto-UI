@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AptoButton } from './components/button/button.component';
+import { AptoButtonModule } from './lib/button/button.module';
 
 @NgModule({
-  declarations: [
-    AptoButton
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: []
+    imports: [
+        BrowserModule,
+        AptoButtonModule
+    ],
+    declarations: [],
+    providers: [],
+    bootstrap: []
 })
-export class AptoUI { }
+export class AppModule { }
