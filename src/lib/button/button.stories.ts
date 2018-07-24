@@ -1,15 +1,15 @@
 import { storiesOf } from '@storybook/angular';
-import { AptoButton, ButtonKinds, ButtonTypes } from './button.component';
+import { AptoButtonComponent, ButtonKinds, ButtonTypes } from './button.component';
 
 storiesOf('Buttons/Button/Primary', module)
     .add('Active', () => ({
-        component: AptoButton,
+        component: AptoButtonComponent,
         props: {
             text: 'Next'
         },
     }))
     .add('Inactive', () => ({
-        component: AptoButton,
+        component: AptoButtonComponent,
         props: {
             text: 'Next',
             active: false
@@ -19,7 +19,7 @@ storiesOf('Buttons/Button/Primary', module)
 
 storiesOf('Buttons/Link/Primary', module)
     .add('Active', () => ({
-        component: AptoButton,
+        component: AptoButtonComponent,
         props: {
             text: 'Next',
             kind: ButtonKinds.Primary,
@@ -27,7 +27,7 @@ storiesOf('Buttons/Link/Primary', module)
         },
     }))
     .add('Inactive', () => ({
-        component: AptoButton,
+        component: AptoButtonComponent,
         props: {
             text: 'Next',
             kind: ButtonKinds.Primary,
@@ -40,7 +40,7 @@ storiesOf('Buttons/Link/Primary', module)
 
 storiesOf('Buttons/Link/Secondary', module)
     .add('Active', () => ({
-        component: AptoButton,
+        component: AptoButtonComponent,
         props: {
             text: 'Next',
             kind: ButtonKinds.Secondary,
@@ -48,7 +48,7 @@ storiesOf('Buttons/Link/Secondary', module)
         },
     }))
     .add('Inactive', () => ({
-        component: AptoButton,
+        component: AptoButtonComponent,
         props: {
             text: 'Next',
             kind: ButtonKinds.Secondary,

@@ -15,20 +15,20 @@ export enum ButtonTypes {
     templateUrl: 'button.html',
     styleUrls: [ './apto-button.scss' ]
 })
-export class AptoButton {
+export class AptoButtonComponent {
     @Input() public active = true;
     @Input() public kind: ButtonKinds = ButtonKinds.Primary;
     @Input() public text = '';
     @Input() public title = '';
     @Input() public type: ButtonTypes = ButtonTypes.Button;
 
-    @Output() public onClick = new EventEmitter();
-    @Output() public onMouseOut = new EventEmitter();
-    @Output() public onMouseOver = new EventEmitter();
+    @Output() public click = new EventEmitter();
+    @Output() public mouseOut = new EventEmitter();
+    @Output() public mouseOver = new EventEmitter();
 
     public clickHandler(e: any): void {
         if (this.active) {
-            this.onClick.emit(e);
+            this.click.emit(e);
         }
     }
 

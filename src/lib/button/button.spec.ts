@@ -1,16 +1,16 @@
-import { AptoButton, ButtonKinds, ButtonTypes } from './button.component';
+import { AptoButtonComponent, ButtonKinds, ButtonTypes } from './button.component';
 import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 
 describe('apto-button', () => {
-    let fixture: ComponentFixture<AptoButton>;
-    let component: AptoButton;
+    let fixture: ComponentFixture<AptoButtonComponent>;
+    let component: AptoButtonComponent;
 
     beforeEach(ngAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ AptoButton ]
+            declarations: [ AptoButtonComponent ]
         }).compileComponents();
 
-        fixture = TestBed.createComponent(AptoButton);
+        fixture = TestBed.createComponent(AptoButtonComponent);
         component = fixture.componentInstance;
 
         fixture.detectChanges();
@@ -25,7 +25,7 @@ describe('apto-button', () => {
             const button = fixture.nativeElement.querySelector('button');
 
             expect(button.className.includes('apto-button')).toBe(true);
-        })
+        });
 
         describe('when kind is', () => {
             describe('not passed', () => {
@@ -178,14 +178,14 @@ describe('apto-button', () => {
 
     describe('Click Event', () => {
         it('Should emit click if active', () => {
-            const spy = spyOn(component.onClick, 'emit');
+            const spy = spyOn(component.click, 'emit');
             const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
             button.click();
             expect(spy).toHaveBeenCalled();
         });
 
         it('Should not emit click if inactive', () => {
-            const spy = spyOn(component.onClick, 'emit');
+            const spy = spyOn(component.click, 'emit');
             component.active = false;
             const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
             button.click();
@@ -195,7 +195,7 @@ describe('apto-button', () => {
 
     describe('Mouse Events', () => {
         it('Should emit mouseover', () => {
-            const spy = spyOn(component.onMouseOver, 'emit');
+            const spy = spyOn(component.mouseOver, 'emit');
             const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
             const event = new Event('mouseenter');
             button.dispatchEvent(event);
@@ -203,7 +203,7 @@ describe('apto-button', () => {
         });
 
         it('Should emit mouseout', () => {
-            const spy = spyOn(component.onMouseOut, 'emit');
+            const spy = spyOn(component.mouseOut, 'emit');
             component.active = false;
             const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
             const event = new Event('mouseout');
