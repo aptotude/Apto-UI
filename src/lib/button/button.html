@@ -1,8 +1,8 @@
 <button
     type="button"
     (click)="clickHandler($event)"
-    (mouseenter)="onMouseOver.emit($event)"
-    (mouseleave)="onMouseOut.emit($event)"
+    (mouseenter)="mouseOver.emit($event)"
+    (mouseleave)="mouseOut.emit($event)"
     [ngClass]="classes()"
     [attr.disabled]="active ? null : 'disabled'"
     [attr.aria-label]="title ? title : null"

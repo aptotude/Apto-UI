@@ -22,7 +22,7 @@ jobs:
       - persist_to_workspace:
           root: ~/apto-ui
           paths: .
-      - run: yarn test
+      - run: yarn test:headless
 
   deploy:
     <<: *defaults

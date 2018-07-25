@@ -12,13 +12,14 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
+    "test:headless": "ng test --browsers ChromeHeadless --single-run --progress=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "packagr": "ng-packagr -p package.json"
   },
   "private": false,
-  "peerDependencies": {
+  "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -64,6 +65,7 @@
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "lib": {
       "entryFile": "./src/lib/public_api.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": ["."]
   }
 }
