@@ -31,6 +31,7 @@ jobs:
           at: ~/apto-ui
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       - run: yarn packagr
+      - run: gulp publish
       - run: npm publish dist
 
 workflows:

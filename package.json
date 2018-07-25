@@ -49,6 +49,8 @@
     "@types/node": "~6.0.60",
     "babel-core": "^6.26.3",
     "codelyzer": "^4.0.1",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
