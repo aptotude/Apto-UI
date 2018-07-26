@@ -8,7 +8,7 @@ if [[ $GIT_COMMIT =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 fi
 
 # install gulp cli so we can run gulp stuff
-npm install gulp-cli -g
+sudo npm install gulp-cli -g
 
 # Set Git credentials for committing the tags
 git config user.email "devadmin+circleci@apto.com"
