@@ -11,8 +11,8 @@ fi
 sudo npm install gulp-cli -g
 
 # Set Git credentials for committing the tags
-git config user.email "devadmin+circleci@apto.com"
-git config user.name "CircleCI"
+git config user.email "$GIT_EMAIL"
+git config user.name "$GIT_USER"
 
 # Get the latest version from NPM
 LATEST_RELEASE_VERSION=$(npm view apto-ui version)
