@@ -31,7 +31,7 @@ jobs:
           at: ~/apto-ui
       - add_ssh_keys:
           fingerprints:
-              - "${GITHUB_FINGERPRINT}"
+              - "3a:b6:ac:01:7d:ef:5f:2c:73:e9:5f:f3:52:09:ff:7c"
       - run:
           name: Set Token
           command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
