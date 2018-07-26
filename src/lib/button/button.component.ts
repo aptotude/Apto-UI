@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export enum ButtonKinds {
     Primary = 'primary',
@@ -16,23 +16,19 @@ export enum ButtonTypes {
     styleUrls: [ './apto-button.scss' ]
 })
 export class AptoButtonComponent {
-    @Input() public active = true;
+    @Input() public disabled = false;
     @Input() public kind: ButtonKinds = ButtonKinds.Primary;
-    @Input() public text = '';
     @Input() public title = '';
     @Input() public type: ButtonTypes = ButtonTypes.Button;
 
-    @Output() public click = new EventEmitter();
-    @Output() public mouseOut = new EventEmitter();
-    @Output() public mouseOver = new EventEmitter();
-
-    public clickHandler(e: any): void {
-        if (this.active) {
-            this.click.emit(e);
+    public clickHandler(event: Event): void {
+        if (this.disabled) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
         }
     }
 
     public classes(): string {
-        return `apto-button apto-button--${this.type} apto-button--${this.kind}`;
+        return `apto-button apto-button--${this.type || ButtonTypes.Button} apto-button--${this.kind || ButtonKinds.Primary}`;
     }
 }

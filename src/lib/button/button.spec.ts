@@ -1,18 +1,43 @@
-import { AptoButtonComponent, ButtonKinds, ButtonTypes } from './button.component';
+import { ButtonKinds, ButtonTypes } from './button.component';
 import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { AptoButtonComponentModule } from './button.module';
+
+@Component({
+    selector: 'apto-test-app',
+    template: `
+      <apto-button
+        [disabled]="isDisabled"
+        [kind]="buttonKind"
+        [title]="buttonTitle"
+        (click)="increment()"
+        [type]="buttonType">GO</apto-button>
+    `
+})
+class TestComponent {
+    clickCount = 0;
+    isDisabled = false;
+    buttonKind: ButtonKinds;
+    buttonTitle = '';
+    buttonType: ButtonTypes;
+
+    increment() {
+        this.clickCount += 1;
+    }
+}
 
 describe('apto-button', () => {
-    let fixture: ComponentFixture<AptoButtonComponent>;
-    let component: AptoButtonComponent;
+    let fixture: ComponentFixture<TestComponent>;
+    let testComponent: any;
 
     beforeEach(ngAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [ AptoButtonComponent ]
-        }).compileComponents();
-
-        fixture = TestBed.createComponent(AptoButtonComponent);
-        component = fixture.componentInstance;
-
+            imports: [ AptoButtonComponentModule ],
+            declarations: [ TestComponent ]
+        });
+        TestBed.compileComponents();
+        fixture = TestBed.createComponent(TestComponent);
+        testComponent = fixture.debugElement.componentInstance;
         fixture.detectChanges();
     }));
 
@@ -38,7 +63,7 @@ describe('apto-button', () => {
 
             describe('primary', () => {
                 beforeEach(() => {
-                    component.kind = ButtonKinds.Primary;
+                    testComponent.buttonKind = ButtonKinds.Primary;
                     fixture.detectChanges();
                 });
 
@@ -51,7 +76,7 @@ describe('apto-button', () => {
 
             describe('secondary', () => {
                 beforeEach(() => {
-                    component.kind = ButtonKinds.Secondary;
+                    testComponent.buttonKind = ButtonKinds.Secondary;
                     fixture.detectChanges();
                 });
 
@@ -74,7 +99,7 @@ describe('apto-button', () => {
 
             describe('button', () => {
                 beforeEach(() => {
-                    component.type = ButtonTypes.Button;
+                    testComponent.buttonType = ButtonTypes.Button;
                     fixture.detectChanges();
                 });
 
@@ -87,13 +112,12 @@ describe('apto-button', () => {
 
             describe('link', () => {
                 beforeEach(() => {
-                    component.type = ButtonTypes.Link;
+                    testComponent.buttonType = ButtonTypes.Link;
                     fixture.detectChanges();
                 });
 
                 it('has the correct class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
-
                     expect(button.className.includes('apto-button--link')).toBe(true);
                 });
             });
@@ -101,22 +125,14 @@ describe('apto-button', () => {
     });
 
     describe('text', () => {
-        const mockText = '💩';
-
-        beforeEach(() => {
-            component.text = mockText;
-            fixture.detectChanges();
-        });
-
         it('has the text it is passed', () => {
             const button = fixture.nativeElement.querySelector('button');
-
-            expect(button.innerText).toContain(mockText);
+            expect(button.innerText).toContain('GO');
         });
     });
 
-    describe('active', () => {
-        describe('when active not passed', () => {
+    describe('disabled', () => {
+        describe('when disabled not passed', () => {
             it('disabled is false', () => {
                 const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
 
@@ -124,9 +140,9 @@ describe('apto-button', () => {
             });
         });
 
-        describe('when active', () => {
+        describe('when not disabled', () => {
             beforeEach(() => {
-                component.active = true;
+                testComponent.isDisabled = false;
                 fixture.detectChanges();
             });
 
@@ -134,12 +150,13 @@ describe('apto-button', () => {
                 const button = fixture.nativeElement.querySelector('button');
 
                 expect(button.disabled).toBe(false);
+                expect(button.getAttribute('aria-disabled')).toBe(null);
             });
         });
 
-        describe('when not active', () => {
+        describe('when disabled', () => {
             beforeEach(() => {
-                component.active = false;
+                testComponent.isDisabled = true;
                 fixture.detectChanges();
             });
 
@@ -147,6 +164,7 @@ describe('apto-button', () => {
                 const button = fixture.nativeElement.querySelector('button');
 
                 expect(button.disabled).toBe(true);
+                expect(button.getAttribute('aria-disabled')).toBe('true');
             });
         });
     });
@@ -156,7 +174,7 @@ describe('apto-button', () => {
             const mockText = '💩';
 
             beforeEach(() => {
-                component.title = mockText;
+                testComponent.buttonTitle = mockText;
                 fixture.detectChanges();
             });
 
@@ -178,37 +196,17 @@ describe('apto-button', () => {
 
     describe('Click Event', () => {
         it('Should emit click if active', () => {
-            const spy = spyOn(component.click, 'emit');
             const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
             button.click();
-            expect(spy).toHaveBeenCalled();
+            expect(testComponent.clickCount).toBe(1);
         });
 
-        it('Should not emit click if inactive', () => {
-            const spy = spyOn(component.click, 'emit');
-            component.active = false;
+        it('Should not emit click if disabled', () => {
+            testComponent.isDisabled = true;
+            fixture.detectChanges();
             const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
             button.click();
-            expect(spy).not.toHaveBeenCalled();
-        });
-    });
-
-    describe('Mouse Events', () => {
-        it('Should emit mouseover', () => {
-            const spy = spyOn(component.mouseOver, 'emit');
-            const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
-            const event = new Event('mouseenter');
-            button.dispatchEvent(event);
-            expect(spy).toHaveBeenCalled();
-        });
-
-        it('Should emit mouseout', () => {
-            const spy = spyOn(component.mouseOut, 'emit');
-            component.active = false;
-            const button: HTMLButtonElement = fixture.nativeElement.querySelector('button');
-            const event = new Event('mouseout');
-            button.dispatchEvent(event);
-            expect(spy).not.toHaveBeenCalled();
+            expect(testComponent.clickCount).toBe(0);
         });
     });
 });
