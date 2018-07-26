@@ -33,6 +33,7 @@ jobs:
       - run: yarn global add gulp-cli
       - run: yarn packagr
       - run: npm publish dist
+      - run: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_ACCESS_TOKEN
 
 workflows:
   version: 2
