@@ -40,3 +40,7 @@ git config --unset user.email
 git config --unset user.name
 
 echo "Successfully published $TARBALL to NPM."
+
+npm run storybook:deploy -- --ci --host-token-env-variable=GITHUB_ACCESS_TOKEN
+
+echo "Successfully published docs to github pages."

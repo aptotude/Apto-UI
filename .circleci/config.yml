@@ -19,28 +19,15 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - persist_to_workspace:
-          root: ~/apto-ui
-          paths: .
       - run: yarn test:headless
-
-  deploy:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/apto-ui
       - add_ssh_keys:
           fingerprints:
               - "3a:b6:ac:01:7d:ef:5f:2c:73:e9:5f:f3:52:09:ff:7c"
-      - run:
-          name: Set Token
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-      - run:
-          name: Release to NPM
-          command: npm run release
-      - run:
-          name: Publish Docs to GitHub Pages
-          command: npm run storybook:deploy -- --ci --host-token-env-variable=GITHUB_ACCESS_TOKEN
+      - run: >
+          if [ "$CIRCLE_BRANCH" == "master" ]; then
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+            npm run release
+          fi
 
 workflows:
   version: 2
@@ -56,6 +43,3 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy:
-            requires:
-              - continuous-integration
