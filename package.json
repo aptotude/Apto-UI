@@ -9,14 +9,15 @@
   },
   "scripts": {
     "ng": "ng",
+    "dev": "yarn start",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "release": "./scripts/release.sh",
     "test": "ng test --browsers Chrome",
     "test:headless": "ng test --browsers ChromeHeadless --single-run --progress=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "deploy-storybook": "storybook-to-ghpages",
+    "storybook:local": "start-storybook -p 9001 -c .storybook",
+    "storybook:deploy": "storybook-to-ghpages",
     "packagr": "ng-packagr -p package.json && gulp publish"
   },
   "license": "MIT",

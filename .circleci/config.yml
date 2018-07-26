@@ -40,7 +40,7 @@ jobs:
           command: npm run release
       - run:
           name: Publish Docs to GitHub Pages
-          command: npm run deploy-storybook -- --ci --host-token-env-variable=GITHUB_ACCESS_TOKEN
+          command: npm run storybook:deploy -- --ci --host-token-env-variable=GITHUB_ACCESS_TOKEN
 
 workflows:
   version: 2
