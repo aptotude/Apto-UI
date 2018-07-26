@@ -1,0 +1,42 @@
+#!/bin/bash
+set -ex
+
+# Exit if this commit is an NPM publication
+GIT_COMMIT=$(git log -1 --pretty=%B)
+if [[ $GIT_COMMIT =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    exit 0
+fi
+
+# install gulp cli so we can run gulp stuff
+npm install gulp-cli -g
+
+# Set Git credentials for committing the tags
+git config user.email "devadmin+circleci@apto.com"
+git config user.name "CircleCI"
+
+# Get the latest version from NPM
+LATEST_RELEASE_VERSION=$(npm view apto-ui version)
+
+# Bump the package.json version
+npm version $LATEST_RELEASE_VERSION --no-git-tag-version --allow-same-version
+npm version patch -f --allow-same-version
+
+# Build the project
+NODE_ENV=prod npm run packagr
+
+# Pack and publish to NPM
+cd dist/
+TARBALL=$(npm pack)
+npm publish $TARBALL --verbose
+
+# Push Git commit and tag to Github
+cd ../
+git push origin master
+CURRENT_VERSION=$(node -p "require('./package.json').version")
+git push origin v$CURRENT_VERSION
+
+# Unset local config changes
+git config --unset user.email
+git config --unset user.name
+
+echo "Successfully published $TARBALL to NPM."
