@@ -9,6 +9,7 @@
   },
   "scripts": {
     "ng": "ng",
+    "gulp": "gulp",
     "dev": "yarn start",
     "start": "ng serve",
     "release": "./scripts/release.sh",
