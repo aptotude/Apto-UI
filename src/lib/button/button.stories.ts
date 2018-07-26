@@ -9,10 +9,10 @@ storiesOf('Buttons/Button/Primary', module)
         })
     )
     .add('Active', () => ({
-        template: `<apto-button>Next</apto-button>`
+        template: `<apto-button>Button</apto-button>`
     }))
     .add('Disabled', () => ({
-        template: `<apto-button [disabled]="true">Next</apto-button>`
+        template: `<apto-button [disabled]="true">Button</apto-button>`
     }))
 ;
 storiesOf('Buttons/Link/Primary', module)
@@ -22,10 +22,10 @@ storiesOf('Buttons/Link/Primary', module)
         })
     )
     .add('Active', () => ({
-        template: `<apto-button kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Next</apto-button>`
+        template: `<apto-button kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Button</apto-button>`
     }))
     .add('Disabled', () => ({
-        template: `<apto-button [disabled]="true" kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Next</apto-button>`
+        template: `<apto-button [disabled]="true" kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Button</apto-button>`
     }))
 ;
 
@@ -36,9 +36,9 @@ storiesOf('Buttons/Link/Secondary', module)
         })
     )
     .add('Active', () => ({
-        template: `<apto-button kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Next</apto-button>`
+        template: `<apto-button kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Button</apto-button>`
     }))
     .add('Disabled', () => ({
-        template: `<apto-button [disabled]="true" kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Next</apto-button>`
+        template: `<apto-button [disabled]="true" kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Button</apto-button>`
     }))
 ;
