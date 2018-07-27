@@ -119,9 +119,9 @@
     ],
     "directive-selector": [
       true,
-      "attribute",
+      "element",
       "apto",
-      "camelCase"
+      "kebab-case"
     ],
     "component-selector": [
       true,

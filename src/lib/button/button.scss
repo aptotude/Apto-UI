@@ -1,0 +1,56 @@
+@import '../../theme/variables.scss';
+
+.apto-button {
+    margin: 0;
+    background: none;
+    border: none;
+    font-family: $button-font-family;
+    font-weight: $button-font-weight;
+    font-size: $button-font-size;
+    border-radius: $button-border-radius;
+    padding: $button-padding;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out;
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+.apto-button--link {
+    padding: 0;
+}
+
+.apto-button--primary {
+    color: $button-primary-color;
+    background-color: $button-primary-bg;
+    &:hover {
+        background-color: darken($button-primary-bg, 15%);
+    }
+    &:disabled {
+        background-color: $button-primary-disabled-bg;
+    }
+}
+
+.apto-button--link.apto-button--primary {
+    color: $button-primary-link-color;
+    background-color: transparent;
+    &:hover {
+        color: darken($button-primary-link-color, 15%);
+    }
+    &:disabled {
+        color: lighten($button-primary-link-color, 15%);
+    }
+}
+
+.apto-button--link.apto-button--secondary {
+    color: $button-secondary-link-color;
+    background-color: transparent;
+    &:hover {
+        color: darken($button-secondary-link-color, 15%);
+    }
+    &:disabled {
+        color: lighten($button-secondary-link-color, 15%);
+    }
+}

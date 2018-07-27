@@ -13,7 +13,7 @@ export enum ButtonTypes {
 @Component({
     selector: 'apto-button',
     templateUrl: 'button.html',
-    styleUrls: [ './apto-button.scss' ]
+    styleUrls: [ './button.scss' ]
 })
 export class AptoButtonComponent {
     @Input() public disabled = false;

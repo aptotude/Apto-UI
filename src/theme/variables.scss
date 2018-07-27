@@ -52,20 +52,44 @@ $body-text:     $gray-700 !default;
 $font-family-sans-serif:      	"Open Sans", sans-serif !default;
 $font-family-base:            	$font-family-sans-serif !default;
 
-$font-size-base:             	1rem !default;
-$font-size-lg:               	($font-size-base * 1.25) !default;
-$font-size-sm:                	($font-size-base * .875) !default;
+$font-size-base:             	1.4rem !default; // 14px
+$font-size-lg:               	1.8rem !default; // 18px
+$font-size-sm:                	1.0rem !default; // 10px
 
-$font-weight-light:           	300 !default;
-$font-weight-normal:          	400 !default;
+$font-weight-light:           	400 !default;
+$font-weight-normal:          	500 !default;
+$font-weight-semibold:          600 !default;
 $font-weight-bold:            	700 !default;
 
 $font-weight-base:            	$font-weight-normal !default;
 $line-height-base:            	1.5 !default;
 
-$h1-font-size:                	$font-size-base * 2.5 !default;
-$h2-font-size:                	$font-size-base * 2 !default;
-$h3-font-size:                	$font-size-base * 1.75 !default;
-$h4-font-size:                	$font-size-base * 1.5 !default;
-$h5-font-size:                	$font-size-base * 1.25 !default;
+$h1-font-size:                	2.2rem !default; // 22px
+$h2-font-size:                	1.8rem !default; // 18px
+$h3-font-size:                	1.4rem !default; // 14px
+$h4-font-size:                	1.2rem !default; // 12px
+$h5-font-size:                	1.2rem !default; // 12px
 $h6-font-size:                	$font-size-base !default;
+
+$form-label-font-size:          1.2rem !default; // 12px
+$help-text-font-size:           1.0rem !default; // 10px
+
+// buttons
+$button-font-family:            $font-family-base !default;
+$button-font-size:              1.4rem !default; // 14px
+$button-font-weight:            $font-weight-base !default;
+$button-padding:                0.7rem 2rem !default;
+$button-border-radius:          3px !default;
+$button-primary-color:          $white !default;
+$button-primary-bg:             $blue-500 !default;
+$button-primary-disabled-bg:    $gray-400 !default;
+$button-primary-link-color:     $blue-500 !default;
+$button-secondary-link-color:   $gray-500 !default;
+
+// tooltip
+$tooltip-font-family:           $font-family-base !default;
+$tooltip-font-size:             1.2rem !default;
+$tooltip-font-weight:           $font-weight-base !default;
+$tooltip-padding:               0.5rem !default;
+$tooltip-color:                 $body-text !default;
+$tooltip-bg:                    $white !default;
