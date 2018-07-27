@@ -35,4 +35,5 @@ export class SuperAwesomeAppModule { }
 
 | Feature          | Notes                                                  | Docs         |
 |------------------|--------------------------------------------------------|--------------|
-| button           |                                                        | [Button Docs](https://aptotude.github.io/Apto-UI/?selectedKind=Buttons) |
+| button           |                                                        | [Button Docs](https://aptotude.github.io/Apto-UI/?selectedKind=Buttons)  |
+| tooltip          |                                                        | [Tooltip Docs](https://aptotude.github.io/Apto-UI/?selectedKind=Tooltip) |

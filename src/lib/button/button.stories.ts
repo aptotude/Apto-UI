@@ -1,5 +1,5 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
-import { AptoButtonComponent, ButtonKinds, ButtonTypes } from './button.component';
+import { ButtonKinds, ButtonTypes } from './button.component';
 import { AptoButtonComponentModule } from './button.module';
 
 storiesOf('Buttons/Button/Primary', module)
