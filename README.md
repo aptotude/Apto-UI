@@ -3,8 +3,7 @@
 [![npm version](https://img.shields.io/npm/dt/apto-ui.svg)](https://img.shields.io/npm/dt/apto-ui.svg)
 
 #### Quick links
-[Documentation](https://aptotude.github.io/Apto-UI)
-
+[Documentation](https://aptotude.github.io/Apto-UI/?)
 ### Getting started
 
 #### Step 1: Install Apto-UI
