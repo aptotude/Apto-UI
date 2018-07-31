@@ -18,11 +18,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "storybook:local": "start-storybook -p 9001 -c .storybook",
-    "storybook:deploy": "storybook-to-ghpages",
-    "packagr": "ng-packagr -p package.json && gulp publish"
+    "storybook:deploy": "build-storybook -s src/assets -o .out",
+    "packagr": "ng-packagr -p package.json && gulp publish -o docs"
   },
   "license": "MIT",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "engines": {
     "node": "^8.11.3",
     "yarn": "^1.3.2"
