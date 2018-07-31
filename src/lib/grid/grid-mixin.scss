@@ -1,0 +1,80 @@
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-apto-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint, $container-max-width in $max-widths {
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            max-width: $container-max-width;
+        }
+    }
+}
+
+@mixin make-apto-row() {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: ($grid-gutter-width / -2);
+    margin-left: ($grid-gutter-width / -2);
+    box-sizing: border-box;
+}
+
+@mixin make-apto-container() {
+    width: 100%;
+    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($grid-gutter-width / 2);
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+@mixin make-apto-col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    // Add a `max-width` to ensure content within each column does not blow out
+    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+    // do not appear to require this.
+    max-width: percentage($size / $columns);
+  }
+
+@mixin make-apto-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+    // Common properties for all breakpoints
+    %grid-column {
+      position: relative;
+      width: 100%;
+      min-height: 1px; // Prevent columns from collapsing when empty
+      padding-right: ($gutter / 2);
+      padding-left: ($gutter / 2);
+      box-sizing: border-box;
+    }
+
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        // Allow columns to stretch full width below their breakpoints
+        @for $i from 1 through $columns {
+            .apto-col#{$infix}-#{$i} {
+                @extend %grid-column;
+            }
+        }
+        .apto-col#{$infix},
+        .apto-col#{$infix}-auto {
+            @extend %grid-column;
+        }
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            .apto-col#{$infix} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+            .apto-col#{$infix}-auto {
+                flex: 0 0 auto;
+                width: auto;
+                max-width: none; // Reset earlier grid tiers
+            }
+
+            @for $i from 1 through $columns {
+                .apto-col#{$infix}-#{$i} {
+                    @include make-apto-col($i, $columns);
+                }
+            }
+        }
+    }
+}

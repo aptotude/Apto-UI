@@ -1,0 +1,40 @@
+@import '../../theme/variables.scss';
+@import '../../mixins/_breakpoints.scss';
+@import './grid-mixin.scss';
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+$grid-columns:          12 !default;
+$grid-gutter-width:     30px !default;
+
+.apto-container {
+    @include make-apto-container();
+    @include make-apto-container-max-widths();
+}
+.apto-container--fluid {
+    @include make-apto-container();
+}
+.apto-row{
+    @include make-apto-row()
+}
+
+@include make-apto-grid-columns();
+
+.apto-row {
+    background: $gray-300;
+}
+.row-dec {
+    background: $gray-600;
+    text-align: center;
+}
