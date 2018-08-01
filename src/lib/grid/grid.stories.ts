@@ -24,7 +24,7 @@ storiesOf('Grid', module)
         template: `<apto-container>
             <apto-row>
                 <apto-col><div class="row-dec">1 of 3</div></apto-col>
-                <apto-col xs=6><div class="row-dec">2 of 3 (wider)</div></apto-col>
+                <apto-col xs=6><div class="row-dec">2 of 3 (wider) (xs=6)</div></apto-col>
                 <apto-col><div class="row-dec">3 of 3</div></apto-col>
             </apto-row>
         </apto-container>`
@@ -33,7 +33,7 @@ storiesOf('Grid', module)
         template: `<apto-container>
             <apto-row>
                 <apto-col><div class="row-dec">1 of 3</div></apto-col>
-                <apto-col md="auto"><div class="row-dec">Variable width content</div></apto-col>
+                <apto-col md="auto"><div class="row-dec">Variable width content (md=auto)</div></apto-col>
                 <apto-col><div class="row-dec">3 of 3</div></apto-col>
             </apto-row>
         </apto-container>`
@@ -46,29 +46,29 @@ storiesOf('Grid', module)
                 <apto-col><div class="row-dec">col</div></apto-col>
             </apto-row>
             <apto-row>
-                <apto-col xs=8><div class="row-dec">col-8</div></apto-col>
-                <apto-col xs=4><div class="row-dec">col-4</div></apto-col>
+                <apto-col xs=8><div class="row-dec">xs=8</div></apto-col>
+                <apto-col xs=4><div class="row-dec">xs=4</div></apto-col>
             </apto-row>
         </apto-container>`
     }))
     .add('Stacked to horizontal', () => ({
         template: `<apto-container>
             <apto-row>
-                <apto-col sm=true><div class="row-dec">col</div></apto-col>
-                <apto-col sm=true><div class="row-dec">col</div></apto-col>
-                <apto-col sm=true><div class="row-dec">col</div></apto-col>
+                <apto-col sm=true><div class="row-dec">sm=true</div></apto-col>
+                <apto-col sm=true><div class="row-dec">sm=true</div></apto-col>
+                <apto-col sm=true><div class="row-dec">sm=true</div></apto-col>
             </apto-row>
             <apto-row>
-                <apto-col sm=8><div class="row-dec">col-sm-8</div></apto-col>
-                <apto-col sm=4><div class="row-dec">col-sm-4</div></apto-col>
+                <apto-col sm=8><div class="row-dec">sm=8</div></apto-col>
+                <apto-col sm=4><div class="row-dec">sm=4</div></apto-col>
             </apto-row>
         </apto-container>`
     }))
     .add('Mix And Match', () => ({
         template: `<apto-container>
             <apto-row>
-                <apto-col xs=12 md=8><div class="row-dec">col-12 col-md-8</div></apto-col>
-                <apto-col xs=6 md=4><div class="row-dec">col-6 col-md-4</div></apto-col>
+                <apto-col xs=12 md=8><div class="row-dec">xs=12 md=8</div></apto-col>
+                <apto-col xs=6 md=4><div class="row-dec">xs=6 md=4</div></apto-col>
             </apto-row>
         </apto-container>`
     }))
