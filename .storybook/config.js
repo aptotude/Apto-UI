@@ -9,9 +9,7 @@ function loadStories() {
 
 setOptions({
     name: 'Apto UI',
-    url: '/#',
-    showAddonPanel: false,
-    showStoriesPanel: true
+    url: '/#'
 });
 
 configure(loadStories, module);
