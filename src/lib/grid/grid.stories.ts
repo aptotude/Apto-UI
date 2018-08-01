@@ -1,6 +1,6 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { AptoGridComponentModule } from './grid.module';
-// import { withNotes } from '@storybook/addon-notes';
+import { withNotes } from '@storybook/addon-notes';
 
 storiesOf('Grid', module)
     .addDecorator(
@@ -8,8 +8,9 @@ storiesOf('Grid', module)
             imports: [ AptoGridComponentModule ]
         })
     )
-    .add('Default', () => ({
-        template: `<ul>
+    .add('Default', withNotes(`
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <ul>
             <li>Apto Containers provide a means to center and horizontally pad your site’s contents. Use &lt;apto-container&gt; for a responsive pixel width or &lt;apto-container fluid=true&gt; for width: 100% across all viewport and device sizes.</li>
             <li>Apto Rows are wrappers for columns. Each column has horizontal padding (called a gutter) for controlling the space between them. This padding is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
             <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
@@ -81,6 +82,8 @@ storiesOf('Grid', module)
         <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit apto-col attribute like sm=6.</p>
         <h2>Equal-width</h2>
         <p>For example, here are two grid layouts that apply to every device and viewport, from xs to xl. Add any number of &lt;apt-col&gt; for each breakpoint you need and every column will be the same width.</p>
+    `)(() => ({
+        template: `
         <apto-container>
             <apto-row>
                 <apto-col><div class="row-dec">1 of 3</div></apto-col>
@@ -92,9 +95,14 @@ storiesOf('Grid', module)
                 <apto-col><div class="row-dec">2 of 2</div></apto-col>
             </apto-row>
         </apto-container>
-        <hr>
+        `
+    })))
+    .add('On Column Width', withNotes(`
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <h1>Setting one column width</h1>
         <p>You can set the width of one column and have the sibling columns automatically resize around it. Note that the other columns will resize no matter the width of the center column.</p>
+    `)(() => ({
+        template: `
         <apto-container>
             <apto-row>
                 <apto-col><div class="row-dec">1 of 3</div></apto-col>
@@ -102,23 +110,29 @@ storiesOf('Grid', module)
                 <apto-col><div class="row-dec">3 of 3</div></apto-col>
             </apto-row>
         </apto-container>
-        <hr>
+        `
+    })))
+    .add('Variable width content', withNotes(`
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <h1>Variable width content</h1>
         <p>Use xs|sm|md|lg|xl="auto" apto-col attribute to size columns based on the natural width of their content.</p>
+    `)(() => ({
+        template: `
         <apto-container>
             <apto-row>
                 <apto-col><div class="row-dec">1 of 3</div></apto-col>
                 <apto-col md="auto"><div class="row-dec">Variable width content (md=auto)</div></apto-col>
                 <apto-col><div class="row-dec">3 of 3</div></apto-col>
             </apto-row>
-        </apto-container>`
-    }))
-    .add('Responsive Columns', () => ({
-        template: `
-        <h1>Responsive Columns</h1>
-        <p>There are five tiers of predefined apto-col attributes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.</p>
-        <h2>All breakpoints</h2>
+        </apto-container>
+    `
+    })))
+    .add('All Breakpoints', withNotes(`
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <h1>All breakpoints</h1>
         <p>For grids that are the same from the smallest of devices to the largest, use the &lt;apto-col&gt; and &lt;apto-col xs|sm|md|lg|xl="*"&gt; directives. Specify a number when you need a particularly sized column; otherwise, feel free to stick to &lt;apto-col&gt;.</p>
+    `)(() => ({
+        template: `
         <apto-container>
             <apto-row>
                 <apto-col><div class="row-dec">col</div></apto-col>
@@ -130,10 +144,15 @@ storiesOf('Grid', module)
                 <apto-col xs=4><div class="row-dec">xs=4</div></apto-col>
             </apto-row>
         </apto-container>
-        <hr>
+        `
+    })))
+    .add('Stacked to Horizontal', withNotes(`
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <h1>Stacked to horizontal</h1>
         <p>Using a single set of &lt;apto-col sm=*&gt; directives, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (sm).</p>
-        <apto-container>
+    `)(() => ({
+        template: `
+            <apto-container>
             <apto-row>
                 <apto-col sm=true><div class="row-dec">sm=true</div></apto-col>
                 <apto-col sm=true><div class="row-dec">sm=true</div></apto-col>
@@ -144,14 +163,28 @@ storiesOf('Grid', module)
                 <apto-col sm=4><div class="row-dec">sm=4</div></apto-col>
             </apto-row>
         </apto-container>
-        <hr>
+        `
+    })))
+    .add('Mix and Match', withNotes(`
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <h1>Mix and match</h1>
         <p>Don’t want your columns to simply stack in some grid tiers? Use a combination of different apto-col attributes for each tier as needed. See the example below for a better idea of how it all works.</p>
+    `)(() => ({
+        template: `
         <apto-container>
             <apto-row>
                 <apto-col xs=12 md=8><div class="row-dec">xs=12 md=8</div></apto-col>
                 <apto-col xs=6 md=4><div class="row-dec">xs=6 md=4</div></apto-col>
             </apto-row>
-        </apto-container>`
-    }))
+        </apto-container>
+        <pre style="margin-top:3rem">
+            &lt;apto-container&gt;
+                &lt;apto-row&gt;
+                    &lt;apto-col xs="12" md="8"&gt; &lt;/apto-col&gt;
+                    &lt;apto-col xs="6" md="4"&gt; &lt;/apto-col&gt;
+                &lt;/apto-row&gt;
+            &lt;/apto-container&gt;
+        </pre>
+        `
+    })))
 ;
