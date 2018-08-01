@@ -4,11 +4,11 @@ import { Component, Input, HostBinding, ViewEncapsulation, Directive } from '@an
     selector: 'apto-col'
 })
 export class AptoGridColumnDirective {
-    @Input() xs: any;
-    @Input() sm: any;
-    @Input() md: any;
-    @Input() lg: any;
-    @Input() xl: any;
+    @Input() xs: number|string;
+    @Input() sm: number|string;
+    @Input() md: number|string;
+    @Input() lg: number|string;
+    @Input() xl: number|string;
 
     @HostBinding('class') get col() {
         const classes = [];
@@ -33,14 +33,14 @@ export class AptoGridColumnDirective {
         return 'apto-col';
     }
 
-    public parseAttribute(count: any, size: string): string {
+    public parseAttribute(count: number|string, size: string): string {
         if (size !== '') {
             size = `-${size}`;
         }
-        if (count === 'true' || count === true) {
-            return `apto-col${size}`
+        if (count === 'true') {
+            return `apto-col${size}`;
         } else {
-            return `apto-col${size}-${count}`
+            return `apto-col${size}-${count}`;
         }
     }
 }
@@ -52,7 +52,10 @@ export class AptoGridColumnDirective {
     encapsulation: ViewEncapsulation.None
 })
 export class AptoGridRowComponent {
-    @HostBinding('class') public rowClass = 'apto-row';
+    @Input() public noGutter = false;
+    @HostBinding('class') public get row() {
+        return `apto-row${this.noGutter ? ' no-gutter': ''}`;
+    }
 }
 
 @Component({
