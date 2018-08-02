@@ -6,7 +6,7 @@ import { AptoGridRowComponent } from './row.component';
 @Component({
     selector: 'apto-test-app',
     template: `
-        <apto-row class="no-gutter" [gutter]="hasGutter">
+        <apto-row [gutter]="hasGutter">
             <apto-col [xs]="xsCol" [sm]="smCol" [md]="mdCol" [lg]="lgCol" [xl]="xlCol">HI</apto-col>
         </apto-row>
     `
@@ -63,15 +63,6 @@ describe('apto-row', () => {
     });
 
     describe('Columns', () => {
-        describe('bad col data', () => {
-            it('should have nothing', () => {
-                const el = fixture.nativeElement.querySelector('apto-col');
-                testComponent.smCol = 'cats';
-                fixture.detectChanges();
-                expect(el.className).toEqual('');
-            });
-        });
-
         describe('xs', () => {
             it('should have apto-col by default', () => {
                 const el = fixture.nativeElement.querySelector('apto-col');

@@ -37,18 +37,15 @@ describe('apto-container', () => {
 
     describe('Fluid', () => {
         it ('should be fluid', () => {
-            const el = fixture.nativeElement.querySelector('.apto-container--fluid');
-            const badEl = fixture.nativeElement.querySelector('.apto-container');
-            expect(el).not.toEqual(null);
-            expect(badEl).toEqual(null);
+            const el = fixture.nativeElement.querySelector('.apto-container');
+            expect(el.className).toEqual('apto-container');
         });
         it ('should not be fluid', () => {
             testComponent.isFluid = false;
             fixture.detectChanges();
-            const el = fixture.nativeElement.querySelector('.apto-container--fluid');
-            const badEl = fixture.nativeElement.querySelector('.apto-container');
-            expect(el).toEqual(null);
-            expect(badEl).not.toEqual(null);
+
+            const el = fixture.nativeElement.querySelector('.apto-container');
+            expect(el.className).toEqual('apto-container apto-container--fixed');
         });
     });
 

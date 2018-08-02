@@ -39,9 +39,6 @@ export class AptoGridColumnDirective {
     // count can be [1-12], 'auto', true, 'true'
     // size can be xs,sm,md,lg,xl
     private parseAttribute(count: any, size: string): string {
-        if (count !== 'auto' && count !== 'true' && count !== true && !Number.isInteger(count)) {
-            return '';
-        }
         if (size !== '') {
             size = `-${size}`;
         }
@@ -56,7 +53,7 @@ export class AptoGridColumnDirective {
 @Component({
     selector: 'apto-row',
     templateUrl: 'row.html',
-    styleUrls: [ './grid.scss' ],
+    styleUrls: [ './row.scss' ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

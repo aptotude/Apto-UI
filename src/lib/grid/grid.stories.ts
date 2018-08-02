@@ -109,7 +109,7 @@ storiesOf('Grid', module)
         template: `
         ${styles}
         <apto-container>
-            <apto-row gutter="false">
+            <apto-row [gutter]="false">
                 <apto-col>1 of 3</apto-col>
                 <apto-col>2 of 3</apto-col>
                 <apto-col>3 of 3</apto-col>

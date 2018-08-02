@@ -3,7 +3,7 @@ import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@a
 @Component({
     selector: 'apto-container',
     templateUrl: 'container.html',
-    styleUrls: [ './grid.scss' ],
+    styleUrls: [ './container.scss' ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
