@@ -34,6 +34,10 @@ describe('apto-row', () => {
         fixture.detectChanges();
     }));
 
+    afterEach(() => {
+        fixture.destroy();
+    });
+
     describe('Gutter', () => {
         it ('should have gutter', () => {
             const el = fixture.nativeElement.querySelector('apto-row');
