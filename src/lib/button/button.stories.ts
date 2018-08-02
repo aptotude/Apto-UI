@@ -17,9 +17,11 @@ storiesOf('Buttons/Button', module)
         template: `
             <apto-button>Active Button</apto-button>
             <br><br>
-            <apto-button [disabled]="true">Disabled Button</apto-button>
+            <apto-button
+                [disabled]="true">Disabled Button</apto-button>
             <br><br>
-            <apto-button automation="foo">Button with data-automation="foo"</apto-button>
+            <apto-button
+                automation="foo">Button with data-automation="foo"</apto-button>
         `
     })))
 ;
@@ -31,20 +33,34 @@ storiesOf('Buttons/Link', module)
     )
     .add('Primary', withMarkdownNotes(`${primaryLinkButtonMd}${buttonPropsMd}`)(() => ({
         template: `
-            <apto-button kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Active Button</apto-button>
+            <apto-button
+                kind="${ButtonKinds.Primary}"
+                type="${ButtonTypes.Link}">Active Button</apto-button>
             <br><br>
-            <apto-button [disabled]="true" kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Disabled Button</apto-button>
+            <apto-button
+                [disabled]="true"
+                kind="${ButtonKinds.Primary}"
+                type="${ButtonTypes.Link}">Disabled Button</apto-button>
             <br><br>
-            <apto-button automation="foo" kind="${ButtonKinds.Primary}" type="${ButtonTypes.Link}">Button with data-automation="foo"</apto-button>
+            <apto-button
+                automation="foo"
+                kind="${ButtonKinds.Primary}"
+                type="${ButtonTypes.Link}">Button with data-automation="foo"</apto-button>
             `
     })))
     .add('Secondary', withMarkdownNotes(`${secondaryLinkButtonMd}${buttonPropsMd}`)(() => ({
         template: `
             <apto-button kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Active Button</apto-button>
             <br><br>
-            <apto-button [disabled]="true" kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Disabled Button</apto-button>
+            <apto-button
+                [disabled]="true"
+                kind="${ButtonKinds.Secondary}"
+                type="${ButtonTypes.Link}">Disabled Button</apto-button>
             <br><br>
-            <apto-button automation="foo" kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Button  with data-automation="foo"</apto-button>
+            <apto-button
+                automation="foo"
+                kind="${ButtonKinds.Secondary}"
+                type="${ButtonTypes.Link}">Button  with data-automation="foo"</apto-button>
         `
     })))
 ;
