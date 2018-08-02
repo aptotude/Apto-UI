@@ -9,7 +9,7 @@ function loadStories() {
 
 setOptions({
     name: 'Apto UI',
-    url: '/#'
+    url: 'https://aptotude.github.io/apto-ui/'
 });
 
 configure(loadStories, module);
