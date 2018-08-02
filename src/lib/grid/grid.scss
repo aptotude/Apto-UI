@@ -1,6 +1,6 @@
 @import '../../theme/variables.scss';
 @import '../../mixins/_breakpoints.scss';
-@import './grid-mixin.scss';
+@import '../../mixins/_grid.scss';
 
 $grid-breakpoints: (
   xs: 0,
@@ -28,13 +28,14 @@ $grid-gutter-width:     30px !default;
 .apto-row{
     @include make-apto-row()
 }
+.apto-row--no-gutter {
+    margin-right: 0;
+    margin-left: 0;
+    > .apto-col,
+    > [class*="apto-col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+}
 
 @include make-apto-grid-columns();
-
-.apto-row {
-    background: $gray-300;
-}
-.row-dec {
-    background: $gray-600;
-    text-align: center;
-}

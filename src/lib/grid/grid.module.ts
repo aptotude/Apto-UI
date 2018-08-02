@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AptoGridContainerComponent, AptoGridColumnDirective, AptoGridRowComponent  } from './grid.component';
+import { AptoGridContainerComponent } from './container.component';
+import { AptoGridRowComponent, AptoGridColumnDirective  } from './row.component';
 
 @NgModule({
     imports: [
