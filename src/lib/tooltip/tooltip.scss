@@ -1,11 +1,11 @@
 @import '../../theme/variables.scss';
 
-.apto--tooltip--trigger {
+.apto-tooltip--trigger {
     display: inline-block;
     cursor: pointer;
 }
 
-.apto--tooltip {
+.apto-tooltip {
     position: absolute;
     background: $tooltip-bg;
     top: 0;
@@ -17,7 +17,7 @@
     &[hidden] {
         display: none;
     }
-    .apto--tooltip--inner {
+    .apto-tooltip--inner {
         font-family: $tooltip-font-family;
         font-size: $tooltip-font-size;
         font-weight: $tooltip-font-weight;
