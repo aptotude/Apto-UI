@@ -4,3 +4,6 @@
 ```
 <apto-button [disabled]="true" kind="primary" type="link">Disabled Button</apto-button>
 ```
+```
+<apto-button automation="foo" kind="primary" type="link">Automation Button</apto-button>
+```
