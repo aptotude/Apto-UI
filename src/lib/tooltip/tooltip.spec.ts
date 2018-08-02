@@ -53,7 +53,7 @@ describe('apto-tooltip', () => {
         expect(tipElement.getAttribute('role')).toEqual('tooltip');
         expect(tipElement.getAttribute('hidden')).toEqual('hidden');
         expect(tipElement.getAttribute('aria-describedby')).toEqual(testComponent.tipId);
-        expect(tipElement.className).toEqual('apto--tooltip');
+        expect(tipElement.className).toEqual('apto-tooltip');
         expect(tipElement.innerText).toContain('i am the content');
 
         expect(triggerElement.getAttribute('id')).toEqual(testComponent.tipId);
