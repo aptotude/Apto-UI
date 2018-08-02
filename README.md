@@ -36,3 +36,4 @@ export class SuperAwesomeAppModule { }
 |------------------|--------------------------------------------------------|--------------|
 | button           |                                                        | [Button Docs](https://aptotude.github.io/apto-ui/?selectedKind=Buttons)  |
 | tooltip          |                                                        | [Tooltip Docs](https://aptotude.github.io/apto-ui/?selectedKind=Tooltip) |
+| grid             |                                                        | [Grid Docs](https://aptotude.github.io/apto-ui/?selectedKind=Grid) |

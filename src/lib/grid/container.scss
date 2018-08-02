@@ -1,0 +1,8 @@
+@import '../../mixins/_grid.scss';
+
+.apto-container {
+    @include make-apto-container();
+}
+.apto-container--fixed {
+    @include make-apto-container-max-widths();
+}
