@@ -1,4 +1,4 @@
-@import '../../mixins/_grid.scss';
+@import '../scss/mixins/_grid.scss';
 
 .apto-container {
     @include make-apto-container();

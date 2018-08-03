@@ -1,4 +1,11 @@
-@import '../../theme/variables.scss';
+@import '../scss/theme/variables.scss';
+
+$tooltip-font-family:           $font-family-base !default;
+$tooltip-font-size:             1.2rem !default;
+$tooltip-font-weight:           $font-weight-base !default;
+$tooltip-padding:               0.5rem !default;
+$tooltip-color:                 $body-text !default;
+$tooltip-bg:                    $white !default;
 
 .apto-tooltip--trigger {
     display: inline-block;

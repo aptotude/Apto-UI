@@ -19,7 +19,7 @@
     "e2e": "ng e2e",
     "storybook:local": "start-storybook -p 9001 -c .storybook",
     "storybook:deploy": "storybook-to-ghpages",
-    "packagr": "ng-packagr -p package.json && gulp publish -o docs"
+    "packagr": "ng-packagr -p src/lib/package.json && gulp publish -o docs"
   },
   "license": "MIT",
   "version": "1.0.19",
@@ -59,6 +59,7 @@
     "codelyzer": "^4.0.1",
     "gulp": "^3.9.1",
     "gulp-cli": "^2.0.1",
+    "gulp-replace": "^1.0.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -71,14 +72,5 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.4.2"
-  },
-  "ngPackage": {
-    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "lib": {
-      "entryFile": "./src/lib/public_api.ts"
-    },
-    "whitelistedNonPeerDependencies": [
-      "."
-    ]
   }
 }

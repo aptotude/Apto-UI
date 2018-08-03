@@ -1,4 +1,15 @@
-@import '../../theme/variables.scss';
+@import '../scss/theme/variables.scss';
+
+$button-font-family:            $font-family-base !default;
+$button-font-size:              1.4rem !default; // 14px
+$button-font-weight:            $font-weight-base !default;
+$button-padding:                0.7rem 2rem !default;
+$button-border-radius:          3px !default;
+$button-primary-color:          $white !default;
+$button-primary-bg:             $blue-500 !default;
+$button-primary-disabled-bg:    $gray-400 !default;
+$button-primary-link-color:     $blue-500 !default;
+$button-secondary-link-color:   $gray-500 !default;
 
 .apto-button {
     margin: 0;
