@@ -1,8 +1,14 @@
 @import '../scss/mixins/_grid.scss';
 
 .apto-container {
+    display: block;
+    position: relative;
     @include make-apto-container();
 }
 .apto-container--fixed {
     @include make-apto-container-max-widths();
+}
+.apto-container--scroll {
+    height: 100%;
+    overflow-y: auto;
 }

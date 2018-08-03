@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 
 @Component({
     selector: 'apto-container',
@@ -8,5 +8,7 @@ import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@a
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AptoGridContainerComponent {
-    @Input() public fluid = true;
+    @HostBinding('class.apto-container') public containerClass = true;
+    @HostBinding('class.apto-container--fixed') @Input() public fixed = false;
+    @HostBinding('class.apto-container--scroll') @Input() public scroll = false;
 }
