@@ -8,6 +8,9 @@ import * as allBreakpointsMd from './docs/all-breakpoints.md';
 import * as stackingMd from './docs/stacking.md';
 import * as mixMatchMd from './docs/mix-match.md';
 import * as noGutterMd from './docs/no-gutter.md';
+import * as propertiesMd from './docs/properties.md';
+import * as scrollMd from './docs/scroll.md';
+import * as fixedMd from './docs/fixed.md';
 
 const styles = `
 <style>
@@ -26,7 +29,7 @@ storiesOf('Grid', module)
             imports: [ AptoGridComponentModule ],
         })
     )
-    .add('Basic Usage', withMarkdownNotes(basicUsageMd)(() => ({
+    .add('Basic Usage', withMarkdownNotes(`${basicUsageMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
@@ -38,7 +41,7 @@ storiesOf('Grid', module)
         </apto-container>
         `
     })))
-    .add('One Column Width', withMarkdownNotes(oneColumnWidthMd)(() => ({
+    .add('One Column Width', withMarkdownNotes(`${oneColumnWidthMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
@@ -50,7 +53,7 @@ storiesOf('Grid', module)
         </apto-container>
         `
     })))
-    .add('Variable Width Content', withMarkdownNotes(variableWidthMd)(() => ({
+    .add('Variable Width Content', withMarkdownNotes(`${variableWidthMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
@@ -62,7 +65,7 @@ storiesOf('Grid', module)
         </apto-container>
     `
     })))
-    .add('All Breakpoints', withMarkdownNotes(allBreakpointsMd)(() => ({
+    .add('All Breakpoints', withMarkdownNotes(`${allBreakpointsMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
@@ -78,7 +81,7 @@ storiesOf('Grid', module)
         </apto-container>
         `
     })))
-    .add('Stacked To Horizontal', withMarkdownNotes(stackingMd)(() => ({
+    .add('Stacked To Horizontal', withMarkdownNotes(`${stackingMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
@@ -94,7 +97,7 @@ storiesOf('Grid', module)
         </apto-container>
         `
     })))
-    .add('Mix And Match', withMarkdownNotes(mixMatchMd)(() => ({
+    .add('Mix And Match', withMarkdownNotes(`${mixMatchMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
@@ -105,11 +108,37 @@ storiesOf('Grid', module)
         </apto-container>
         `
     })))
-    .add('No Gutters', withMarkdownNotes(noGutterMd)(() => ({
+    .add('No Gutters', withMarkdownNotes(`${noGutterMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
         <apto-container>
             <apto-row [gutter]="false">
+                <apto-col>1 of 3</apto-col>
+                <apto-col>2 of 3</apto-col>
+                <apto-col>3 of 3</apto-col>
+            </apto-row>
+        </apto-container>
+        `
+    })))
+    .add('Scrollable', withMarkdownNotes(`${scrollMd}${propertiesMd}`)(() => ({
+        template: `
+        ${styles}
+        <div style="height:200px;">
+            <apto-container scroll="true">
+                <apto-row>
+                    <apto-col style="height:500px;">1 of 3</apto-col>
+                    <apto-col style="height:500px;">2 of 3</apto-col>
+                    <apto-col style="height:500px;">3 of 3</apto-col>
+                </apto-row>
+            </apto-container>
+        </div>
+        `
+    })))
+    .add('Fixed', withMarkdownNotes(`${fixedMd}${propertiesMd}`)(() => ({
+        template: `
+        ${styles}
+        <apto-container fixed="true">
+            <apto-row>
                 <apto-col>1 of 3</apto-col>
                 <apto-col>2 of 3</apto-col>
                 <apto-col>3 of 3</apto-col>

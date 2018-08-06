@@ -5,7 +5,7 @@ import { AptoGridComponentModule } from './grid.module';
 @Component({
     selector: 'apto-test-app',
     template: `
-        <apto-container [fluid]="isFluid">
+        <apto-container [fixed]="isFixed" [scroll]="isScrollable">
             <apto-row>
                 <apto-col>HI</apto-col>
             </apto-row>
@@ -13,7 +13,8 @@ import { AptoGridComponentModule } from './grid.module';
     `
 })
 class TestComponent {
-    public isFluid = true;
+    public isFixed = false;
+    public isScrollable = false;
 }
 
 describe('apto-container', () => {
@@ -35,17 +36,31 @@ describe('apto-container', () => {
         fixture.destroy();
     });
 
-    describe('Fluid', () => {
+    describe('Fix/Fluid', () => {
         it ('should be fluid', () => {
-            const el = fixture.nativeElement.querySelector('.apto-container');
+            const el = fixture.nativeElement.querySelector('apto-container');
             expect(el.className).toEqual('apto-container');
         });
-        it ('should not be fluid', () => {
-            testComponent.isFluid = false;
+        it ('should not be fixed', () => {
+            testComponent.isFixed = true;
             fixture.detectChanges();
 
-            const el = fixture.nativeElement.querySelector('.apto-container');
+            const el = fixture.nativeElement.querySelector('apto-container');
             expect(el.className).toEqual('apto-container apto-container--fixed');
+        });
+    });
+
+    describe('Scrollable', () => {
+        it ('should not be scrollable', () => {
+            const el = fixture.nativeElement.querySelector('apto-container');
+            expect(el.className).toEqual('apto-container');
+        });
+        it ('should not be scrollable', () => {
+            testComponent.isScrollable = true;
+            fixture.detectChanges();
+
+            const el = fixture.nativeElement.querySelector('apto-container');
+            expect(el.className).toEqual('apto-container apto-container--scroll');
         });
     });
 

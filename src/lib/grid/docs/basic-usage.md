@@ -19,22 +19,3 @@ Breaking it down:
 * Apto Columns have horizontal padding to create the gutters between individual columns, however, you can remove the margin from rows and padding from columns with by adding the `gutter="true"` attribute to the `<apto-row>`.
 * To make the grid responsive, there are five grid breakpoints, one for each responsive breakpoint: all breakpoints (extra small), small, medium, large, and extra large.
 * Grid breakpoints are based on minimum width media queries, meaning they apply to that one breakpoint and all those above it (e.g., `<apto-col sm="4">` applies to small, medium, large, and extra large devices, but not the first xs breakpoint).
-
-## Apto Container Properties `<apto-container>`
-Name | Description
----- | -----------
-@Input() fluid: boolean = true | If true creates a fluid container. If false creates a max width container with breakpoints
-
-## Apto Row Properties `<apto-row>`
-Name | Description
----- | -----------
-@Input() gutter: boolean = true | If false padding is removed from columns and rows
-
-## Apto Column Properties `<apto-col>`
-Name | Description
----- | -----------
-@Input() xs: number/string/boolean | Use for all breakpoints. Use a number from 1 to 12 or pass in "true" for equal widths or "auto" for auto size.
-@Input() sm: number/string/boolean | Use for small and up. Use a number from 1 to 12 or pass in "true" for equal widths or "auto" for auto size.
-@Input() md: number/string/boolean | Use for medium and up. Use a number from 1 to 12 or pass in "true" for equal widths or "auto" for auto size.
-@Input() lg: number/string/boolean | Use for large and up. Use a number from 1 to 12 or pass in "true" for equal widths or "auto" for auto size.
-@Input() xl: number/string/boolean | Use for xlarge and up. Use a number from 1 to 12 or pass in "true" for equal widths or "auto" for auto size.
