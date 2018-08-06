@@ -11,7 +11,8 @@ import { AptoButtonComponentModule } from './button.module';
         [kind]="buttonKind"
         [title]="buttonTitle"
         (click)="increment()"
-        [type]="buttonType">GO</apto-button>
+        [type]="buttonType"
+        [automation]="automationId">GO</apto-button>
     `
 })
 class TestComponent {
@@ -20,6 +21,7 @@ class TestComponent {
     buttonKind: ButtonKinds;
     buttonTitle = '';
     buttonType: ButtonTypes;
+    automationId: string = null;
 
     increment() {
         this.clickCount += 1;
@@ -128,6 +130,15 @@ describe('apto-button', () => {
         it('has the text it is passed', () => {
             const button = fixture.nativeElement.querySelector('button');
             expect(button.innerText).toContain('GO');
+        });
+    });
+
+    describe('automation id', () => {
+        it('data-automation id', () => {
+            testComponent.automationId = 'foo';
+            fixture.detectChanges();
+            const button = fixture.nativeElement.querySelector('button');
+            expect(button.getAttribute('data-automation')).toEqual('foo');
         });
     });
 

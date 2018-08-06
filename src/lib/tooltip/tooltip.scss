@@ -1,4 +1,4 @@
-@import '../../theme/variables.scss';
+@import '../scss/theme/variables.scss';
 
 $tooltip-font-family:           $font-family-base !default;
 $tooltip-font-size:             1.2rem !default;
@@ -7,12 +7,12 @@ $tooltip-padding:               0.5rem !default;
 $tooltip-color:                 $body-text !default;
 $tooltip-bg:                    $white !default;
 
-.apto--tooltip--trigger {
+.apto-tooltip--trigger {
     display: inline-block;
     cursor: pointer;
 }
 
-.apto--tooltip {
+.apto-tooltip {
     position: absolute;
     background: $tooltip-bg;
     top: 0;
@@ -24,7 +24,7 @@ $tooltip-bg:                    $white !default;
     &[hidden] {
         display: none;
     }
-    .apto--tooltip--inner {
+    .apto-tooltip--inner {
         font-family: $tooltip-font-family;
         font-size: $tooltip-font-size;
         font-weight: $tooltip-font-weight;

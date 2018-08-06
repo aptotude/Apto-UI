@@ -1,0 +1,29 @@
+{
+  "name": "apto-ui",
+  "description": "Apto UI for Angular",
+  "homepage": "https://github.com/aptotude/apto-ui",
+  "bugs": "https://github.com/aptotude/apto-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aptotude/apto-ui.git"
+  },
+  "license": "MIT",
+  "version": "0.0.0-PLACEHOLDER",
+  "engines": {
+    "node": "^8.11.3",
+    "yarn": "^1.3.2"
+  },
+  "peerDependencies": {
+    "@angular/core": "^5.2.9",
+    "@angular/common": "^5.2.9",
+    "angular2-uuid": "^1.1.1",
+    "rxjs": "^5.5.2"
+  },
+  "ngPackage": {
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "./public_api.ts"
+    },
+    "dest": "../../dist"
+  }
+}

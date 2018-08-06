@@ -1,8 +1,6 @@
 import {
     Component,
-    ElementRef,
     Input,
-    Output,
     ViewChild,
     EventEmitter,
     Directive,
@@ -31,8 +29,8 @@ export class AptoTooltipTriggerDirective {}
 })
 export class AptoTooltipComponent implements OnInit, OnDestroy {
     @Input() public hoverDelay = 200;
-    @ViewChild('tooltipContent') public tip: ElementRef;
-    @ViewChild('tooltipTrigger') public trigger: ElementRef;
+    @ViewChild('tooltipContent') public tip;
+    @ViewChild('tooltipTrigger') public trigger;
 
     public onItemHover = new EventEmitter();
     public onItemLeave = new EventEmitter();

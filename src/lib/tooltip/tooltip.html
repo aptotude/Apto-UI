@@ -1,5 +1,5 @@
 <div #tooltipTrigger
-     class="apto--tooltip--trigger"
+     class="apto-tooltip--trigger"
      (mouseenter)="onItemHover.emit()"
      (mouseleave)="onItemLeave.emit()"
      (click)="clickHandler()">
@@ -7,9 +7,9 @@
 </div>
 <div #tooltipContent
      hidden="hidden"
-     class="apto--tooltip"
+     class="apto-tooltip"
      role="tooltip">
-    <div class="apto--tooltip--inner">
+    <div class="apto-tooltip--inner">
         <ng-content select="apto-tooltip-content"></ng-content>
     </div>
 </div>

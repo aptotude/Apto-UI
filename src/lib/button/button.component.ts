@@ -20,6 +20,7 @@ export class AptoButtonComponent {
     @Input() public kind: ButtonKinds = ButtonKinds.Primary;
     @Input() public title = '';
     @Input() public type: ButtonTypes = ButtonTypes.Button;
+    @Input() public automation: string = null;
 
     public clickHandler(event: Event): void {
         if (this.disabled) {

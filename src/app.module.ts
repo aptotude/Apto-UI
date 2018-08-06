@@ -1,11 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AptoButtonComponentModule } from './lib/button/button.module';
 
 @NgModule({
     imports: [
-        BrowserModule,
-        AptoButtonComponentModule
+        BrowserModule
     ],
     declarations: [],
     providers: [],

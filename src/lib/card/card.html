@@ -1,8 +1,6 @@
-<div class="apto-card"
-    [attr.data-automation]="automationSelector ? automationSelector : null">
-    <ng-content select="apto-card-header"></ng-content>
-    <div class="apto-card--content">
-        <ng-content></ng-content>
-    </div>
-    <ng-content select="apto-card-footer"></ng-content>
+
+<ng-content select="apto-card-header"></ng-content>
+<div class="apto-card--content">
+    <ng-content></ng-content>
 </div>
+<ng-content select="apto-card-footer"></ng-content>

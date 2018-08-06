@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/dt/apto-ui.svg)](https://img.shields.io/npm/dt/apto-ui.svg)
 
 #### Quick links
-[Documentation](https://aptotude.github.io/Apto-UI/?)
+[Documentation](https://aptotude.github.io/apto-ui/?)
 ### Getting started
 
 #### Step 1: Install Apto-UI
@@ -34,5 +34,6 @@ export class SuperAwesomeAppModule { }
 
 | Feature          | Notes                                                  | Docs         |
 |------------------|--------------------------------------------------------|--------------|
-| button           |                                                        | [Button Docs](https://aptotude.github.io/Apto-UI/?selectedKind=Buttons)  |
-| tooltip          |                                                        | [Tooltip Docs](https://aptotude.github.io/Apto-UI/?selectedKind=Tooltip) |
+| button           |                                                        | [Button Docs](https://aptotude.github.io/apto-ui/?selectedKind=Buttons)  |
+| tooltip          |                                                        | [Tooltip Docs](https://aptotude.github.io/apto-ui/?selectedKind=Tooltip) |
+| grid             |                                                        | [Grid Docs](https://aptotude.github.io/apto-ui/?selectedKind=Grid) |

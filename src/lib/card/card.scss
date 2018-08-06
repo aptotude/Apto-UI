@@ -1,25 +1,25 @@
-@import '../../theme/variables.scss';
+@import '../scss/theme/variables.scss';
 
 $card-bg:                     $white !default;
 $card-border:                 1px solid $gray-300 !default;
 $card-box-shadow:             0 2px 4px 0 rgba(0,0,0,0.30) !default;
 $card-font-family:            $font-family-base !default;
-$card-font-size:              1.4rem !default;
+$card-font-size:              $font-size-base !default;
 $card-font-weight:            $font-weight-base !default;
-$card-margin:                 10px !default;
-$card-padding:                1.6rem;
+$card-margin:                 20px !default;
+$card-padding:          1.6rem;
 
 $card-header-color:           $gray-600 !default;
 $card-header-font-size:       1.2rem !default;
 $card-header-font-weight:     $font-weight-base !default;
-$card-header-padding:         $card-padding !default;
+// $card-header-padding:         $card-large-padding 0 $card-small-padding $card-large-padding !default;
 
-$card-content-padding:        0 0 0 $card-padding !default;
+// $card-content-padding:        $card-small-padding 0 $card-small-padding $card-large-padding !default;
 
-$card-footer-padding:         $card-padding !default;
+// $card-footer-padding:         $card-small-padding 0 $card-large-padding $card-large-padding !default;
 
 .apto-card {
-    margin: $card-margin;
+    margin: 0;
     background: $card-bg;
     border: $card-border;
     box-shadow: $card-box-shadow;
@@ -27,22 +27,26 @@ $card-footer-padding:         $card-padding !default;
     font-weight: $card-font-weight;
     font-size: $card-font-size;
     padding: 0;
+    display: block;
+}
+.apto-card + .apto-card {
+    margin-top: $card-margin;
 }
 
 .apto-card--header {
     display: block;
     font-size: $card-header-font-size;
     color: $card-header-color;
-    padding: $card-header-padding
+    padding: $card-padding
 }
 
-.apto-card--content {
-    padding: $card-content-padding;
-}
+// .apto-card--content {
+//     padding: $card-content-padding;
+// }
 
 .apto-card--footer {
     display: flex;
-    padding: $card-footer-padding;
+    padding: $card-padding;
     justify-content: space-between;
 }
 
