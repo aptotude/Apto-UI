@@ -35,6 +35,11 @@ $card-header-font-weight:     $font-weight-base !default;
     padding: $card-padding
 }
 
+.apto-card--content {
+    margin: 0;
+    padding: 0;
+}
+
 .apto-card--footer {
     display: flex;
     padding: $card-padding;

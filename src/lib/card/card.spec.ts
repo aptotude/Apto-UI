@@ -59,20 +59,23 @@ describe('apto-card', () => {
             const cardFooterRight = fixture.nativeElement.querySelector('apto-card apto-card-footer apto-card-footer-right');
             const cardFooterLeft = fixture.nativeElement.querySelector('apto-card apto-card-footer apto-card-footer-left');
 
-            expect(cardFooter.className.includes('apto-card--footer')).toBe(true);
-            expect(cardFooterRight.className.includes('apto-card--footer-right')).toBe(true);
-            expect(cardFooterLeft.className.includes('apto-card--footer-left')).toBe(true);
+            expect(cardFooter.className).toBe('apto-card--footer');
+            expect(cardFooterRight.className).toBe('apto-card--footer-right');
+            expect(cardFooterLeft.className).toBe('apto-card--footer-left');
         });
     });
 
     describe('text', () => {
         it('shows content when text is passed', () => {
-            const card = fixture.nativeElement.querySelector('apto-card');
+            const cardHeader = fixture.nativeElement.querySelector('apto-card apto-card-header');
+            const cardContent = fixture.nativeElement.querySelector('apto-card');
+            const cardFooterRight = fixture.nativeElement.querySelector('apto-card apto-card-footer apto-card-footer-right');
+            const cardFooterLeft = fixture.nativeElement.querySelector('apto-card apto-card-footer apto-card-footer-left');
 
-            expect(card.textContent).toContain('Header');
-            expect(card.textContent).toContain('I am Content');
-            expect(card.textContent).toContain('Footer left');
-            expect(card.textContent).toContain('Footer right');
+            expect(cardHeader.textContent).toContain('Header');
+            expect(cardContent.textContent).toContain('I am Content');
+            expect(cardFooterLeft.textContent).toContain('Footer left');
+            expect(cardFooterRight.textContent).toContain('Footer right');
         });
     });
 

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AptoCardComponent, AptoCardHeaderDirective } from './card.component';
 import { AptoCardFooterComponent, AptoCardFooterLeftDirective, AptoCardFooterRightDirective } from './card-footer.component';
 
-
 @NgModule({
     imports: [
         CommonModule

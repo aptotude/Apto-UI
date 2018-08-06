@@ -4,14 +4,14 @@ import { Component, Directive, HostBinding, ViewEncapsulation, ChangeDetectionSt
     selector: 'apto-card-footer-left'
 })
 export class AptoCardFooterLeftDirective {
-    @HostBinding('class.apto-card--footer-left') footerLeftClass = 'apto-card--footer-left';
+    @HostBinding('class.apto-card--footer-left') public footerLeftClass = true;
 }
 
 @Directive({
     selector: 'apto-card-footer-right'
 })
 export class AptoCardFooterRightDirective {
-    @HostBinding('class.apto-card--footer-right') footerRightClass = 'apto-card--footer-right';
+    @HostBinding('class.apto-card--footer-right') public footerRightClass = true;
 }
 
 @Component({
@@ -22,5 +22,5 @@ export class AptoCardFooterRightDirective {
 
 })
 export class AptoCardFooterComponent {
-    @HostBinding('class.apto-card--footer') footerClass = 'apto-card--footer';
+    @HostBinding('class.apto-card--footer') public footerClass = true;
 }
