@@ -1,7 +1,7 @@
 import { Component, Input, HostBinding, ViewEncapsulation, Directive, ChangeDetectionStrategy } from '@angular/core';
 
 @Directive({
-    selector: 'apto-col'
+    selector: 'apto-col,[apto-col]'
 })
 export class AptoGridColumnDirective {
     @Input() public xs: number|string|boolean;
@@ -51,7 +51,7 @@ export class AptoGridColumnDirective {
 }
 
 @Component({
-    selector: 'apto-row',
+    selector: 'apto-row,[apto-row]',
     templateUrl: 'row.html',
     styleUrls: [ './row.scss' ],
     encapsulation: ViewEncapsulation.None,

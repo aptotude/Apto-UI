@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 
 @Component({
-    selector: 'apto-container',
+    selector: 'apto-container,[apto-container]',
     templateUrl: 'container.html',
     styleUrls: [ './container.scss' ],
     encapsulation: ViewEncapsulation.None,

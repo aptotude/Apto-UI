@@ -14,7 +14,7 @@ import * as fixedMd from './docs/fixed.md';
 
 const styles = `
 <style>
-    apto-col {
+    apto-col,[apto-col] {
         padding-top: .75rem;
         padding-bottom: .75rem;
         background-color: rgba(86,61,124,.15);
