@@ -81,6 +81,6 @@ describe('apto-card', () => {
             const card = fixture.nativeElement.querySelector('apto-card');
 
             expect(card.getAttribute('automation')).toEqual('nice');
-        })
-    })
+        });
+    });
 });

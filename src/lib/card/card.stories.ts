@@ -6,6 +6,21 @@ import * as cardMd from './docs/card.md';
 import * as cardHeader from './docs/cardHeader.md';
 import * as cardFooter from './docs/cardFooter.md';
 
+const styles = `
+<style>
+    .content-paddding-left {
+        padding-left: 1.6rem;
+    }
+    .content-padding-top-bottom {
+        padding: .8rem 0 .8rem 1.6rem;
+    }
+    .content-padding-bottom {
+        padding: 0 0 .8rem 1.6rem;
+    }
+</style>
+`;
+
+
 storiesOf('Card', module)
     .addDecorator(
         moduleMetadata({
@@ -14,9 +29,10 @@ storiesOf('Card', module)
     )
     .add('Basic Usage',  withMarkdownNotes(cardMd)(() => ({
         template: `
+        ${styles}
         <apto-card>
             <apto-card-header>Header</apto-card-header>
-            Apto card content
+            <div class="content-paddding-left">Apto card content</div>
             <apto-card-footer>
                 <apto-button kind="primary" type="link">Footer</apto-button>
             </apto-card-footer>
@@ -24,7 +40,7 @@ storiesOf('Card', module)
 
         <apto-card automation="foo">
             <apto-card-header>Header</apto-card-header>
-            Apto card with automation tag "foo"
+            <div class="content-paddding-left">Apto card with automation tag "foo"</div>
             <apto-card-footer>
                 <apto-button kind="primary" type="link">Footer</apto-button>
             </apto-card-footer>
@@ -33,20 +49,22 @@ storiesOf('Card', module)
     })))
     .add('Card Header & Content', withMarkdownNotes(cardHeader)(() => ({
         template: `
+        ${styles}
         <apto-card>
             <apto-card-header>Header</apto-card-header>
-            Apto card header + content
+            <div class="content-padding-bottom">Apto card header + content</div>
         </apto-card>
 
         <apto-card>
-            Apto card empty card - content only
+            <div class="content-padding-top-bottom">Apto card empty card - content only</div>
         </apto-card>`
     })))
     .add('Card Footer', withMarkdownNotes(cardFooter)(() => ({
         template: `
+        ${styles}
         <apto-card>
             <apto-card-header>Header</apto-card-header>
-            Apto card + footer
+            <div class="content-paddding-left">Apto card + footer</div>
             <apto-card-footer>
                 <apto-button kind="primary" type="link">Footer</apto-button>
             </apto-card-footer>
@@ -54,27 +72,27 @@ storiesOf('Card', module)
 
         <apto-card>
             <apto-card-header>Header</apto-card-header>
-            Apto card + footer right
+            <div class="content-paddding-left">Apto card + footer right</div>
             <apto-card-footer>
                 <apto-card-footer-right>
                     <apto-button kind="primary" type="link">Footer right</apto-button>
                 </apto-card-footer-right>
             </apto-card-footer>
         </apto-card>
-        
+
         <apto-card>
             <apto-card-header>Header</apto-card-header>
-            Apto card + footer left
+            <div class="content-paddding-left">Apto card + footer left</div>
             <apto-card-footer>
                 <apto-card-footer-left>
                     <apto-button kind="primary" type="link">Footer left</apto-button>
                 </apto-card-footer-left>
             </apto-card-footer>
         </apto-card>
-        
+
         <apto-card>
             <apto-card-header>Header</apto-card-header>
-            Apto card + right and left footer
+            <div class="content-paddding-left">Apto card + right and left footer</div>
             <apto-card-footer>
                 <apto-card-footer-left>
                     <apto-button kind="primary" type="link">Footer left</apto-button>

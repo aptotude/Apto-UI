@@ -1,4 +1,4 @@
-import { Component, Directive, HostBinding } from '@angular/core';
+import { Component, Directive, HostBinding, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
 @Directive({
     selector: 'apto-card-footer-left'
@@ -16,7 +16,10 @@ export class AptoCardFooterRightDirective {
 
 @Component({
     selector: 'apto-card-footer',
-    templateUrl: 'card-footer.html'
+    templateUrl: 'card-footer.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class AptoCardFooterComponent {
     @HostBinding('class.apto-card--footer') footerClass = 'apto-card--footer';
