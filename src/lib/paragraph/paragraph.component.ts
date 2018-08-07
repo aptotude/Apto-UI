@@ -8,5 +8,5 @@ import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@a
     encapsulation: ViewEncapsulation.None
 })
 export class AptoParagraphComponent {
-    @Input() public tight = false;
+    @Input() public compact = false;
 }

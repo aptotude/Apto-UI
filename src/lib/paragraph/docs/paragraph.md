@@ -4,13 +4,13 @@
 ```
 
 ### Tight Spacing
-Add the `tight` attribute to make the spacing between successive tight paragraphs smaller.
+Add the `compact` attribute to make the spacing between successive compact paragraphs smaller.
 ```
-<apto-paragraph tight>Text in here</apto-paragraph>
-<apto-paragraph tight>Text in here</apto-paragraph>
+<apto-paragraph compact>Text in here</apto-paragraph>
+<apto-paragraph compact>Text in here</apto-paragraph>
 ```
 
-## Apto Paragraph Properties `<apto-paragraph>`
+## Apto Paragraph Directives `<apto-paragraph>`
 Name | Description
 ---- | -----------
-@Input() tight: boolean = false | Add this attribute to make spacing tigher between successive paragraphs
+compact | Add this attribute to make spacing tighter between successive paragraphs

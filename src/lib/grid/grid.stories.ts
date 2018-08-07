@@ -112,7 +112,7 @@ storiesOf('Grid', module)
         template: `
         ${styles}
         <apto-container>
-            <apto-row [gutter]="false">
+            <apto-row noGutter>
                 <apto-col>1 of 3</apto-col>
                 <apto-col>2 of 3</apto-col>
                 <apto-col>3 of 3</apto-col>
@@ -124,7 +124,7 @@ storiesOf('Grid', module)
         template: `
         ${styles}
         <div style="height:200px;">
-            <apto-container scroll="true">
+            <apto-container scroll>
                 <apto-row>
                     <apto-col style="height:500px;">1 of 3</apto-col>
                     <apto-col style="height:500px;">2 of 3</apto-col>
@@ -137,7 +137,7 @@ storiesOf('Grid', module)
     .add('Fixed', withMarkdownNotes(`${fixedMd}${propertiesMd}`)(() => ({
         template: `
         ${styles}
-        <apto-container fixed="true">
+        <apto-container fixed>
             <apto-row>
                 <apto-col>1 of 3</apto-col>
                 <apto-col>2 of 3</apto-col>

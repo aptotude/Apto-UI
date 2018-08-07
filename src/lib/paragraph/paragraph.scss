@@ -14,7 +14,7 @@ apto-paragraph + apto-paragraph .apto-paragraph{
     padding-top: 1rem;
 }
 
-// space successive tight paragraphs
-apto-paragraph[tight] + apto-paragraph[tight] .apto-paragraph{
+// space successive compact paragraphs
+apto-paragraph[compact] + apto-paragraph[compact] .apto-paragraph{
     padding-top: 0.2rem;
 }

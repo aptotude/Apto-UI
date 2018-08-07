@@ -1,5 +1,5 @@
 ```
-<apto-container fixed="true">
+<apto-container fixed>
     <apto-row>
         <apto-col>1 of 3</apto-col>
         <apto-col>2 of 3</apto-col>

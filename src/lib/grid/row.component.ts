@@ -50,17 +50,22 @@ export class AptoGridColumnDirective {
     }
 }
 
+@Directive({
+    selector: 'apto-row[noGutter]',
+    host: {'class': 'apto-row--no-gutter'}
+})
+export class AptoGridNoGutterDirective {
+
+}
+
 @Component({
     selector: 'apto-row',
     templateUrl: 'row.html',
     styleUrls: [ './row.scss' ],
+    host: {'class': 'apto-row'},
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AptoGridRowComponent {
-    @Input() public gutter = true;
-    @HostBinding('class.apto-row') row = true;
-    @HostBinding('class.apto-row--no-gutter') get gutterClass() {
-        return this.gutter ? false : true;
-    }
+
 }

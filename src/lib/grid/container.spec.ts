@@ -1,11 +1,20 @@
 import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { AptoGridComponentModule } from './grid.module';
-
 @Component({
     selector: 'apto-test-app',
     template: `
-        <apto-container [fixed]="isFixed" [scroll]="isScrollable">
+        <apto-container>
+            <apto-row>
+                <apto-col>HI</apto-col>
+            </apto-row>
+        </apto-container>
+        <apto-container data-fixed-version fixed>
+            <apto-row>
+                <apto-col>HI</apto-col>
+            </apto-row>
+        </apto-container>
+        <apto-container data-scroll-version scroll>
             <apto-row>
                 <apto-col>HI</apto-col>
             </apto-row>
@@ -13,8 +22,7 @@ import { AptoGridComponentModule } from './grid.module';
     `
 })
 class TestComponent {
-    public isFixed = false;
-    public isScrollable = false;
+
 }
 
 describe('apto-container', () => {
@@ -42,10 +50,7 @@ describe('apto-container', () => {
             expect(el.className).toEqual('apto-container');
         });
         it ('should not be fixed', () => {
-            testComponent.isFixed = true;
-            fixture.detectChanges();
-
-            const el = fixture.nativeElement.querySelector('apto-container');
+            const el = fixture.nativeElement.querySelector('apto-container[data-fixed-version]');
             expect(el.className).toEqual('apto-container apto-container--fixed');
         });
     });
@@ -56,10 +61,7 @@ describe('apto-container', () => {
             expect(el.className).toEqual('apto-container');
         });
         it ('should not be scrollable', () => {
-            testComponent.isScrollable = true;
-            fixture.detectChanges();
-
-            const el = fixture.nativeElement.querySelector('apto-container');
+            const el = fixture.nativeElement.querySelector('apto-container[data-scroll-version]');
             expect(el.className).toEqual('apto-container apto-container--scroll');
         });
     });

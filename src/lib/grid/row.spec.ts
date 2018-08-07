@@ -6,13 +6,15 @@ import { AptoGridRowComponent } from './row.component';
 @Component({
     selector: 'apto-test-app',
     template: `
-        <apto-row [gutter]="hasGutter">
+        <apto-row>
+            <apto-col [xs]="xsCol" [sm]="smCol" [md]="mdCol" [lg]="lgCol" [xl]="xlCol">HI</apto-col>
+        </apto-row>
+        <apto-row noGutter data-no-gutter>
             <apto-col [xs]="xsCol" [sm]="smCol" [md]="mdCol" [lg]="lgCol" [xl]="xlCol">HI</apto-col>
         </apto-row>
     `
 })
 class TestComponent {
-    hasGutter = true;
     xsCol = null;
     smCol = null;
     mdCol = null;
@@ -41,15 +43,11 @@ describe('apto-row', () => {
     describe('Gutter', () => {
         it ('should have gutter', () => {
             const el = fixture.nativeElement.querySelector('apto-row');
-            expect(el.classList.contains('apto-row')).toEqual(true);
-            expect(el.classList.contains('apto-row--no-gutter')).toEqual(false);
+            expect(el.className).toEqual('apto-row');
         });
 
         it ('should not have gutter', () => {
-            testComponent.hasGutter = false;
-            fixture.detectChanges();
-
-            const el = fixture.nativeElement.querySelector('apto-row');
+            const el = fixture.nativeElement.querySelector('apto-row[data-no-gutter]');
             expect(el.classList.contains('apto-row')).toEqual(true);
             expect(el.classList.contains('apto-row--no-gutter')).toEqual(true);
         });
