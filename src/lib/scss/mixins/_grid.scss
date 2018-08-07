@@ -1,20 +1,6 @@
 @import './_breakpoints.scss';
+@import '../theme/variables.scss';
 
-$grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px
-) !default;
-$container-max-widths: (
-    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1140px
-) !default;
-$grid-columns:          12 !default;
-$grid-gutter-width:     20px !default;
 
 // For each breakpoint, define the maximum width of the container in a media query
 @mixin make-apto-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
