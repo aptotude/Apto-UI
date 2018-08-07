@@ -1,6 +1,6 @@
 ```
 <div style="height:200px;">
-    <apto-container scroll="true">
+    <apto-container scroll>
         <apto-row>
             <apto-col>1 of 3</apto-col>
             <apto-col>2 of 3</apto-col>

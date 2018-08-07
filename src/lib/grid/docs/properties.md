@@ -1,15 +1,15 @@
-## Apto Container Properties `<apto-container>`
+## Apto Container Directives `<apto-container>`
 Name | Description
 ---- | -----------
-@Input() fixed: boolean = false | If true creates a fixed width container. If false the container is 100% wide.
-@Input() scroll: boolean = false | If true the container has a height of 100% and overflow auto allowing content to scroll based on parent's height.
+fixed | If set on container, the container will used a fixed width container.
+scroll | If set on the container, the content will scroll within the parent element.
 
-## Apto Row Properties `<apto-row>`
+## Apto Row Directives `<apto-row>`
 Name | Description
 ---- | -----------
-@Input() gutter: boolean = true | If false padding is removed from columns and rows
+noGutter | If added to element, padding is removed from columns and rows
 
-## Apto Column Properties `<apto-col>`
+## Apto Column Directives `<apto-col>`
 Name | Description
 ---- | -----------
 @Input() xs: number/string/boolean | Use for all breakpoints. Use a number from 1 to 12 or pass in "true" for equal widths or "auto" for auto size.

@@ -2,12 +2,15 @@
 
 $card-bg:                     $white !default;
 $card-border:                 1px solid $gray-300 !default;
-$card-box-shadow:             0 2px 4px 0 rgba(0,0,0,0.30) !default;
+$card-box-shadow:             0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
 $card-font-family:            $font-family-base !default;
 $card-font-size:              $font-size-base !default;
 $card-font-weight:            $font-weight-base !default;
 $card-margin:                 $grid-gutter-width !default;
 $card-padding:                1.6rem;
+$card-border-radius:          2px;
+
+$card-content-padding:      1.3rem 1.6rem;
 
 $card-header-color:           $gray-600 !default;
 $card-header-font-size:       1.2rem !default;
@@ -18,6 +21,7 @@ $card-header-font-weight:     $font-weight-base !default;
     background: $card-bg;
     border: $card-border;
     box-shadow: $card-box-shadow;
+    border-radius: $card-border-radius;
     font-family: $card-font-family;
     font-weight: $card-font-weight;
     font-size: $card-font-size;
@@ -26,30 +30,4 @@ $card-header-font-weight:     $font-weight-base !default;
 }
 .apto-card + .apto-card {
     margin-top: $card-margin;
-}
-
-.apto-card--header {
-    display: block;
-    font-size: $card-header-font-size;
-    color: $card-header-color;
-    padding: $card-padding
-}
-
-.apto-card--content {
-    margin: 0;
-    padding: 0;
-}
-
-.apto-card--footer {
-    display: flex;
-    padding: $card-padding;
-    justify-content: space-between;
-}
-
-.apto-card--footer-left {
-    margin-right: auto;
-}
-
-.apto-card--footer-right {
-    margin-left: auto;
 }

@@ -1,0 +1,10 @@
+@import './card.scss';
+
+.apto-card--content {
+    margin: 0;
+    padding: $card-content-padding;
+    display: block;
+    &.apto-card--content--no-padding {
+        padding: 0;
+    }
+}

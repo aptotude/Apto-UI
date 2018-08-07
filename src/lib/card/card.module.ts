@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AptoCardComponent, AptoCardHeaderDirective } from './card.component';
+import { AptoCardComponent } from './card.component';
+import { AptoCardHeaderComponent } from './card-header.component';
+import { AptoCardContentComponent, AptoCardNoPaddingDirective } from './card-content.component';
 import { AptoCardFooterComponent, AptoCardFooterLeftDirective, AptoCardFooterRightDirective } from './card-footer.component';
 
 @NgModule({
@@ -9,14 +11,18 @@ import { AptoCardFooterComponent, AptoCardFooterLeftDirective, AptoCardFooterRig
     ],
     declarations: [
         AptoCardComponent,
-        AptoCardHeaderDirective,
+        AptoCardHeaderComponent,
+        AptoCardContentComponent,
+        AptoCardNoPaddingDirective,
         AptoCardFooterComponent,
         AptoCardFooterLeftDirective,
         AptoCardFooterRightDirective
     ],
     exports: [
         AptoCardComponent,
-        AptoCardHeaderDirective,
+        AptoCardHeaderComponent,
+        AptoCardContentComponent,
+        AptoCardNoPaddingDirective,
         AptoCardFooterComponent,
         AptoCardFooterLeftDirective,
         AptoCardFooterRightDirective

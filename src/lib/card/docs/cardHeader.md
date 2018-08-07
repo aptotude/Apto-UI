@@ -3,7 +3,7 @@
 ```
 <apto-card>
     <apto-card-header>Header</apto-card-header>
-    Apto card header + content
+    <apto-card-content>Apto card header + content<apto-card-content>
 </apto-card>
 ```
 
@@ -11,6 +11,6 @@
 
 ```
 <apto-card>
-    Apto card empty card - content only
+    <apto-card-content>Apto card empty card - content only</apto-card-content>
 </apto-card>
 ```

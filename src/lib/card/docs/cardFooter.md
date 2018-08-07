@@ -2,7 +2,7 @@
 ```
 <apto-card>
     <apto-card-header>Header</apto-card-header>
-    Apto card + footer
+    <apto-card-content>Apto card + footer</apto-card-content>
     <apto-card-footer>
         <apto-button kind="primary" type="link">Footer</apto-button>
     </apto-card-footer>
@@ -13,7 +13,7 @@
 ```
 <apto-card>
     <apto-card-header>Header</apto-card-header>
-    Apto card + footer right
+    <apto-card-content>Apto card + footer right</apto-card-content>
     <apto-card-footer>
         <apto-card-footer-right>
             <apto-button kind="primary" type="link">Footer right</apto-button>
@@ -26,7 +26,7 @@
 ```
 <apto-card>
     <apto-card-header>Header</apto-card-header>
-    Apto card + footer left
+    <apto-card-content>Apto card + footer left</apto-card-content>
     <apto-card-footer>
         <apto-card-footer-left>
             <apto-button kind="primary" type="link">Footer left</apto-button>
@@ -39,7 +39,7 @@
 ```
 <apto-card>
     <apto-card-header>Header</apto-card-header>
-    Apto card + right and left footer
+    <apto-card-content>Apto card + right and left footer</apto-card-content>
     <apto-card-footer>
         <apto-card-footer-left>
             <apto-button kind="primary" type="link">Footer left</apto-button>
