@@ -12,6 +12,7 @@ $button-primary-link-color:     $blue-500 !default;
 $button-secondary-link-color:   $gray-500 !default;
 
 .apto-button {
+    display: inline-block;
     margin: 0;
     background: none;
     border: none;
