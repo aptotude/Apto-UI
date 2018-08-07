@@ -1,0 +1,19 @@
+<ng-template #headerContent><ng-content></ng-content></ng-template>
+<h1 *ngIf="type == 1" class="apto-header apto-header--h1">
+    <ng-container [ngTemplateOutlet]="headerContent"></ng-container>
+</h1>
+<h2 *ngIf="type == 2" class="apto-header apto-header--h2">
+    <ng-container [ngTemplateOutlet]="headerContent"></ng-container>
+</h2>
+<h3 *ngIf="type == 3" class="apto-header apto-header--h3">
+    <ng-container [ngTemplateOutlet]="headerContent"></ng-container>
+</h3>
+<h4 *ngIf="type == 4" class="apto-header apto-header--h4">
+    <ng-container [ngTemplateOutlet]="headerContent"></ng-container>
+</h4>
+<h5 *ngIf="type == 5" class="apto-header apto-header--h5">
+    <ng-container [ngTemplateOutlet]="headerContent"></ng-container>
+</h5>
+<h6 *ngIf="type == 6" class="apto-header apto-header--h6">
+    <ng-container [ngTemplateOutlet]="headerContent"></ng-container>
+</h6>
