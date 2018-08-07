@@ -19,8 +19,11 @@ import { AptoButtonComponentModule } from '../button';
             </apto-card-footer-right>
         </apto-card-footer>
     </apto-card>
-    <apto-card class="no-padding-card">
+    <apto-card data-no-content-padding-card>
         <apto-card-content noPadding>I am Content</apto-card-content>
+    </apto-card>
+    <apto-card data-no-header-padding-card>
+        <apto-card-header noBottomPadding>I am Header</apto-card-header>
     </apto-card>
     `
 })
@@ -66,11 +69,15 @@ describe('apto-card', () => {
         });
 
         it('has the correct content no padding class name', () => {
-            testComponent.noPadding = true;
-            fixture.detectChanges();
-            const cardContent = fixture.nativeElement.querySelector('apto-card.no-padding-card apto-card-content');
+            const cardContent = fixture.nativeElement.querySelector('apto-card[data-no-content-padding-card] apto-card-content');
 
             expect(cardContent.className).toBe('apto-card--content apto-card--content--no-padding');
+        });
+
+        it('has the correct header no padding class name', () => {
+            const cardHeader = fixture.nativeElement.querySelector('apto-card[data-no-header-padding-card] apto-card-header');
+
+            expect(cardHeader.className).toBe('apto-card--header apto-card--header--no-bottom-padding');
         });
 
         it('has the correct footer class names', () => {

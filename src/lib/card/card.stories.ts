@@ -5,6 +5,7 @@ import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as cardMd from './docs/card.md';
 import * as cardHeader from './docs/cardHeader.md';
 import * as cardFooter from './docs/cardFooter.md';
+import * as cardContent from './docs/cardContent.md';
 import * as cardPropertiesMd from './docs/properties.md';
 
 storiesOf('Card', module)
@@ -22,6 +23,27 @@ storiesOf('Card', module)
                 <apto-button kind="primary" type="link">Footer</apto-button>
             </apto-card-footer>
         </apto-card>
+        `
+    })))
+    .add('Card Header', withMarkdownNotes(`${cardHeader}${cardPropertiesMd}`)(() => ({
+        template: `
+        <apto-card>
+            <apto-card-header>Header</apto-card-header>
+        </apto-card>
+        <apto-card>
+            <apto-card-header noBottomPadding>Header With No Bottom Padding</apto-card-header>
+        </apto-card>
+        `
+    })))
+    .add('Card Content', withMarkdownNotes(`${cardContent}${cardPropertiesMd}`)(() => ({
+        template: `
+        <apto-card>
+            <apto-card-header>Header</apto-card-header>
+            <apto-card-content>Apto card Content</apto-card-content>
+            <apto-card-footer>
+                <apto-button kind="primary" type="link">Footer</apto-button>
+            </apto-card-footer>
+        </apto-card>
         <apto-card>
             <apto-card-header>Header</apto-card-header>
             <apto-card-content noPadding>Apto card with no content padding</apto-card-content>
@@ -29,18 +51,10 @@ storiesOf('Card', module)
                 <apto-button kind="primary" type="link">Footer</apto-button>
             </apto-card-footer>
         </apto-card>
-        `
-    })))
-    .add('Card Header & Content', withMarkdownNotes(`${cardHeader}${cardPropertiesMd}`)(() => ({
-        template: `
-        <apto-card>
-            <apto-card-header>Header</apto-card-header>
-            <apto-card-content>Apto card header + content</apto-card-content>
-        </apto-card>
-
         <apto-card>
             <apto-card-content>Apto card empty card - content only</apto-card-content>
-        </apto-card>`
+        </apto-card>
+        `
     })))
     .add('Card Footer', withMarkdownNotes(`${cardFooter}${cardPropertiesMd}`)(() => ({
         template: `
