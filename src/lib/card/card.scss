@@ -27,6 +27,7 @@ $card-header-font-weight:     $font-weight-base !default;
     font-size: $card-font-size;
     padding: 0;
     display: block;
+    position: relative;
 }
 .apto-card + .apto-card {
     margin-top: $card-margin;
