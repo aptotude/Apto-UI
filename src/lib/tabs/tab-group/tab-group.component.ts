@@ -37,7 +37,7 @@ export class AptoTabChangeEvent {
 export class AptoTabGroupComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
     public _groupId: number;
     private _selectedIndex: number | null = null;
-    private _indexToSelect: number | null = 0;
+    private indexToSelect: number | null = 0;
     private tabsSubscription = Subscription.EMPTY;
 
     @Input()
@@ -45,7 +45,7 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
             return this._selectedIndex;
         }
         set selectedIndex(value: number | null) {
-            this._indexToSelect = value;
+            this.indexToSelect = value;
         }
     @Input()
         get groupId(): number {
@@ -85,7 +85,7 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
 
     public setLastItemActive(): void {
         const tab: AptoTabComponent = this.tabs.last;
-        this.selectedIndex = tab.position;
+        this.selectedIndex = this.tabs.length - 1;
     }
 
     public getAriaLabelledby(i: number): string {
@@ -138,8 +138,8 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
     }
 
     ngAfterContentChecked() {
-        const indexToSelect = this._indexToSelect =
-            Math.min(this.tabs.length - 1, Math.max(this._indexToSelect || 0, 0));
+        const indexToSelect = this.indexToSelect =
+            Math.min(this.tabs.length - 1, Math.max(this.indexToSelect || 0, 0));
 
         if (this._selectedIndex !== indexToSelect && this._selectedIndex !== null) {
             const tabChangeEvent = this._createChangeEvent(indexToSelect);
@@ -147,7 +147,6 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
         }
 
         this.tabs.forEach((tab: AptoTabComponent, index: number) => {
-            tab.position = index - indexToSelect;
             tab.active = index === indexToSelect;
         });
 
@@ -162,7 +161,7 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
             const tabs = this.tabs.toArray();
             for (let i = 0; i < tabs.length; i++) {
                 if (tabs[i].active) {
-                    this._indexToSelect = this._selectedIndex = i;
+                    this.indexToSelect = this._selectedIndex = i;
                     break;
                 }
             }

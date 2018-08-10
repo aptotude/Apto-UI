@@ -1,13 +1,13 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { AptoTabsComponentModule } from './tabs.module';
 import { withMarkdownNotes } from '@storybook/addon-notes';
+import { action } from '@storybook/addon-actions';
 import { AptoCardComponentModule } from '../card';
-
 import * as propertiesMd from './docs/properties.md';
 import * as defaultMd from './docs/default.md';
 import * as customLabelMd from './docs/custom-label.md';
 import * as setIndexMd from './docs/set-index.md';
-
+import * as eventMd from './docs/event.md';
 
 storiesOf('Tabs', module)
     .addDecorator(
@@ -106,5 +106,17 @@ storiesOf('Tabs', module)
                 </apto-tab>
             </apto-tab-group>
         `
+    })))
+    .add('Events', withMarkdownNotes(`${eventMd}${propertiesMd}`)(() => ({
+        template: `
+            <apto-tab-group (selectedTabChange)="tabChanged($event)">
+                <apto-tab label="One">This is content tab 1</apto-tab>
+                <apto-tab label="Two">This is content tab 2</apto-tab>
+                <apto-tab label="Three">This is content tab 3</apto-tab>
+            </apto-tab-group>
+        `,
+        props: {
+            tabChanged: action()
+        }
     })))
 ;
