@@ -118,7 +118,7 @@
       "check-type"
     ],
     "directive-selector": [
-      true,
+      false,
       "element",
       "apto",
       "kebab-case"

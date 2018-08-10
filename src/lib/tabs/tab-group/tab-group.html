@@ -1,0 +1,40 @@
+<apto-card class="apto-tabs-header-card">
+    <apto-card-content noPadding>
+        <nav
+            aptoTabHeader
+            role="tablist"
+            (keydown)="keyDownHandler($event)">
+            <a
+                *ngFor="let tab of tabs; let i = index"
+                role="tab"
+                tabindex="{{ i }}"
+                class="apto-tabs-nav-item"
+                [id]="getTabNavId(i)"
+                [attr.href]="getTabNavPaneId(i)"
+                [class.apto-tabs-nav-item--active]="selectedIndex == i"
+                [attr.aria-selected]="selectedIndex == i ? 'true' : 'false'"
+                [attr.aria-controls]="getTabPaneId(i)"
+                [attr.aria-setsize]="tabs.length"
+                [attr.aria-posinset]="tab.position + 1"
+                (click)="handleClick($event, tab, i)">
+                <ng-template [ngIf]="tab.templateLabel">
+                    <ng-template [ngTemplateOutlet]="tab.templateLabel.templateRef"></ng-template>
+                </ng-template>
+                <ng-template [ngIf]="!tab.templateLabel">{{ tab.label }}</ng-template>
+            </a>
+        </nav>
+    </apto-card-content>
+</apto-card>
+<div class="apto-tabs-content">
+    <div
+        aptoTabPane
+        *ngFor="let tab of tabs; let i = index"
+        role="tabpanel"
+        [id]="getTabPaneId(i)"
+        [content]="tab.contentRef"
+        [active]="tab.active"
+        [position]="tab.position"
+        [class.apto-tabs-pane--active]="selectedIndex == i"
+        [attr.aria-labelledby]="getAriaLabelledby(i)">
+    </div>
+</div>
