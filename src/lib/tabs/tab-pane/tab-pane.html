@@ -1,1 +1,3 @@
-<ng-template [ngTemplateOutlet]="content"></ng-template>
+<ng-template [ngIf]="active">
+    <ng-template [ngTemplateOutlet]="content"></ng-template>
+</ng-template>

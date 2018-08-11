@@ -7,13 +7,8 @@ import {
     OnInit,
     TemplateRef,
     ViewChild,
-    ViewEncapsulation,
-    OnChanges,
-    SimpleChanges,
-    OnDestroy
+    ViewEncapsulation
 } from '@angular/core';
-
-import { Subject } from 'rxjs/Subject';
 
 @Directive({
     selector: '[aptoTabContent]'
@@ -35,7 +30,7 @@ export class AptoTabLabelDirective {
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class AptoTabComponent implements OnInit, OnChanges, OnDestroy {
+export class AptoTabComponent implements OnInit {
     @Input() public label = '';
     @ContentChild(AptoTabLabelDirective) public templateLabel: AptoTabLabelDirective;
     @ContentChild(AptoTabContentDirective, {
@@ -45,19 +40,8 @@ export class AptoTabComponent implements OnInit, OnChanges, OnDestroy {
 
     public contentRef: TemplateRef<any> | AptoTabContentDirective | null = null;
     public active = false;
-    readonly _labelChange = new Subject<void>();
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes.hasOwnProperty('label')) {
-            this._labelChange.next();
-        }
-    }
 
     ngOnInit() {
         this.contentRef = this._explicitContent || this._implicitContent;
-    }
-
-    ngOnDestroy(): void {
-        this._labelChange.complete();
     }
 }
