@@ -7,7 +7,7 @@ import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../utils/keycodes';
 @Component({
     selector: 'apto-test-app',
     template: `
-        <apto-tab-group data-default #component (selectedTabChange)="changeTabEvent($event)">
+        <apto-tab-group [selectedIndex]="currTab" data-default #component (selectedTabChange)="changeTabEvent($event)">
             <apto-tab label="One">
                 Tab 1 Content
             </apto-tab>
@@ -18,7 +18,7 @@ import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../utils/keycodes';
                 Tab 3 Content
             </apto-tab>
         </apto-tab-group>
-        <apto-tab-group data-custom>
+        <apto-tab-group [selectedIndex]="currTab" data-custom>
             <apto-tab>
                 <ng-template aptoTabLabel>
                     Custom Label
@@ -42,6 +42,7 @@ import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../utils/keycodes';
     `
 })
 class TestComponent {
+    currTab = 0;
     changeIncrement = 0;
     changeHolder: AptoTabChangeEvent;
     @ViewChild('component') public componentRef;
@@ -108,16 +109,32 @@ describe('apto-tabs', () => {
             expect(nav.innerText).toContain('Custom Label');
         });
 
-        it('should have custom content html using ng-template', () => {
+        it('should have custom content html using ng-template', async () => {
+            testComponent.currTab = 2;
+            fixture.detectChanges();
+
             const pane = customTab.querySelector('.apto-tabs-pane:nth-of-type(3)');
             expect(pane.innerText).toContain('Tab 3 Custom Content');
         });
 
         it('should have custom content and label html using ng-template', () => {
+            testComponent.currTab = 2;
+            fixture.detectChanges();
+
             const pane = customTab.querySelector('.apto-tabs-pane:nth-of-type(3)');
             expect(pane.innerText).toContain('Tab 3 Custom Content');
             const nav = customTab.querySelector('.apto-tabs-nav-item:nth-of-type(3)');
             expect(nav.innerText).toContain('Custom Label 3');
+        });
+    });
+
+    describe('Set starting active tab', () => {
+        it('set second tab as active', () => {
+            testComponent.currTab = 1;
+            fixture.detectChanges();
+
+            const nav = defaultTab.querySelectorAll('.apto-tabs-nav-item');
+            expect(nav[1].className).toContain('apto-tabs-nav-item--active');
         });
     });
 
