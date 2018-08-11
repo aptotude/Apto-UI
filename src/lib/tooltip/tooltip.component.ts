@@ -25,7 +25,7 @@ export class AptoTooltipTriggerDirective {}
 @Component({
     selector: 'apto-tooltip',
     templateUrl: 'tooltip.html',
-    styleUrls: [ './tooltip.scss' ]
+    styleUrls: ['./tooltip.scss']
 })
 export class AptoTooltipComponent implements OnInit, OnDestroy {
     @Input() public hoverDelay = 200;
@@ -37,13 +37,13 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
     public visible = true;
     public built = false;
     public tipId: string;
-    private subscriptions: Subscription[] = [];
+    private _subscriptions: Subscription[] = [];
 
-    constructor(@Inject(DOCUMENT) private doc: any) {}
+    constructor(@Inject(DOCUMENT) private _doc: any) {}
 
     public ngOnInit(): void {
         let timeout: any;
-        this.subscriptions.push(
+        this._subscriptions.push(
             this.onItemHover.subscribe(() => {
                 this.visible = true;
                 if (timeout) {
@@ -55,7 +55,7 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
             })
         );
 
-        this.subscriptions.push(
+        this._subscriptions.push(
             this.onItemLeave.subscribe(() => {
                 if (timeout) {
                     clearTimeout(timeout);
@@ -66,7 +66,7 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.subscriptions.forEach((s) => s.unsubscribe());
+        this._subscriptions.forEach((s) => s.unsubscribe());
     }
 
     public buildElement(): void {
@@ -76,7 +76,7 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
         this.tipId = UUID.UUID();
         this.trigger.nativeElement.setAttribute('id', this.tipId);
         this.tip.nativeElement.setAttribute('aria-describedby', this.tipId);
-        this.doc.body.appendChild(this.tip.nativeElement);
+        this._doc.body.appendChild(this.tip.nativeElement);
         this.built = true;
     }
 

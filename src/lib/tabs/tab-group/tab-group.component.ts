@@ -18,6 +18,8 @@ import {
 import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../../utils/keycodes';
 
 import { Subscription } from 'rxjs/Subscription';
+import { merge } from 'rxjs/observable/merge';
+import { Subject } from 'rxjs/Subject';
 
 let nextId = 0;
 
@@ -29,23 +31,24 @@ export class AptoTabChangeEvent {
 @Component({
     selector: 'apto-tab-group',
     templateUrl: './tab-group.html',
-    styleUrls: [ './tab-group.scss' ],
+    styleUrls: ['./tab-group.scss'],
     host: {'class': 'apto-tab-group'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
 export class AptoTabGroupComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
-    public _groupId: number;
+    private _groupId: number;
     private _selectedIndex: number | null = null;
-    private indexToSelect: number | null = 0;
-    private tabsSubscription = Subscription.EMPTY;
+    private _indexToSelect: number | null = 0;
+    private _tabsSubscription = Subscription.EMPTY;
+    private _tabsLabelSubscription = Subscription.EMPTY;
 
     @Input()
         get selectedIndex(): number | null {
             return this._selectedIndex;
         }
         set selectedIndex(value: number | null) {
-            this.indexToSelect = value;
+            this._indexToSelect = Number(value);
         }
     @Input()
         get groupId(): number {
@@ -63,29 +66,6 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
     public handleClick(e: Event, tab: AptoTabComponent, tabNum: number): void {
         e.preventDefault();
         this.selectedIndex = tabNum;
-    }
-
-    public setFirstItemActive(): void {
-        this.selectedIndex = 0;
-    }
-
-    public setNextItemActive(): void {
-        this.selectedIndex += 1;
-        if (this.selectedIndex >= this.tabs.length - 1) {
-            this.setFirstItemActive();
-        }
-    }
-
-    public setPreviousItemActive(): void {
-        this.selectedIndex -= 1;
-        if (this.selectedIndex <= 0) {
-            this.setLastItemActive();
-        }
-    }
-
-    public setLastItemActive(): void {
-        const tab: AptoTabComponent = this.tabs.last;
-        this.selectedIndex = this.tabs.length - 1;
     }
 
     public getAriaLabelledby(i: number): string {
@@ -107,19 +87,19 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
     public keyDownHandler(event: KeyboardEvent) {
         switch (event.keyCode) {
             case HOME:
-                this.setFirstItemActive();
+                this._setFirstItemActive();
                 event.preventDefault();
                 break;
             case END:
-                this.setLastItemActive();
+                this._setLastItemActive();
                 event.preventDefault();
                 break;
             case RIGHT_ARROW:
-                this.setNextItemActive();
+                this._setNextItemActive();
                 event.preventDefault();
                 break;
             case LEFT_ARROW:
-                this.setPreviousItemActive();
+                this._setPreviousItemActive();
                 event.preventDefault();
                 break;
             default:
@@ -137,40 +117,78 @@ export class AptoTabGroupComponent implements AfterContentInit, AfterContentChec
         return event;
     }
 
-    ngAfterContentChecked() {
-        const indexToSelect = this.indexToSelect =
-            Math.min(this.tabs.length - 1, Math.max(this.indexToSelect || 0, 0));
+    private _setFirstItemActive(): void {
+        this.selectedIndex = 0;
+    }
 
-        if (this._selectedIndex !== indexToSelect && this._selectedIndex !== null) {
-            const tabChangeEvent = this._createChangeEvent(indexToSelect);
-            this.selectedTabChange.emit(tabChangeEvent);
+    private _setNextItemActive(): void {
+        this.selectedIndex += 1;
+        if (this.selectedIndex >= this.tabs.length - 1) {
+            this._setFirstItemActive();
+        }
+    }
+
+    private _setPreviousItemActive(): void {
+        this.selectedIndex -= 1;
+        if (this.selectedIndex <= 0) {
+            this._setLastItemActive();
+        }
+    }
+
+    private _setLastItemActive(): void {
+        const tab: AptoTabComponent = this.tabs.last;
+        this.selectedIndex = this.tabs.length - 1;
+    }
+
+    private _subscribeToTabLabels() {
+        if (this._tabsLabelSubscription) {
+            this._tabsLabelSubscription.unsubscribe();
+        }
+
+        this._tabsLabelSubscription = merge(...this.tabs.map(tab => tab._labelChange))
+            .subscribe(() => {
+                this._changeDetectorRef.markForCheck();
+            });
+    }
+
+    ngAfterContentChecked() {
+        const _indexToSelect = this._indexToSelect =
+            Math.min(this.tabs.length - 1, Math.max(this._indexToSelect || 0, 0));
+
+        if (this._selectedIndex !== _indexToSelect && this._selectedIndex !== null) {
+            this.selectedTabChange.emit(
+                this._createChangeEvent(_indexToSelect)
+            );
         }
 
         this.tabs.forEach((tab: AptoTabComponent, index: number) => {
-            tab.active = index === indexToSelect;
+            tab.active = index === _indexToSelect;
         });
 
-        if (this._selectedIndex !== indexToSelect) {
-            this._selectedIndex = indexToSelect;
+        if (this._selectedIndex !== _indexToSelect) {
+            this._selectedIndex = _indexToSelect;
             this._changeDetectorRef.markForCheck();
         }
     }
 
     ngAfterContentInit() {
-        this.tabsSubscription = this.tabs.changes.subscribe(() => {
+        this._subscribeToTabLabels();
+        this._tabsSubscription = this.tabs.changes.subscribe(() => {
             const tabs = this.tabs.toArray();
             for (let i = 0; i < tabs.length; i++) {
                 if (tabs[i].active) {
-                    this.indexToSelect = this._selectedIndex = i;
+                    this._indexToSelect = this._selectedIndex = i;
                     break;
                 }
             }
         });
 
+        this._subscribeToTabLabels();
         this._changeDetectorRef.markForCheck();
     }
 
     ngOnDestroy() {
-        this.tabsSubscription.unsubscribe();
+        this._tabsLabelSubscription.unsubscribe();
+        this._tabsSubscription.unsubscribe();
     }
 }
