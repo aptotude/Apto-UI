@@ -1,0 +1,7 @@
+.apto-tabs-pane {
+    display: none;
+    position: relative;
+    &.apto-tabs-pane--active {
+        display: block;
+    }
+}

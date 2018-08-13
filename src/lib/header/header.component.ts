@@ -3,7 +3,7 @@ import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@a
 @Component({
     selector: 'apto-header',
     templateUrl: 'header.html',
-    styleUrls: [ './header.scss' ],
+    styleUrls: ['./header.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
