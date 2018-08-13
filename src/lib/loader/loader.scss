@@ -1,0 +1,66 @@
+@import '../scss/theme/variables.scss';
+
+.apto-loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    &.apto-loader--no-overlay {
+        background: transparent;
+    }
+}
+.apto-loader--spinner {
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    vertical-align: middle;
+    svg {
+        animation-duration: 750ms;
+        animation: apto-loader--rotate 1s linear infinite;
+    }
+    circle {
+        fill: transparent;
+        stroke-width: 4px;
+        stroke-dasharray: 128px;
+        stroke-dashoffset: 82px;
+        stroke: $blue-500;
+    }
+}
+.apto-loader--content {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+    line-height: $line-height-base;
+    color: $gray-600;
+    display: inline-block;
+}
+
+@-webkit-keyframes apto-loader--rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+}
+
+@keyframes apto-loader--rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+}

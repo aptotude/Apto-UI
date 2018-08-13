@@ -12,7 +12,7 @@ class TestComponent {
 
 }
 
-describe('apto-header', () => {
+describe('apto-paragraph', () => {
     let fixture: ComponentFixture<TestComponent>;
     let testComponent: any;
 
