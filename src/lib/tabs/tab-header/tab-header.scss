@@ -1,0 +1,39 @@
+@import '../../scss/mixins/_grid.scss';
+
+$tab-nav-font-size: $h4-font-size;
+$tab-nav-font-color: $gray-600;
+$tab-nav-margin: $grid-gutter-width / 2;
+$tab-nav-active-color: $blue-500;
+$tab-nav-active-border-color: $blue-500;
+$tab-nav-active-font-weight: $font-weight-bold;
+$tab-nav-item-padding: 1.3rem 0 0 0;
+
+.apto-tabs-header-card {
+    margin-bottom: $tab-nav-margin;
+}
+.apto-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -1px;
+}
+.apto-tabs-nav-item {
+    display: inline-block;
+    flex: 1 1 auto;
+    text-align: center;
+    text-decoration: none;
+    color: $gray-600;
+    padding: $tab-nav-item-padding;
+    font-size: $tab-nav-font-color;
+    border-bottom: 2px solid transparent;
+    transition: color .15s ease-in-out, border-color .15s ease-in-out, font-weight .15s ease-in-out;
+    outline: none;
+    &.apto-tabs-nav-item--active {
+        border-bottom-color: $tab-nav-active-border-color;
+        color: $tab-nav-active-color;
+        font-weight: $tab-nav-active-font-weight;
+    }
+    &:hover {
+        color: $tab-nav-active-color;
+        font-weight: $tab-nav-active-font-weight;
+    }
+}

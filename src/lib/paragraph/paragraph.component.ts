@@ -3,7 +3,7 @@ import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@a
 @Component({
     selector: 'apto-paragraph',
     templateUrl: 'paragraph.html',
-    styleUrls: [ './paragraph.scss' ],
+    styleUrls: ['./paragraph.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })

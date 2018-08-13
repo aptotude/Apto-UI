@@ -10,25 +10,25 @@ export class AptoGridColumnDirective {
     @Input() public lg: number|string|boolean;
     @Input() public xl: number|string|boolean;
     @HostBinding('class') get colClass() {
-        return this.getClass();
+        return this._getClass();
     }
 
-    private getClass(): string {
+    private _getClass(): string {
         const classes = [];
         if (this.xs) {
-            classes.push(this.parseAttribute(this.xs, ''));
+            classes.push(this._parseAttribute(this.xs, ''));
         }
         if (this.sm) {
-            classes.push(this.parseAttribute(this.sm, 'sm'));
+            classes.push(this._parseAttribute(this.sm, 'sm'));
         }
         if (this.md) {
-            classes.push(this.parseAttribute(this.md, 'md'));
+            classes.push(this._parseAttribute(this.md, 'md'));
         }
         if (this.lg) {
-            classes.push(this.parseAttribute(this.lg, 'lg'));
+            classes.push(this._parseAttribute(this.lg, 'lg'));
         }
         if (this.xl) {
-            classes.push(this.parseAttribute(this.xl, 'xl'));
+            classes.push(this._parseAttribute(this.xl, 'xl'));
         }
         if (classes.length) {
             return classes.join(' ');
@@ -38,7 +38,7 @@ export class AptoGridColumnDirective {
 
     // count can be [1-12], 'auto', true, 'true'
     // size can be xs,sm,md,lg,xl
-    private parseAttribute(count: any, size: string): string {
+    private _parseAttribute(count: any, size: string): string {
         if (size !== '') {
             size = `-${size}`;
         }
@@ -54,18 +54,14 @@ export class AptoGridColumnDirective {
     selector: 'apto-row[noGutter]',
     host: {'class': 'apto-row--no-gutter'}
 })
-export class AptoGridNoGutterDirective {
-
-}
+export class AptoGridNoGutterDirective {}
 
 @Component({
     selector: 'apto-row',
     templateUrl: 'row.html',
-    styleUrls: [ './row.scss' ],
+    styleUrls: ['./row.scss'],
     host: {'class': 'apto-row'},
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AptoGridRowComponent {
-
-}
+export class AptoGridRowComponent {}
