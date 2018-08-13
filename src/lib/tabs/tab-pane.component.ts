@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import {
     AptoTabComponent
-} from '../tab/tab.component';
+} from './tab.component';
 
 @Component({
     selector: 'apto-tab-pane, [aptoTabPane]',

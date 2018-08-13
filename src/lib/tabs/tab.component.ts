@@ -32,6 +32,7 @@ export class AptoTabLabelDirective {
 })
 export class AptoTabComponent implements OnInit {
     @Input() public label = '';
+    @Input() public automation: string = null;
     @ContentChild(AptoTabLabelDirective) public templateLabel: AptoTabLabelDirective;
     @ContentChild(AptoTabContentDirective, {
         read: TemplateRef

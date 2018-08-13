@@ -1,12 +1,12 @@
-@import '../../scss/mixins/_grid.scss';
+@import '../scss/mixins/_grid.scss';
 
-$tab-nav-font-size: $h4-font-size;
-$tab-nav-font-color: $gray-600;
-$tab-nav-margin: $grid-gutter-width / 2;
-$tab-nav-active-color: $blue-500;
-$tab-nav-active-border-color: $blue-500;
-$tab-nav-active-font-weight: $font-weight-bold;
-$tab-nav-item-padding: 1.2rem 0;
+$tab-nav-font-size: $h4-font-size !default;
+$tab-nav-font-color: $gray-600 !default;
+$tab-nav-margin: $grid-gutter-width / 2 !default;
+$tab-nav-active-color: $blue-500 !default;
+$tab-nav-active-border-color: $blue-500 !default;
+$tab-nav-active-font-weight: $font-weight-bold !default;
+$tab-nav-item-padding: 1.2rem 0 !default;
 
 .apto-tabs-header-card {
     margin-bottom: $tab-nav-margin;
@@ -35,6 +35,5 @@ $tab-nav-item-padding: 1.2rem 0;
     }
     &:hover {
         color: $tab-nav-active-color;
-        font-weight: $tab-nav-active-font-weight;
     }
 }

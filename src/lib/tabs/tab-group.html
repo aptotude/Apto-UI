@@ -16,6 +16,7 @@
                 [attr.aria-controls]="getTabPaneId(i)"
                 [attr.aria-setsize]="tabs.length"
                 [attr.aria-posinset]="i + 1"
+                [attr.data-automation]="tab.automation"
                 (click)="handleClick($event, tab, i)">
                 <ng-template [ngIf]="tab.templateLabel">
                     <ng-template [ngTemplateOutlet]="tab.templateLabel.templateRef"></ng-template>
@@ -34,6 +35,7 @@
         [content]="tab.contentRef"
         [active]="tab.active"
         [class.apto-tabs-pane--active]="selectedIndex == i"
-        [attr.aria-labelledby]="getAriaLabelledby(i)">
+        [attr.aria-labelledby]="getAriaLabelledby(i)"
+        [attr.data-automation]="tab.automation">
     </div>
 </div>

@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import {
     AptoTabComponent
-} from '../tab/tab.component';
-import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../../utils/keycodes';
+} from './tab.component';
+import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../utils/keycodes';
 
 let nextId = 0;
 

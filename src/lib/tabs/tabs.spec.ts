@@ -1,7 +1,7 @@
 import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 import { AptoTabsComponentModule } from './tabs.module';
-import { AptoTabChangeEvent } from './tab-group/tab-group.component';
+import { AptoTabChangeEvent } from './tab-group.component';
 import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../utils/keycodes';
 
 @Component({
@@ -19,7 +19,7 @@ import { HOME, END, RIGHT_ARROW, LEFT_ARROW } from '../utils/keycodes';
             </apto-tab>
         </apto-tab-group>
         <apto-tab-group [selectedIndex]="currTab" data-custom>
-            <apto-tab>
+            <apto-tab automation="foo">
                 <ng-template aptoTabLabel>
                     Custom Label
                 </ng-template>
@@ -202,6 +202,26 @@ describe('apto-tabs', () => {
             it('should have id index', () => {
                 expect(navPane.getAttribute('id')).toEqual(`apto-tab-pane-${groupId}-0`);
             });
+        });
+    });
+
+    describe('automation attribute', () => {
+        let navPanes: any;
+        let navItems: any;
+
+        beforeEach(() => {
+            navItems = customTab.querySelectorAll('.apto-tabs-nav-item');
+            navPanes = customTab.querySelectorAll('.apto-tabs-pane');
+        });
+
+        it('should have data-automation attributes', () => {
+            expect(navItems[0].getAttribute('data-automation')).toEqual('foo');
+            expect(navPanes[0].getAttribute('data-automation')).toEqual('foo');
+        });
+
+        it('should not have data-automation attributes', () => {
+            expect(navItems[1].getAttribute('data-automation')).toEqual(null);
+            expect(navPanes[1].getAttribute('data-automation')).toEqual(null);
         });
     });
 

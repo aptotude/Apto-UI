@@ -50,6 +50,13 @@ storiesOf('Tabs', module)
                     </apto-card>
                 </apto-tab>
             </apto-tab-group>
+            <br><br>
+            <h3>Using Automation Attribute</h3>
+            <apto-tab-group>
+                <apto-tab automation="foo-1" label="One">This is content tab 1</apto-tab>
+                <apto-tab automation="foo-2" label="Two">This is content tab 2</apto-tab>
+                <apto-tab automation="foo-3" label="Three">This is content tab 3</apto-tab>
+            </apto-tab-group>
         `
     })))
     .add('Custom Labels', withMarkdownNotes(`${customLabelMd}${propertiesMd}`)(() => ({
