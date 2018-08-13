@@ -12,14 +12,15 @@ storiesOf('Loader', module)
     )
     .add('Shimmer', withMarkdownNotes(shimmerMd)(() => ({
         template: `
+            <style>.shimmer-story { width: 100%; }</style>
             <apto-container>
                 <apto-row>
-                    <apto-col><apto-shimmer></apto-shimmer></apto-col>
-                    <apto-col><apto-shimmer></apto-shimmer></apto-col>
+                    <apto-col><apto-shimmer class="shimmer-story"></apto-shimmer></apto-col>
+                    <apto-col><apto-shimmer class="shimmer-story"></apto-shimmer></apto-col>
                 </apto-row>
                 <apto-row style="margin-top:1rem">
-                    <apto-col><apto-shimmer></apto-shimmer></apto-col>
-                    <apto-col><apto-shimmer></apto-shimmer></apto-col>
+                    <apto-col><apto-shimmer class="shimmer-story"></apto-shimmer></apto-col>
+                    <apto-col><apto-shimmer class="shimmer-story"></apto-shimmer></apto-col>
                 </apto-row>
             </apto-container>
         `
