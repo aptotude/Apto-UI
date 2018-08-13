@@ -9,7 +9,6 @@ import {
     OnDestroy
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { UUID } from 'angular2-uuid';
 import { Subscription } from 'rxjs/Subscription';
 
 @Directive({
@@ -21,6 +20,8 @@ export class AptoTooltipContentDirective {}
     selector: 'apto-tooltip-trigger'
 })
 export class AptoTooltipTriggerDirective {}
+
+let nextAptoTooltipId = 0;
 
 @Component({
     selector: 'apto-tooltip',
@@ -39,7 +40,9 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
     public tipId: string;
     private _subscriptions: Subscription[] = [];
 
-    constructor(@Inject(DOCUMENT) private _doc: any) {}
+    constructor(@Inject(DOCUMENT) private _doc: any) {
+        this.tipId = 'apto-tooltip-' + nextAptoTooltipId++;
+    }
 
     public ngOnInit(): void {
         let timeout: any;
@@ -73,7 +76,6 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
         if (this.built) {
             return;
         }
-        this.tipId = UUID.UUID();
         this.trigger.nativeElement.setAttribute('id', this.tipId);
         this.tip.nativeElement.setAttribute('aria-describedby', this.tipId);
         this._doc.body.appendChild(this.tip.nativeElement);
