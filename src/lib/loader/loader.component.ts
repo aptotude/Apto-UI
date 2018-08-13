@@ -11,7 +11,7 @@ export class AptoLoaderNoOverlayDirective {
 @Component({
     selector: 'apto-loader',
     templateUrl: 'loader.html',
-    styleUrls: [ './loader.scss' ],
+    styleUrls: ['./loader.scss'],
     host: {'class': 'apto-loader'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None

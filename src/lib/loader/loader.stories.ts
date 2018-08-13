@@ -9,7 +9,7 @@ storiesOf('Loader', module)
             imports: [ AptoLoaderComponentModule ]
         })
     )
-    .add('Default', withMarkdownNotes(loaderMd)(() => ({
+    .add('Spinner', withMarkdownNotes(loaderMd)(() => ({
         template: `
             <div style="background: #efefef; position:relative; max-width: 400px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

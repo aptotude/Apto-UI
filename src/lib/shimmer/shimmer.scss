@@ -1,0 +1,27 @@
+@import '../scss/theme/variables.scss';
+
+$shimmer-transition-from: $gray-200 !default;
+$shimmer-transition-to: $gray-400 !default;
+
+@keyframes aptoShimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+.apto-shimmer {
+    animation: aptoShimmer 2s linear infinite;
+    animation-fill-mode: forwards;
+    background: $shimmer-transition-from;
+    background: linear-gradient(to right, $shimmer-transition-from 8%, $shimmer-transition-to 18%, $shimmer-transition-from 33%);
+    background-size: map-get($grid-breakpoints, lg) 100%;
+    display: block;
+    position: relative;
+    min-height: 1.6rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
