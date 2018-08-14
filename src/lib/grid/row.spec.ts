@@ -1,7 +1,6 @@
 import { async as ngAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { AptoGridComponentModule } from './grid.module';
-import { AptoGridRowComponent } from './row.component';
 
 @Component({
     selector: 'apto-test-app',

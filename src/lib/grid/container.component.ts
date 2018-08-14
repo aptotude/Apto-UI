@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Directive } from '@angular/core';
 
 @Directive({
     selector: 'apto-container[fixed]',

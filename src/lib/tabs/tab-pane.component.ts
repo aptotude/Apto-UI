@@ -4,9 +4,6 @@ import {
     ViewEncapsulation,
     Input
 } from '@angular/core';
-import {
-    AptoTabComponent
-} from './tab.component';
 
 @Component({
     selector: 'apto-tab-pane, [aptoTabPane]',

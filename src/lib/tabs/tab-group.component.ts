@@ -128,7 +128,6 @@ export class AptoTabGroupComponent implements AfterContentChecked {
     }
 
     private _setLastItemActive(): void {
-        const tab: AptoTabComponent = this.tabs.last;
         this.selectedIndex = this.tabs.length - 1;
     }
 
