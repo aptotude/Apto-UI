@@ -4,12 +4,10 @@ import { AptoTabComponent, AptoTabContentDirective, AptoTabLabelDirective } from
 import { AptoTabHeaderComponent } from './tab-header.component';
 import { AptoTabGroupComponent } from './tab-group.component';
 import { AptoTabPaneComponent } from './tab-pane.component';
-import { AptoCardComponentModule } from '../card';
 
 @NgModule({
     imports: [
-        CommonModule,
-        AptoCardComponentModule
+        CommonModule
     ],
     declarations: [
         AptoTabGroupComponent,
