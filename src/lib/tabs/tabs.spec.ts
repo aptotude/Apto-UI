@@ -77,8 +77,8 @@ describe('apto-tabs', () => {
     });
 
     describe('dom structure', () => {
-        it('should have nav in a card', () => {
-            const nav = defaultTab.querySelector('apto-card apto-card-content nav.apto-tabs-nav');
+        it('should have nav in a header', () => {
+            const nav = defaultTab.querySelector('.apto-tabs-header nav.apto-tabs-nav');
             expect(nav).not.toEqual(null);
         });
 
