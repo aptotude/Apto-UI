@@ -1,0 +1,245 @@
+.icon {
+    font-size: 10px;
+}
+
+.icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("../apto-icon-sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 2.4em 60em;
+}
+
+.no-svg .icon:before {
+    background-image: url("../apto-icon-sprite.png");
+}
+
+
+
+  .icon.callList:before {
+      background-position: 0em 0em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.check:before {
+      background-position: 0em -2.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.close:before {
+      background-position: 0em -4.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.company:before {
+      background-position: 0em -7.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.down:before {
+      background-position: 0em -9.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.download:before {
+      background-position: 0em -12em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.dropDown:before {
+      background-position: 0em -14.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.dropUp:before {
+      background-position: 0em -16.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.edit:before {
+      background-position: 0em -19.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.email:before {
+      background-position: 0em -21.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.folder:before {
+      background-position: 0em -24em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.help:before {
+      background-position: 0em -26.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.left:before {
+      background-position: 0em -28.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.list:before {
+      background-position: 0em -31.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.money:before {
+      background-position: 0em -33.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.people:before {
+      background-position: 0em -36em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.person:before {
+      background-position: 0em -38.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.phone:before {
+      background-position: 0em -40.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.property:before {
+      background-position: 0em -43.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.right:before {
+      background-position: 0em -45.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.search:before {
+      background-position: 0em -48em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.task:before {
+      background-position: 0em -50.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.thumbUp:before {
+      background-position: 0em -52.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.time:before {
+      background-position: 0em -55.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.up:before {
+      background-position: 0em -57.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+

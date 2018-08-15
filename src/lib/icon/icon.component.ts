@@ -10,6 +10,7 @@ import {
     HostBinding
 } from '@angular/core';
 import { AptoIconRegistry } from './icon-registry';
+import { take } from 'rxjs/operators/take';
 
 export enum IconSizes {
     XS = 'xs',
@@ -55,10 +56,7 @@ export class AptoIconComponent implements OnChanges {
         return this.inline;
     }
 
-    constructor(
-        private _elementRef: ElementRef,
-        private _iconRegistry: AptoIconRegistry,
-        @Attribute('aria-hidden') public ariaHidden: string) {
+    constructor(private _elementRef: ElementRef, private _iconRegistry: AptoIconRegistry, @Attribute('aria-hidden') public ariaHidden: string) {
         if (!ariaHidden) {
             this._elementRef.nativeElement.setAttribute('aria-hidden', 'true');
         }
@@ -67,9 +65,11 @@ export class AptoIconComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         if (changes.icon) {
             if (this.icon) {
-                this._elementRef.nativeElement.classList.add(`apto-icon--${this.icon}`);
-                const svg = this._iconRegistry.getSvgIconByName(this.icon);
-                this._setSvgElement(svg);
+                const [namespace, iconName] = this._splitIconName(this.icon);
+                this._iconRegistry.getNamedSvgIcon(iconName, namespace).pipe(take(1)).subscribe(
+                    svg => this._setSvgElement(svg),
+                    (err: Error) => console.log(`Error retrieving icon: ${err.message}`)
+                );
             } else {
                 this._elementRef.nativeElement.classList.remove(`apto-icon--${this.icon}`);
                 this._clearSvgElement();
@@ -80,9 +80,22 @@ export class AptoIconComponent implements OnChanges {
         }
     }
 
+    private _splitIconName(iconName: string): [string, string] {
+        if (!iconName) {
+          return ['', ''];
+        }
+        const parts = iconName.split(':');
+        switch (parts.length) {
+            case 1: return ['', parts[0]];
+            case 2: return <[string, string]>parts;
+            default: throw Error(`Invalid icon name: "${iconName}"`);
+        }
+    }
+
     private _setSvgElement(svg: SVGElement) {
         this._clearSvgElement();
         this._elementRef.nativeElement.appendChild(svg);
+        this._elementRef.nativeElement.classList.add(`apto-icon--${this.icon}`);
     }
 
     private _clearSvgElement() {

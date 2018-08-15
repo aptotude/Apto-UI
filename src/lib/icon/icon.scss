@@ -8,14 +8,11 @@ $apto-icon-size-lg: 2.8rem !default;
 $apto-icon-size-xl: 5.0rem !default;
 
 .apto-icon {
-    width: $apto-icon-size;
-    height: auto;
+    background-repeat: no-repeat;
     display: inline-block;
-    vertical-align: middle;
-    svg {
-        fill: currentColor;
-        font-size: inherit;
-    }
+    fill: currentColor;
+    height: auto;
+    width: $apto-icon-size;
     &.apto-icon--xs {
         width: $apto-icon-size-xs;
     }
