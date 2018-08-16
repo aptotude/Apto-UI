@@ -2,6 +2,8 @@
 
 const gulp = require('gulp');
 const replace = require('gulp-replace');
+const svgSprite = require('gulp-svg-sprite');
+const runSequence = require('run-sequence');
 const appVersion = require('./package.json').version;
 const paths = {
     dist: './dist',
@@ -10,12 +12,19 @@ const paths = {
 };
 
 gulp.task('copy', function () {
+    // move scss
     gulp.src(`${paths.scss}/**/*`)
         .pipe(gulp.dest(`${paths.dist}/scss`));
 
+    // move svg sprites
+    gulp.src(`${paths.src}/assets/**/*.svg`)
+        .pipe(gulp.dest(`${paths.dist}/assets`));
+
+    // move readme
     gulp.src(`./README.md`)
         .pipe(gulp.dest(`${paths.dist}`));
 
+    // move license
     gulp.src(`./LICENSE`)
         .pipe(gulp.dest(`${paths.dist}`));
 });
@@ -27,5 +36,21 @@ gulp.task('versions', function () {
         .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('publish', ['copy', 'versions']);
+gulp.task('sprites', function() {
+    return gulp.src(`${paths.src}/lib/icon/icons/*.svg`)
+        .pipe(svgSprite({
+            mode: {
+                css: false,
+                stack: {
+                    dest: 'icons/',
+                    sprite: "apto-ui-icons.svg",
+                }
+            }            
+        }))
+        .pipe(gulp.dest(`${paths.src}/assets`));
+})
+
+gulp.task('publish', function(cb) {
+    runSequence('sprites', 'copy', 'versions', cb);
+});
 gulp.task('default', []);
