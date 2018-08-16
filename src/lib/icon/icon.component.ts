@@ -34,7 +34,6 @@ export enum IconSizes {
 export class AptoIconComponent implements OnChanges {
     @Input() public icon: string = null;
     @Input() public size: IconSizes | string = null;
-    @Input() public inline: boolean = false;
 
     @Input('aria-label') public label: string = null;
     @HostBinding('class.apto-icon--xs') get xsClass() {
@@ -52,11 +51,11 @@ export class AptoIconComponent implements OnChanges {
     @HostBinding('class.apto-icon--xl') get xlClass() {
         return this.size === IconSizes.XL;
     }
-    @HostBinding('class.apto-icon--inline') get inlienClass() {
-        return this.inline;
-    }
 
-    constructor(private _elementRef: ElementRef, private _iconRegistry: AptoIconRegistry, @Attribute('aria-hidden') public ariaHidden: string) {
+    constructor(
+        private _elementRef: ElementRef,
+        private _iconRegistry: AptoIconRegistry,
+        @Attribute('aria-hidden') public ariaHidden: string) {
         if (!ariaHidden) {
             this._elementRef.nativeElement.setAttribute('aria-hidden', 'true');
         }

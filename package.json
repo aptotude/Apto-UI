@@ -20,6 +20,7 @@
     "icons": "gulp sprites",
     "storybook:local": "start-storybook -p 9001 -s ./src/assets -c .storybook",
     "storybook:deploy": "storybook-to-ghpages",
+    "build-storybook": "build-storybook -s ./src/assets -o .out",
     "packagr": "ng-packagr -p src/lib/package.json && gulp publish -o docs"
   },
   "license": "MIT",
@@ -60,7 +61,7 @@
     "gulp": "^3.9.1",
     "gulp-cli": "^2.0.1",
     "gulp-replace": "^1.0.0",
-    "gulp-svg-sprites": "^4.1.2",
+    "gulp-svg-sprite": "^1.4.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",

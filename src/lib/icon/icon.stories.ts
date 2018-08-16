@@ -1,15 +1,15 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { AptoIconComponentModule } from './icon.module';
 import { withMarkdownNotes } from '@storybook/addon-notes';
-import * as paragraphMd from './docs/paragraph.md';
+import * as iconsMd from './docs/icons.md';
 import { AptoIconRegistry } from './icon-registry';
 import { AptoGridComponentModule } from '../grid';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector: 'icon-story',
+    selector: 'apto-icon-story',
     template: `
         <style>
             apto-col{margin-bottom: 1rem; text-align: center;}
@@ -55,9 +55,11 @@ import { DomSanitizer } from '@angular/platform-browser';
         </apto-container>
     `
 })
-export class IconStory {
+export class IconStoryComponent {
     constructor(iconRegistry: AptoIconRegistry, sanitizer: DomSanitizer) {
-        iconRegistry.addSvgIconSetInNamespace('', sanitizer.bypassSecurityTrustResourceUrl('/apto-icon-sprite.svg'));
+        iconRegistry.addSvgIconSet(
+            sanitizer.bypassSecurityTrustResourceUrl('/icons/apto-ui-icons.svg')
+        );
     }
 }
 
@@ -68,7 +70,7 @@ storiesOf('Icons', module)
             providers: [ AptoIconRegistry ]
         })
     )
-    .add('Icon Set', withMarkdownNotes(paragraphMd)(() => ({
-        component: IconStory
+    .add('Icon Set', withMarkdownNotes(iconsMd)(() => ({
+        component: IconStoryComponent
     })))
 ;

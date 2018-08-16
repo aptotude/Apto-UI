@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 const replace = require('gulp-replace');
-const svgSprite = require('gulp-svg-sprites');
+const svgSprite = require('gulp-svg-sprite');
 const runSequence = require('run-sequence');
 const appVersion = require('./package.json').version;
 const paths = {
@@ -39,10 +39,13 @@ gulp.task('versions', function () {
 gulp.task('sprites', function() {
     return gulp.src(`${paths.src}/lib/icon/icons/*.svg`)
         .pipe(svgSprite({
-            svg: {
-                sprite: 'apto-icon-sprite.svg'
-            },
-            preview: false
+            mode: {
+                css: false,
+                stack: {
+                    dest: 'icons/',
+                    sprite: "apto-ui-icons.svg",
+                }
+            }            
         }))
         .pipe(gulp.dest(`${paths.src}/assets`));
 })

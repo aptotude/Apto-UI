@@ -18,8 +18,7 @@ import {
 } from '@angular/core';
 import {
   DomSanitizer,
-  SafeResourceUrl,
-  SafeHtml
+  SafeResourceUrl
 } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
@@ -34,20 +33,18 @@ import { share } from 'rxjs/operators/share';
 /**
  * Returns an exception to be thrown in the case when attempting to
  * load an icon with a name that cannot be found.
- * @docs-private
  */
-export function getMatIconNameNotFoundError(iconName: string): Error {
+export function getAptoIconNameNotFoundError(iconName: string): Error {
     return Error(`Unable to find icon with the name "${iconName}"`);
 }
 
 /**
  * Returns an exception to be thrown when the consumer attempts to use
- * `<mat-icon>` without including @angular/http.
- * @docs-private
+ * `<apto-icon>` without including @angular/http.
  */
-export function getMatIconNoHttpProviderError(): Error {
+export function getAptoIconNoHttpProviderError(): Error {
     return Error(
-        `Could not find HttpClient provider for use with Angular Material icons. ` +
+        `Could not find HttpClient provider for use with AptoUI icons. ` +
         `Please include the HttpClientModule from @angular/common/http in your ` +
         `app imports.`
     );
@@ -56,26 +53,13 @@ export function getMatIconNoHttpProviderError(): Error {
 /**
  * Returns an exception to be thrown when a URL couldn't be sanitized.
  * @param url URL that was attempted to be sanitized.
- * @docs-private
  */
-export function getMatIconFailedToSanitizeUrlError(
+export function getAptoIconFailedToSanitizeUrlError(
   url: SafeResourceUrl
 ): Error {
     return Error(
         `The URL provided to AptoIconRegistry was not trusted as a resource URL ` +
         `via Angular's DomSanitizer. Attempted URL was ${url}.`
-    );
-}
-
-/**
- * Returns an exception to be thrown when a HTML string couldn't be sanitized.
- * @param literal HTML that was attempted to be sanitized.
- * @docs-private
- */
-export function getMatIconFailedToSanitizeLiteralError(literal: SafeHtml): Error {
-    return Error(
-        `The literal provided to AptoIconRegistry was not trusted as safe HTML by ` +
-        `Angular's DomSanitizer. Attempted literal was ${literal}.`
     );
 }
 
@@ -87,24 +71,19 @@ class SvgIconConfig {
     url: SafeResourceUrl | null;
     svgElement: SVGElement | null;
 
-    constructor(url: SafeResourceUrl);
-    constructor(svgElement: SVGElement);
     constructor(data: SafeResourceUrl | SVGElement) {
-    // Note that we can't use `instanceof SVGElement` here,
-    // because it'll break during server-side rendering.
-    if (!!(data as any).nodeName) {
-        this.svgElement = data as SVGElement;
-    } else {
-        this.url = data as SafeResourceUrl;
-    }
+        if (!!(data as any).nodeName) {
+            this.svgElement = data as SVGElement;
+        } else {
+            this.url = data as SafeResourceUrl;
+        }
     }
 }
 
 /**
- * Service to register and display icons used by the `<mat-icon>` component.
+ * Service to register and display icons used by the `<apto-icon>` component.
  * - Registers icon URLs by namespace and name.
  * - Registers icon set URLs by namespace.
- * - Registers aliases for CSS classes, for use with icon fonts.
  * - Loads icons from URLs and extracts individual icons from icon sets.
  */
 @Injectable()
@@ -124,7 +103,7 @@ export class AptoIconRegistry {
 
     /** Cache for icons loaded by direct URLs. */
     private _cachedIconsByUrl = new Map<string, SVGElement>();
-
+    
     /** In-progress icon fetches. Used to coalesce multiple requests to the same URL. */
     private _inProgressUrlFetches = new Map<string, Observable<string>>();
 
@@ -143,17 +122,8 @@ export class AptoIconRegistry {
      * @param iconName Name under which the icon should be registered.
      * @param url
      */
-    addSvgIcon(iconName: string, url: SafeResourceUrl): this {
+    public addSvgIcon(iconName: string, url: SafeResourceUrl): this {
         return this.addSvgIconInNamespace('', iconName, url);
-    }
-
-    /**
-     * Registers an icon using an HTML string in the default namespace.
-     * @param iconName Name under which the icon should be registered.
-     * @param literal SVG source of the icon.
-     */
-    addSvgIconLiteral(iconName: string, literal: SafeHtml): this {
-        return this.addSvgIconLiteralInNamespace('', iconName, literal);
     }
 
     /**
@@ -162,7 +132,7 @@ export class AptoIconRegistry {
      * @param iconName Name under which the icon should be registered.
      * @param url
      */
-    addSvgIconInNamespace(
+    public addSvgIconInNamespace(
         namespace: string,
         iconName: string,
         url: SafeResourceUrl
@@ -171,47 +141,11 @@ export class AptoIconRegistry {
     }
 
     /**
-     * Registers an icon using an HTML string in the specified namespace.
-     * @param namespace Namespace in which the icon should be registered.
-     * @param iconName Name under which the icon should be registered.
-     * @param literal SVG source of the icon.
-     */
-    addSvgIconLiteralInNamespace(
-        namespace: string,
-        iconName: string,
-        literal: SafeHtml
-    ): this {
-        const sanitizedLiteral = this._sanitizer.sanitize(
-            SecurityContext.HTML,
-            literal
-        );
-
-        if (!sanitizedLiteral) {
-            throw getMatIconFailedToSanitizeLiteralError(literal);
-        }
-
-        const svgElement = this._createSvgElementForSingleIcon(sanitizedLiteral);
-        return this._addSvgIconConfig(
-            namespace,
-            iconName,
-            new SvgIconConfig(svgElement)
-        );
-    }
-
-    /**
      * Registers an icon set by URL in the default namespace.
      * @param url
      */
-    addSvgIconSet(url: SafeResourceUrl): this {
+    public addSvgIconSet(url: SafeResourceUrl): this {
         return this.addSvgIconSetInNamespace('', url);
-    }
-
-    /**
-     * Registers an icon set using an HTML string in the default namespace.
-     * @param literal SVG source of the icon set.
-     */
-    addSvgIconSetLiteral(literal: SafeHtml): this {
-        return this.addSvgIconSetLiteralInNamespace('', literal);
     }
 
     /**
@@ -219,54 +153,8 @@ export class AptoIconRegistry {
      * @param namespace Namespace in which to register the icon set.
      * @param url
      */
-    addSvgIconSetInNamespace(namespace: string, url: SafeResourceUrl): this {
+    public addSvgIconSetInNamespace(namespace: string, url: SafeResourceUrl): this {
         return this._addSvgIconSetConfig(namespace, new SvgIconConfig(url));
-    }
-
-    /**
-     * Registers an icon set using an HTML string in the specified namespace.
-     * @param namespace Namespace in which to register the icon set.
-     * @param literal SVG source of the icon set.
-     */
-    addSvgIconSetLiteralInNamespace(namespace: string, literal: SafeHtml): this {
-        const sanitizedLiteral = this._sanitizer.sanitize(
-            SecurityContext.HTML,
-            literal
-        );
-
-        if (!sanitizedLiteral) {
-            throw getMatIconFailedToSanitizeLiteralError(literal);
-        }
-
-        const svgElement = this._svgElementFromString(sanitizedLiteral);
-        return this._addSvgIconSetConfig(namespace, new SvgIconConfig(svgElement));
-    }
-
-    /**
-     * Returns an Observable that produces the icon (as an `<svg>` DOM element) from the given URL.
-     * The response from the URL may be cached so this will not always cause an HTTP request, but
-     * the produced element will always be a new copy of the originally fetched icon. (That is,
-     * it will not contain any modifications made to elements previously returned).
-     *
-     * @param safeUrl URL from which to fetch the SVG icon.
-     */
-    getSvgIconFromUrl(safeUrl: SafeResourceUrl): Observable<SVGElement> {
-        const url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl);
-
-        if (!url) {
-            throw getMatIconFailedToSanitizeUrlError(safeUrl);
-        }
-
-        const cachedIcon = this._cachedIconsByUrl.get(url);
-
-        if (cachedIcon) {
-            return observableOf(cloneSvg(cachedIcon));
-        }
-
-        return this._loadSvgIconFromConfig(new SvgIconConfig(safeUrl)).pipe(
-            tap(svg => this._cachedIconsByUrl.set(url!, svg)),
-            map(svg => cloneSvg(svg))
-        );
     }
 
     /**
@@ -277,7 +165,7 @@ export class AptoIconRegistry {
      * @param name Name of the icon to be retrieved.
      * @param namespace Namespace in which to look for the icon.
      */
-    getNamedSvgIcon(
+    public getNamedSvgIcon(
         name: string,
         namespace: string = ''
     ): Observable<SVGElement> {
@@ -296,7 +184,34 @@ export class AptoIconRegistry {
             return this._getSvgFromIconSetConfigs(name, iconSetConfigs);
         }
 
-        return observableThrow(getMatIconNameNotFoundError(key));
+        return observableThrow(getAptoIconNameNotFoundError(key));
+    }
+
+    public     /**
+    * Returns an Observable that produces the icon (as an `<svg>` DOM element) from the given URL.
+    * The response from the URL may be cached so this will not always cause an HTTP request, but
+    * the produced element will always be a new copy of the originally fetched icon. (That is,
+    * it will not contain any modifications made to elements previously returned).
+    *
+    * @param safeUrl URL from which to fetch the SVG icon.
+    */
+   public getSvgIconFromUrl(safeUrl: SafeResourceUrl): Observable<SVGElement> {
+        const url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl);
+
+        if (!url) {
+            throw getAptoIconFailedToSanitizeUrlError(safeUrl);
+        }
+
+        const cachedIcon = this._cachedIconsByUrl.get(url);
+
+        if (cachedIcon) {
+            return observableOf(cloneSvg(cachedIcon));
+        }
+
+        return this._loadSvgIconFromConfig(new SvgIconConfig(safeUrl)).pipe(
+            tap(svg => this._cachedIconsByUrl.set(url!, svg)),
+            map(svg => cloneSvg(svg))
+        );
     }
 
     /**
@@ -364,8 +279,6 @@ export class AptoIconRegistry {
 
         // Fetch all the icon set URLs. When the requests complete, every IconSet should have a
         // cached SVG element (unless the request failed), and we can check again for the icon.
-        //ForkJoinObservable
-
         return forkJoin(iconSetFetchRequests).pipe(
             map(() => {
                 const foundIcon = this._extractIconWithNameFromAnySet(
@@ -374,7 +287,7 @@ export class AptoIconRegistry {
                 );
 
                 if (!foundIcon) {
-                    throw getMatIconNameNotFoundError(name);
+                    throw getAptoIconNameNotFoundError(name);
                 }
 
                 return foundIcon;
@@ -517,7 +430,7 @@ export class AptoIconRegistry {
      * Converts an element into an SVG node by cloning all of its children.
      */
     private _toSvgElement(element: Element): SVGElement {
-        let svg = this._svgElementFromString('<svg></svg>');
+        const svg = this._svgElementFromString('<svg></svg>');
 
         for (let i = 0; i < element.childNodes.length; i++) {
             if (element.childNodes[i].nodeType === this._document.ELEMENT_NODE) {
@@ -546,7 +459,7 @@ export class AptoIconRegistry {
      */
     private _fetchUrl(safeUrl: SafeResourceUrl | null): Observable<string> {
         if (!this._httpClient) {
-            throw getMatIconNoHttpProviderError();
+            throw getAptoIconNoHttpProviderError();
         }
 
         if (safeUrl == null) {
@@ -556,7 +469,7 @@ export class AptoIconRegistry {
         const url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl);
 
         if (!url) {
-            throw getMatIconFailedToSanitizeUrlError(safeUrl);
+            throw getAptoIconFailedToSanitizeUrlError(safeUrl);
         }
 
         // Store in-progress fetches to avoid sending a duplicate request for a URL when there is
@@ -570,7 +483,7 @@ export class AptoIconRegistry {
 
         // TODO(jelbourn): for some reason, the `finalize` operator "loses" the generic type on the
         // Observable. Figure out why and fix it.
-        const req = this._httpClient.get(url, { responseType: "text" }).pipe(
+        const req = this._httpClient.get(url, { responseType: 'text' }).pipe(
             finalize(() => this._inProgressUrlFetches.delete(url)),
             share()
         );
@@ -612,8 +525,7 @@ export class AptoIconRegistry {
     }
 }
 
-/** @docs-private */
-export function ICON_REGISTRY_PROVIDER_FACTORY(
+export function APTO_ICON_REGISTRY_PROVIDER_FACTORY(
     parentRegistry: AptoIconRegistry,
     httpClient: HttpClient,
     sanitizer: DomSanitizer,
@@ -622,8 +534,7 @@ export function ICON_REGISTRY_PROVIDER_FACTORY(
     return parentRegistry || new AptoIconRegistry(httpClient, sanitizer, document);
 }
 
-/** @docs-private */
-export const ICON_REGISTRY_PROVIDER = {
+export const APTO_ICON_REGISTRY_PROVIDER = {
     // If there is already an AptoIconRegistry available, use that. Otherwise, provide a new one.
     provide: AptoIconRegistry,
     deps: [
@@ -632,7 +543,7 @@ export const ICON_REGISTRY_PROVIDER = {
         DomSanitizer,
         [new Optional(), DOCUMENT as InjectionToken<any>]
     ],
-    useFactory: ICON_REGISTRY_PROVIDER_FACTORY
+    useFactory: APTO_ICON_REGISTRY_PROVIDER_FACTORY
 };
 
 /** Clones an SVGElement while preserving type information. */
