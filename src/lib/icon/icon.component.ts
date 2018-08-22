@@ -26,28 +26,7 @@ import { take } from 'rxjs/operators/take';
 export class AptoIconComponent implements OnChanges {
     @Input() public icon: string = null;
     @Input() public size: number = null;
-    @Input() public inline = false;
     @Input() public color: string = null;
-
-    @Input('aria-label') public label: string = null;
-    @HostBinding('class.apto-icon--1') get xsClass() {
-        return Number(this.size) === 1;
-    }
-    @HostBinding('class.apto-icon--2') get smClass() {
-        return  Number(this.size) === 2;
-    }
-    @HostBinding('class.apto-icon--4') get mdClass() {
-        return  Number(this.size) === 4;
-    }
-    @HostBinding('class.apto-icon--5') get lgClass() {
-        return  Number(this.size) === 5;
-    }
-    @HostBinding('class.apto-icon--6') get xlClass() {
-        return  Number(this.size) === 6;
-    }
-    @HostBinding('class.apto-icon--inline') get inlienClass() {
-        return this.inline;
-    }
 
     constructor(
         private _elementRef: ElementRef,
@@ -67,12 +46,20 @@ export class AptoIconComponent implements OnChanges {
                     (err: Error) => console.log(`Error retrieving icon: ${err.message}`)
                 );
             } else {
-                this._elementRef.nativeElement.classList.remove(`apto-icon--${this.icon}`);
                 this._clearSvgElement();
             }
         }
-        if (changes.label) {
-            this._elementRef.nativeElement.setAttribute('aria-label', this.label);
+        if (changes.color) {
+            if (changes.color.previousValue) {
+                this._elementRef.nativeElement.classList.remove(`apto-icon--${changes.color.previousValue}`);
+            }
+            this._elementRef.nativeElement.classList.add(`apto-icon--${this.color}`);
+        }
+        if (changes.size) {
+            if (changes.size.previousValue) {
+                this._elementRef.nativeElement.classList.remove(`apto-icon--${changes.size.previousValue}`);
+            }
+            this._elementRef.nativeElement.classList.add(`apto-icon--${this.size}`);
         }
     }
 
@@ -91,7 +78,6 @@ export class AptoIconComponent implements OnChanges {
     private _setSvgElement(svg: SVGElement) {
         this._clearSvgElement();
         this._elementRef.nativeElement.appendChild(svg);
-        this._elementRef.nativeElement.classList.add(`apto-icon--${this.icon}`);
     }
 
     private _clearSvgElement() {

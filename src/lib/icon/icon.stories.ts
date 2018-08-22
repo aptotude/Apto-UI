@@ -1,15 +1,16 @@
 import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { AptoIconComponentModule } from './icon.module';
 import { withMarkdownNotes } from '@storybook/addon-notes';
-import * as paragraphMd from './docs/paragraph.md';
+import * as iconMd from './docs/icon.md';
 import { AptoIconRegistry } from './icon-registry';
 import { AptoGridComponentModule } from '../grid';
-import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
+import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import {number, select, withKnobs} from '@storybook/addon-knobs/angular';
 
 @Component({
-    selector: 'apto-icon-story',
+    selector: 'icon-story',
     template: `
         <style>
             apto-col{margin-bottom: 1rem; text-align: center;}
@@ -45,7 +46,7 @@ import { DomSanitizer } from '@angular/platform-browser';
             </apto-row>
             <h3>Sizing</h3>
             <apto-row>
-                <apto-col><apto-icon size="1" icon="property"></apto-icon><div class="icon-meta">size="1"</div></apto-col>
+                <apto-col><apto-icon [size]="iconSize" icon="property"></apto-icon><div class="icon-meta">size="{{iconSize}}"</div></apto-col>
                 <apto-col><apto-icon size="2" icon="property"></apto-icon><div class="icon-meta">size="2"</div></apto-col>
                 <apto-col><apto-icon icon="property"></apto-icon><div class="icon-meta">default / size="3"</div></apto-col>
                 <apto-col><apto-icon size="4" icon="property"></apto-icon><div class="icon-meta">size="4"</div></apto-col>
@@ -61,14 +62,42 @@ export class IconStoryComponent {
     }
 }
 
+@Component({
+    selector: 'icon-story-knobs',
+    template: `<apto-icon [size]="iconSize" [color]="iconColor" icon="property"></apto-icon><div class="icon-meta">size="{{iconSize}}"</div>`
+})
+export class IconKnobStoryComponent {
+    @Input() public iconSize = 1;
+    @Input() public iconColor: string = null;
+    constructor(iconRegistry: AptoIconRegistry, sanitizer: DomSanitizer) {
+        iconRegistry.addSvgIconSetInNamespace('', sanitizer.bypassSecurityTrustResourceUrl('/apto-icon-sprite.svg'));
+    }
+}
+
 storiesOf('Icons', module)
+    .addDecorator(withKnobs)
     .addDecorator(
         moduleMetadata({
             imports: [ AptoIconComponentModule, AptoGridComponentModule, HttpClientModule ],
             providers: [ AptoIconRegistry ]
         })
     )
-    .add('Icon Set', withMarkdownNotes(paragraphMd)(() => ({
-        component: IconStoryComponent
+    .add('Icon Set', withMarkdownNotes(iconMd)(() => ({
+        component: IconStoryComponent,
+    })))
+    .add('Icon Knobs', withMarkdownNotes(iconMd)(() => ({
+        component: IconKnobStoryComponent,
+        props: {
+            iconSize: number('iconSize', 1, {
+                min: 1,
+                max: 6,
+                step: 1
+            }),
+            iconColor: select('iconColor', {
+                primary: 'primary',
+                secondary: 'secondary',
+                none: 'none'
+            }, 'none')
+        }
     })))
 ;
