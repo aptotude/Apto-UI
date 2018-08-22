@@ -4,12 +4,12 @@ import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as paragraphMd from './docs/paragraph.md';
 import { AptoIconRegistry } from './icon-registry';
 import { AptoGridComponentModule } from '../grid';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-    selector: 'icon-story',
+    selector: 'apto-icon-story',
     template: `
         <style>
             apto-col{margin-bottom: 1rem; text-align: center;}
@@ -45,17 +45,17 @@ import { DomSanitizer } from '@angular/platform-browser';
             </apto-row>
             <h3>Sizing</h3>
             <apto-row>
-                <apto-col><apto-icon size="xs" icon="property"></apto-icon><div class="icon-meta">size="xs"</div></apto-col>
-                <apto-col><apto-icon size="sm" icon="property"></apto-icon><div class="icon-meta">size="sm"</div></apto-col>
-                <apto-col><apto-icon icon="property"></apto-icon><div class="icon-meta">default</div></apto-col>
-                <apto-col><apto-icon size="md" icon="property"></apto-icon><div class="icon-meta">size="md"</div></apto-col>
-                <apto-col><apto-icon size="lg" icon="property"></apto-icon><div class="icon-meta">size="lg"</div></apto-col>
-                <apto-col><apto-icon size="xl" icon="property"></apto-icon><div class="icon-meta">size="xl"</div></apto-col>
+                <apto-col><apto-icon size="1" icon="property"></apto-icon><div class="icon-meta">size="1"</div></apto-col>
+                <apto-col><apto-icon size="2" icon="property"></apto-icon><div class="icon-meta">size="2"</div></apto-col>
+                <apto-col><apto-icon icon="property"></apto-icon><div class="icon-meta">default / size="3"</div></apto-col>
+                <apto-col><apto-icon size="4" icon="property"></apto-icon><div class="icon-meta">size="4"</div></apto-col>
+                <apto-col><apto-icon size="5" icon="property"></apto-icon><div class="icon-meta">size="5"</div></apto-col>
+                <apto-col><apto-icon size="6" icon="property"></apto-icon><div class="icon-meta">size="6"</div></apto-col>
             </apto-row>
         </apto-container>
     `
 })
-export class IconStory {
+export class IconStoryComponent {
     constructor(iconRegistry: AptoIconRegistry, sanitizer: DomSanitizer) {
         iconRegistry.addSvgIconSetInNamespace('', sanitizer.bypassSecurityTrustResourceUrl('/apto-icon-sprite.svg'));
     }
@@ -69,6 +69,6 @@ storiesOf('Icons', module)
         })
     )
     .add('Icon Set', withMarkdownNotes(paragraphMd)(() => ({
-        component: IconStory
+        component: IconStoryComponent
     })))
 ;

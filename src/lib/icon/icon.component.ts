@@ -12,14 +12,6 @@ import {
 import { AptoIconRegistry } from './icon-registry';
 import { take } from 'rxjs/operators/take';
 
-export enum IconSizes {
-    XS = 'xs',
-    SM = 'sm',
-    MD = 'md',
-    LG = 'lg',
-    XL = 'xl'
-}
-
 @Component({
     selector: 'apto-icon',
     styleUrls: ['./icon.scss'],
@@ -33,30 +25,34 @@ export enum IconSizes {
 })
 export class AptoIconComponent implements OnChanges {
     @Input() public icon: string = null;
-    @Input() public size: IconSizes | string = null;
-    @Input() public inline: boolean = false;
+    @Input() public size: number = null;
+    @Input() public inline = false;
+    @Input() public color: string = null;
 
     @Input('aria-label') public label: string = null;
-    @HostBinding('class.apto-icon--xs') get xsClass() {
-        return this.size === IconSizes.XS;
+    @HostBinding('class.apto-icon--1') get xsClass() {
+        return Number(this.size) === 1;
     }
-    @HostBinding('class.apto-icon--sm') get smClass() {
-        return this.size === IconSizes.SM;
+    @HostBinding('class.apto-icon--2') get smClass() {
+        return  Number(this.size) === 2;
     }
-    @HostBinding('class.apto-icon--md') get mdClass() {
-        return this.size === IconSizes.MD;
+    @HostBinding('class.apto-icon--4') get mdClass() {
+        return  Number(this.size) === 4;
     }
-    @HostBinding('class.apto-icon--lg') get lgClass() {
-        return this.size === IconSizes.LG;
+    @HostBinding('class.apto-icon--5') get lgClass() {
+        return  Number(this.size) === 5;
     }
-    @HostBinding('class.apto-icon--xl') get xlClass() {
-        return this.size === IconSizes.XL;
+    @HostBinding('class.apto-icon--6') get xlClass() {
+        return  Number(this.size) === 6;
     }
     @HostBinding('class.apto-icon--inline') get inlienClass() {
         return this.inline;
     }
 
-    constructor(private _elementRef: ElementRef, private _iconRegistry: AptoIconRegistry, @Attribute('aria-hidden') public ariaHidden: string) {
+    constructor(
+        private _elementRef: ElementRef,
+        private _iconRegistry: AptoIconRegistry,
+        @Attribute('aria-hidden') public ariaHidden: string) {
         if (!ariaHidden) {
             this._elementRef.nativeElement.setAttribute('aria-hidden', 'true');
         }

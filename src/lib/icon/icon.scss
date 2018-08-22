@@ -1,31 +1,34 @@
 @import '../scss/theme/variables.scss';
 
-$apto-icon-size-xs: 1.4rem !default;
-$apto-icon-size-sm: 1.8rem !default;
-$apto-icon-size: 2.0rem !default;
-$apto-icon-size-md: 2.4rem !default;
-$apto-icon-size-lg: 2.8rem !default;
-$apto-icon-size-xl: 5.0rem !default;
+$apto-icon-size-1: 1.4rem !default;
+$apto-icon-size-2: 1.8rem !default;
+$apto-icon-size-3: 2.0rem !default;
+$apto-icon-size-4: 2.4rem !default;
+$apto-icon-size-5: 2.8rem !default;
+$apto-icon-size-6: 5.0rem !default;
 
 .apto-icon {
     background-repeat: no-repeat;
     display: inline-block;
     fill: currentColor;
     height: auto;
-    width: $apto-icon-size;
-    &.apto-icon--xs {
-        width: $apto-icon-size-xs;
+    width: $apto-icon-size-3;
+    &.apto-icon--1 {
+        width: $apto-icon-size-1;
     }
-    &.apto-icon--sm {
-        width: $apto-icon-size-sm;
+    &.apto-icon--2 {
+        width: $apto-icon-size-2;
     }
-    &.apto-icon--md {
-        width: $apto-icon-size-md;
+    &.apto-icon--3 {
+        width: $apto-icon-size-3;
     }
-    &.apto-icon--lg {
-        width: $apto-icon-size-lg;
+    &.apto-icon--4 {
+        width: $apto-icon-size-4;
     }
-    &.apto-icon--xl {
-        width: $apto-icon-size-xl;
+    &.apto-icon--5 {
+        width: $apto-icon-size-5;
+    }
+    &.apto-icon--6 {
+        width: $apto-icon-size-6;
     }
 }
