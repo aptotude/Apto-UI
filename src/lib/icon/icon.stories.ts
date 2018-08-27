@@ -52,22 +52,20 @@ import { AptoButtonComponentModule } from '../button/button.module';
                 <apto-col sm="2"><apto-icon icon="meeting"></apto-icon></apto-col>
                 <apto-col sm="2"><apto-icon icon="file"></apto-icon></apto-col>
                 </apto-row>
+            <hr>
             <h3>Rounded Icons</h3>
-            <apto-row>
-                <apto-col><apto-icon circle size="1" icon="property"></apto-icon></apto-col>
-                <apto-col><apto-icon circle size="2" icon="person"></apto-icon></apto-col>
-                <apto-col><apto-icon circle icon="property"></apto-icon></apto-col>
-                <apto-col><apto-icon circle size="4" icon="property"></apto-icon></apto-col>
-                <apto-col><apto-icon circle size="5" icon="property"></apto-icon></apto-col>
-                <apto-col><apto-icon circle size="6" icon="property"></apto-icon></apto-col>
-            </apto-row>
+            <p><apto-icon circle size="1" icon="property"></apto-icon></p>
+            <p><apto-icon circle size="2" icon="property"></apto-icon></p>
+            <p><apto-icon circle icon="property"></apto-icon></p>
+            <p><apto-icon circle size="4" icon="property"></apto-icon></p>
+            <p><apto-icon circle size="5" icon="property"></apto-icon></p>
+            <p><apto-icon circle size="6" icon="property"></apto-icon></p>
+            <hr>
             <h3>Inline Icons</h3>
-            <apto-row>
-                <apto-col><apto-button><apto-icon inline icon="download"></apto-icon> Download</apto-button></apto-col>
-                <apto-col><apto-button><apto-icon inline icon="download"></apto-icon> Download <apto-icon inline icon="down"></apto-icon></apto-button></apto-col>
-                <apto-col><apto-button>Download <apto-icon inline icon="down"></apto-icon></apto-button></apto-col>
-                <apto-col><apto-icon inline icon="thumbUp"></apto-icon> Inline Text</apto-col>
-            </apto-row>
+            <p><apto-button><apto-icon inline icon="download"></apto-icon> Download</apto-button></p>
+            <p><apto-button><apto-icon inline icon="download"></apto-icon> Download <apto-icon inline icon="down"></apto-icon></apto-button></p>
+            <p><apto-button>Download <apto-icon inline icon="down"></apto-icon></apto-button></p>
+            <p><apto-icon inline icon="thumbUp"></apto-icon> Inline Text</p>
         </apto-container>
     `
 })
