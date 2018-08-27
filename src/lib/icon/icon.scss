@@ -1,4 +1,5 @@
 @import '../scss/theme/variables.scss';
+@import '../scss/mixins/_size.scss';
 
 $apto-icon-size-1: 1.4rem !default;
 $apto-icon-size-2: 1.8rem !default;
@@ -7,28 +8,65 @@ $apto-icon-size-4: 2.4rem !default;
 $apto-icon-size-5: 2.8rem !default;
 $apto-icon-size-6: 5.0rem !default;
 
+/*
+    circle options:
+        white bg blue text
+        blue bg white text
+        grey bg white text
+        dark grey bg grey text
+    blue text
+*/
+
 .apto-icon {
-    background-repeat: no-repeat;
     display: inline-block;
     fill: currentColor;
-    height: auto;
-    width: $apto-icon-size-3;
+    line-height: 0;
+    box-sizing: border-box;
+    @include square($apto-icon-size-3);
+    &.apto-icon--circle {
+        border-radius: 100%;
+        background-color: green;
+        border: 3px solid green;
+    }
+    &.apto-icon--inline {
+       vertical-align: middle;
+       line-height: inherit;
+    }
     &.apto-icon--1 {
-        width: $apto-icon-size-1;
+        @include square($apto-icon-size-1);
+        &.apto-icon--circle {
+            border-width: 2px;
+        }
     }
     &.apto-icon--2 {
-        width: $apto-icon-size-2;
+        @include square($apto-icon-size-2);
+        &.apto-icon--circle {
+            border-width: 2px;
+        }
     }
     &.apto-icon--3 {
-        width: $apto-icon-size-3;
+        @include square($apto-icon-size-3);
     }
     &.apto-icon--4 {
-        width: $apto-icon-size-4;
+        @include square($apto-icon-size-4);
+        &.apto-icon--circle {
+            border-width: 4px;
+        }
     }
     &.apto-icon--5 {
-        width: $apto-icon-size-5;
+        @include square($apto-icon-size-5);
+        &.apto-icon--circle {
+            border-width: 5px;
+        }
     }
     &.apto-icon--6 {
-        width: $apto-icon-size-6;
+        @include square($apto-icon-size-6);
+        &.apto-icon--circle {
+            border-width: 7px;
+        }
     }
+}
+
+.apto-button {
+    white-space: nowrap
 }

@@ -1,16 +1,28 @@
 import {
     Component,
+    Directive,
     Input,
     ChangeDetectionStrategy,
     ViewEncapsulation,
     ElementRef,
     Attribute,
     OnChanges,
-    SimpleChanges,
-    HostBinding
+    SimpleChanges
 } from '@angular/core';
 import { AptoIconRegistry } from './icon-registry';
 import { take } from 'rxjs/operators/take';
+
+@Directive({
+    selector: 'apto-icon[circle]',
+    host: {'class': 'apto-icon--circle'}
+})
+export class AptoIconCircleDirective {}
+
+@Directive({
+    selector: 'apto-icon[inline]',
+    host: {'class': 'apto-icon--inline'}
+})
+export class AptoIconInlineDirective {}
 
 @Component({
     selector: 'apto-icon',

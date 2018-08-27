@@ -462,6 +462,8 @@ export class AptoIconRegistry {
         svg.setAttribute('height', '100%');
         svg.setAttribute('width', '100%');
         svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svg.removeAttribute('y');
+        svg.removeAttribute('x');
         svg.setAttribute('focusable', 'false');
         return svg;
     }
