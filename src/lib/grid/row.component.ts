@@ -1,4 +1,5 @@
 import { Component, Input, HostBinding, ViewEncapsulation, Directive, ChangeDetectionStrategy } from '@angular/core';
+import { coerceBooleanProperty } from '../utils';
 
 @Directive({
     selector: 'apto-col'
@@ -50,18 +51,25 @@ export class AptoGridColumnDirective {
     }
 }
 
-@Directive({
-    selector: 'apto-row[noGutter]',
-    host: {'class': 'apto-row--no-gutter'}
-})
-export class AptoGridNoGutterDirective {}
-
 @Component({
     selector: 'apto-row',
     templateUrl: 'row.html',
     styleUrls: ['./row.scss'],
-    host: {'class': 'apto-row'},
+    host: {
+        'class': 'apto-row',
+        '[class.apto-row--no-gutter]': 'noGutter'
+    },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AptoGridRowComponent {}
+export class AptoGridRowComponent {
+    @Input()
+        get noGutter(): boolean {
+            return this._noGutter;
+        }
+        set noGutter(noGutter: boolean) {
+            this._noGutter = coerceBooleanProperty(noGutter);
+        }
+
+    private _noGutter: boolean = false;
+}

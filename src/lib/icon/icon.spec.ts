@@ -5,11 +5,18 @@ import {Component} from '@angular/core';
 import {AptoIconComponentModule} from './index';
 import {AptoIconRegistry, getAptoIconNoHttpProviderError} from './icon-registry';
 import {FAKE_SVGS} from './fake-svgs';
+import {IconColors} from './icon.component';
 
-@Component({template: `<apto-icon [color]="iconColor">{{iconName}}</apto-icon>`})
+@Component({template: `<apto-icon [circleColor]="iconColor" [icon]="iconName"></apto-icon>`})
 class IconWithColorComponent {
     iconName = '';
-    iconColor = 'primary';
+    iconColor = IconColors.white;
+}
+
+@Component({template: `<apto-icon [size]="iconSize" [icon]="iconName"></apto-icon>`})
+class IconWithSizeComponent {
+    iconName = '';
+    iconSize = 2;
 }
 
 @Component({template: `<apto-icon [icon]="iconName"></apto-icon>`})
@@ -17,10 +24,20 @@ class IconFromSvgNameComponent {
     iconName: string | undefined = '';
 }
 
+@Component({template: `<apto-icon inline [icon]="iconName"></apto-icon>`})
+class IconWithInlineComponent {
+    iconName: string | undefined = '';
+}
+
+@Component({template: `<apto-icon circle [icon]="iconName"></apto-icon>`})
+class IconWithCircleComponent {
+    iconName: string | undefined = '';
+}
+
 @Component({template: '<apto-icon aria-hidden="false">face</apto-icon>'})
 class IconWithAriaHiddenFalseComponent {}
 
-@Component({template: `<apto-icon [icon]="iconName" *ngIf="showIcon">{{iconName}}</apto-icon>`})
+@Component({template: `<apto-icon [icon]="iconName" *ngIf="showIcon"></apto-icon>`})
 class IconWithBindingAndNgIfComponent {
     iconName = 'fluffy';
     showIcon = true;
@@ -61,7 +78,7 @@ function verifyPathChildElement(element: Element, attributeValue: string): void 
 }
 
 
-fdescribe('Apto Icon', () => {
+describe('Apto Icon', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule, AptoIconComponentModule],
@@ -71,6 +88,9 @@ fdescribe('Apto Icon', () => {
                 IconWithAriaHiddenFalseComponent,
                 IconWithBindingAndNgIfComponent,
                 SvgIconWithUserContentComponent,
+                IconWithSizeComponent,
+                IconWithInlineComponent,
+                IconWithCircleComponent
             ],
             providers: [
                 AptoIconRegistry
@@ -92,14 +112,38 @@ fdescribe('Apto Icon', () => {
         }
     ));
 
-    xit('should apply class based on color attribute', () => {
+    it('should apply class based on color attribute', () => {
         const fixture = TestBed.createComponent(IconWithColorComponent);
         const testComponent = fixture.componentInstance;
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
-        testComponent.iconName = 'home';
-        testComponent.iconColor = 'primary';
+        testComponent.iconColor = IconColors.blue;
         fixture.detectChanges();
-        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--primary']);
+        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--color-blue']);
+    });
+
+    it('should apply class based on color attribute', () => {
+        const fixture = TestBed.createComponent(IconWithSizeComponent);
+        const testComponent = fixture.componentInstance;
+        const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
+        testComponent.iconSize = 5;
+        fixture.detectChanges();
+        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--size-5']);
+    });
+
+    it('should apply class based on inline attribute', () => {
+        const fixture = TestBed.createComponent(IconWithInlineComponent);
+        const testComponent = fixture.componentInstance;
+        const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
+        fixture.detectChanges();
+        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--inline']);
+    });
+
+    it('should apply class based on circle attribute', () => {
+        const fixture = TestBed.createComponent(IconWithCircleComponent);
+        const testComponent = fixture.componentInstance;
+        const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
+        fixture.detectChanges();
+        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--circle']);
     });
 
     it('should mark apto-icon as aria-hidden by default', () => {

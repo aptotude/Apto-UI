@@ -4,7 +4,7 @@ import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as shimmerMd from './docs/shimmer.md';
 import { AptoGridComponentModule } from '../grid';
 
-storiesOf('Loader', module)
+storiesOf('Loaders', module)
     .addDecorator(
         moduleMetadata({
             imports: [AptoShimmerComponentModule, AptoGridComponentModule]

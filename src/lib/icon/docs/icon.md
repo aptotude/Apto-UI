@@ -124,4 +124,4 @@ Name | Description
 @Attribute() circle | Adding the `circle` attribute turns the icon into a circle
 @Attribute() inline | Adding the `inline` attribute aligns the icon with text
 @Input() size: number = 3 | Size of icon 1-6.
-@Input() circleColor: string = null | Use with the `circle` attribute to color the circle bg: white|blue|orange|gray|lightGray
+@Input() circleColor: IconColors = null | Use with the `circle` attribute to color the circle bg: white|blue|orange|gray|lightGray

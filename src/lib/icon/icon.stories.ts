@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import {number, select, withKnobs} from '@storybook/addon-knobs/angular';
 import { AptoButtonComponentModule } from '../button/button.module';
+import { IconColors } from './icon.component';
 
 @Component({
     template: `
@@ -24,8 +25,8 @@ import { AptoButtonComponentModule } from '../button/button.module';
                 <apto-col sm="2"><apto-icon icon="home"></apto-icon><span class="icon-meta">home</span></apto-col>
                 <apto-col sm="2"><apto-icon aria-label="Email" icon="email"></apto-icon><span class="icon-meta">email</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="add"></apto-icon><span class="icon-meta">add</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="menu"></apto-icon><span class="icon-meta">phone</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="phone"></apto-icon><span class="icon-meta"></span></apto-col>
+                <apto-col sm="2"><apto-icon icon="menu"></apto-icon><span class="icon-meta">menu</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="phone"></apto-icon><span class="icon-meta">phone</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="folder"></apto-icon><span class="icon-meta">folder</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="edit"></apto-icon><span class="icon-meta">edit</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="help"></apto-icon><span class="icon-meta">help</span></apto-col>
@@ -47,7 +48,7 @@ import { AptoButtonComponentModule } from '../button/button.module';
                 <apto-col sm="2"><apto-icon icon="peaks"></apto-icon><span class="icon-meta">peaks</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="link"></apto-icon><span class="icon-meta">link</span></apto-col>
             </apto-row>
-            <h4 class="heading">Form Controls</h4>
+            <h3 class="heading">Form Controls</h3>
             <apto-row class="icon-set-list">
                 <apto-col sm="2"><apto-icon icon="radioOutline"></apto-icon><span class="icon-meta">radioOutline</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="radioChecked"></apto-icon><span class="icon-meta">radioChecked</span></apto-col>
@@ -56,7 +57,7 @@ import { AptoButtonComponentModule } from '../button/button.module';
                 <apto-col sm="2"><apto-icon icon="check"></apto-icon><span class="icon-meta">check</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="checkCircle"></apto-icon><span class="icon-meta">checkCircle</span></apto-col>
             </apto-row>
-            <h4 class="heading">Directions</h4>
+            <h3 class="heading">Directions</h3>
             <apto-row class="icon-set-list">
                 <apto-col sm="2"><apto-icon icon="left"></apto-icon><span class="icon-meta">left</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="right"></apto-icon><span class="icon-meta">right</span></apto-col>
@@ -65,9 +66,9 @@ import { AptoButtonComponentModule } from '../button/button.module';
                 <apto-col sm="2"><apto-icon icon="dropDown"></apto-icon><span class="icon-meta">dropDown</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="dropUp"></apto-icon><span class="icon-meta">dropUp</span></apto-col>
             </apto-row>
-            <h4 class="heading">Circle Icons ("circle" attribute)</h4>
+            <h3 class="heading">Circle Icons ("circle" attribute)</h3>
             <p><apto-icon circle icon="property"></apto-icon></p>
-            <h4 class="heading">Inline Icons ("inline" attribute)</h4>
+            <h3 class="heading">Inline Icons ("inline" attribute)</h3>
             <p><apto-button><apto-icon inline icon="download"></apto-icon> Button</apto-button></p>
             <p>
                 <apto-button>
@@ -76,7 +77,7 @@ import { AptoButtonComponentModule } from '../button/button.module';
             </p>
             <p><apto-button>Button <apto-icon inline icon="down"></apto-icon></apto-button></p>
             <p><apto-icon inline icon="thumbUp"></apto-icon> Inline Text</p>
-            <h4 class="heading">Sizing ("size" attribute)</h4>
+            <h3 class="heading">Sizing ("size" attribute)</h3>
             <p>
                 <apto-icon inline size="1" icon="property"></apto-icon>
                 <apto-icon inline circle size="1" icon="property"></apto-icon> size="1"
@@ -101,18 +102,17 @@ import { AptoButtonComponentModule } from '../button/button.module';
                 <apto-icon inline size="6" icon="property"></apto-icon>
                 <apto-icon inline circle size="6" icon="property"></apto-icon> size="6"
             </p>
-            <h4 class="heading">Circle Color ("circleColor" attribute)</h4>
+            <h3 class="heading">Circle Color ("circleColor" attribute)</h3>
             <p><apto-icon inline circle icon="property"></apto-icon> circleColor=""</p>
             <p>
-                <span style="background:black">
-                    <apto-icon inline circle circleColor="white" icon="property"></apto-icon>
-                </span> circleColor="white"
+                <span style="background:black"><apto-icon inline circle circleColor="white" icon="property"></apto-icon></span>
+                circleColor="white"
             </p>
             <p><apto-icon inline circle circleColor="blue" icon="property"></apto-icon> circleColor="blue"</p>
             <p><apto-icon inline circle circleColor="orange" icon="property"></apto-icon> circleColor="orange"</p>
             <p><apto-icon inline circle circleColor="lightGray" icon="property"></apto-icon> circleColor="lightGray"</p>
             <p><apto-icon inline circle circleColor="gray" icon="property"></apto-icon> circleColor="gray"</p>
-            <h4 class="heading">Knobs</h4>
+            <h3 class="heading">Knobs</h3>
             <p>
                 <apto-icon inline [size]="iconSize" icon="property"></apto-icon>
                 <apto-icon inline circle [size]="iconSize" icon="property"></apto-icon> size="{{iconSize}}"
@@ -126,6 +126,7 @@ import { AptoButtonComponentModule } from '../button/button.module';
 export class IconStoryComponent {
     @Input() public iconSize: number;
     @Input() public iconColor: string;
+    @Input() public isCircle: boolean;
     constructor(iconRegistry: AptoIconRegistry, sanitizer: DomSanitizer) {
         iconRegistry.addSvgIconSetInNamespace('', sanitizer.bypassSecurityTrustResourceUrl('/apto-icon-sprite.svg'));
     }
@@ -147,14 +148,7 @@ storiesOf('Icons', module)
                 max: 6,
                 step: 1
             }),
-            iconColor: select('iconColor', {
-                white: 'white',
-                blue: 'blue',
-                orange: 'orange',
-                lightGray: 'lightGray',
-                gray: 'gray',
-                none: 'none'
-            }, 'none')
+            iconColor: select('iconColor', IconColors, 'none')
         }
     })))
 ;

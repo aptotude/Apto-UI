@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AptoLoaderComponent, AptoLoaderNoOverlayDirective } from './loader.component';
+import { AptoLoaderComponent } from './loader.component';
 
 @NgModule({
     imports: [
         CommonModule
     ],
     declarations: [
-        AptoLoaderComponent,
-        AptoLoaderNoOverlayDirective
+        AptoLoaderComponent
     ],
     exports: [
-        AptoLoaderComponent,
-        AptoLoaderNoOverlayDirective
+        AptoLoaderComponent
     ]
 })
 export class AptoLoaderComponentModule { }

@@ -15,63 +15,63 @@
         background-color: currentColor;
         border: 3px solid currentColor;
         fill: $white;
-        &.apto-icon--white {
+        &.apto-icon--color-white {
             background-color: $white;
             border-color: $white;
             fill: $blue-500;
         }
-        &.apto-icon--blue {
+        &.apto-icon--color-blue {
             background-color: $blue-500;
             border-color: $blue-500;
             fill: $white;
         }
-        &.apto-icon--orange {
+        &.apto-icon--color-orange {
             background-color: $orange-500;
             border-color: $orange-500;
             fill: $white;
         }
-        &.apto-icon--gray {
+        &.apto-icon--color-gray {
             background-color: $gray-600;
             border-color: $gray-600;
             fill: $white;
         }
-        &.apto-icon--lightGray {
+        &.apto-icon--color-lightGray {
             background-color: $gray-300;
             border-color: $gray-300;
             fill: $white;
         }
     }
-    &.apto-icon--1 {
+    &.apto-icon--size-1 {
         @include square($font-size-base);
         &.apto-icon--circle {
             border-width: 2px;
         }
     }
-    &.apto-icon--2 {
+    &.apto-icon--size-2 {
         @include square(1.8rem);
         &.apto-icon--circle {
             border-width: 2px;
         }
     }
-    &.apto-icon--3 {
+    &.apto-icon--size-3 {
         @include square(2.0rem);
         &.apto-icon--circle {
             border-width: 3px;
         }
     }
-    &.apto-icon--4 {
+    &.apto-icon--size-4 {
         @include square(2.4rem);
         &.apto-icon--circle {
             border-width: 4px;
         }
     }
-    &.apto-icon--5 {
+    &.apto-icon--size-5 {
         @include square(2.8rem);
         &.apto-icon--circle {
             border-width: 5px;
         }
     }
-    &.apto-icon--6 {
+    &.apto-icon--size-6 {
         @include square(5.0rem);
         &.apto-icon--circle {
             border-width: 7px;

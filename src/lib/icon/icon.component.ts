@@ -1,6 +1,5 @@
 import {
     Component,
-    Directive,
     Input,
     ChangeDetectionStrategy,
     ViewEncapsulation,
@@ -11,18 +10,15 @@ import {
 } from '@angular/core';
 import { AptoIconRegistry } from './icon-registry';
 import { take } from 'rxjs/operators/take';
+import { coerceBooleanProperty } from '../utils';
 
-@Directive({
-    selector: 'apto-icon[circle]',
-    host: {'class': 'apto-icon--circle'}
-})
-export class AptoIconCircleDirective {}
-
-@Directive({
-    selector: 'apto-icon[inline]',
-    host: {'class': 'apto-icon--inline'}
-})
-export class AptoIconInlineDirective {}
+export enum IconColors {
+    white = 'white',
+    blue = 'blue',
+    orange = 'orange',
+    gray = 'gray',
+    lightGray = 'lightGray'
+}
 
 @Component({
     selector: 'apto-icon',
@@ -30,7 +26,9 @@ export class AptoIconInlineDirective {}
     template: '<ng-content></ng-content>',
     host: {
         'class': 'apto-icon',
-        'role': 'img'
+        'role': 'img',
+        '[class.apto-icon--inline]': 'inline',
+        '[class.apto-icon--circle]': 'circle'
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
@@ -38,7 +36,24 @@ export class AptoIconInlineDirective {}
 export class AptoIconComponent implements OnChanges {
     @Input() public icon: string = null;
     @Input() public size: number = null;
-    @Input() public circleColor: string = null;
+    @Input() public circleColor: IconColors = null;
+    @Input()
+        get circle(): boolean {
+            return this._circle;
+        }
+        set circle(circle: boolean) {
+            this._circle = coerceBooleanProperty(circle);
+        }
+    @Input()
+        get inline(): boolean {
+            return this._inline;
+        }
+        set inline(inline: boolean) {
+            this._inline = coerceBooleanProperty(inline);
+        }
+
+    private _circle: boolean = false;
+    private _inline: boolean = false;
 
     constructor(
         private _elementRef: ElementRef,
@@ -61,17 +76,19 @@ export class AptoIconComponent implements OnChanges {
                 this._clearSvgElement();
             }
         }
+
         if (changes.circleColor) {
             if (changes.circleColor.previousValue) {
-                this._elementRef.nativeElement.classList.remove(`apto-icon--${changes.circleColor.previousValue}`);
+                this._elementRef.nativeElement.classList.remove(`apto-icon--color-${changes.circleColor.previousValue}`);
             }
-            this._elementRef.nativeElement.classList.add(`apto-icon--${this.circleColor}`);
+            this._elementRef.nativeElement.classList.add(`apto-icon--color-${this.circleColor}`);
         }
+
         if (changes.size) {
             if (changes.size.previousValue) {
-                this._elementRef.nativeElement.classList.remove(`apto-icon--${changes.size.previousValue}`);
+                this._elementRef.nativeElement.classList.remove(`apto-icon--size-${changes.size.previousValue}`);
             }
-            this._elementRef.nativeElement.classList.add(`apto-icon--${this.size}`);
+            this._elementRef.nativeElement.classList.add(`apto-icon--size-${this.size}`);
         }
     }
 

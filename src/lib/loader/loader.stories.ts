@@ -3,7 +3,7 @@ import { AptoLoaderComponentModule } from './loader.module';
 import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as loaderMd from './docs/loader.md';
 
-storiesOf('Loader', module)
+storiesOf('Loaders', module)
     .addDecorator(
         moduleMetadata({
             imports: [ AptoLoaderComponentModule ]

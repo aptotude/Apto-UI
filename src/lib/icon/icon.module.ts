@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AptoIconComponent, AptoIconCircleDirective, AptoIconInlineDirective } from './icon.component';
+import { AptoIconComponent } from './icon.component';
 
 @NgModule({
     imports: [
         CommonModule
     ],
     declarations: [
-        AptoIconComponent,
-        AptoIconCircleDirective,
-        AptoIconInlineDirective
+        AptoIconComponent
     ],
     exports: [
-        AptoIconComponent,
-        AptoIconCircleDirective,
-        AptoIconInlineDirective
+        AptoIconComponent
     ]
 })
 export class AptoIconComponentModule { }
