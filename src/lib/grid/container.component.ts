@@ -29,6 +29,6 @@ export class AptoGridContainerComponent {
             this._fixed = coerceBooleanProperty(fixed);
         }
 
-    private _scroll: boolean = false;
-    private _fixed: boolean = false;
+    private _scroll = false;
+    private _fixed = false;
 }

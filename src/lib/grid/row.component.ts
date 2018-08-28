@@ -71,5 +71,5 @@ export class AptoGridRowComponent {
             this._noGutter = coerceBooleanProperty(noGutter);
         }
 
-    private _noGutter: boolean = false;
+    private _noGutter = false;
 }

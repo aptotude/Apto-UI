@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation, Directive } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { coerceBooleanProperty } from '../utils';
 
 @Component({
@@ -22,5 +22,5 @@ export class AptoLoaderComponent {
             this._noOverlay = coerceBooleanProperty(noOverlay);
         }
 
-    private _noOverlay: boolean = false;
+    private _noOverlay = false;
 }

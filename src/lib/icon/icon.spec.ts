@@ -132,7 +132,6 @@ describe('Apto Icon', () => {
 
     it('should apply class based on inline attribute', () => {
         const fixture = TestBed.createComponent(IconWithInlineComponent);
-        const testComponent = fixture.componentInstance;
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
         fixture.detectChanges();
         expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--inline']);
@@ -140,7 +139,6 @@ describe('Apto Icon', () => {
 
     it('should apply class based on circle attribute', () => {
         const fixture = TestBed.createComponent(IconWithCircleComponent);
-        const testComponent = fixture.componentInstance;
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
         fixture.detectChanges();
         expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--circle']);

@@ -52,8 +52,8 @@ export class AptoIconComponent implements OnChanges {
             this._inline = coerceBooleanProperty(inline);
         }
 
-    private _circle: boolean = false;
-    private _inline: boolean = false;
+    private _circle = false;
+    private _inline = false;
 
     constructor(
         private _elementRef: ElementRef,
