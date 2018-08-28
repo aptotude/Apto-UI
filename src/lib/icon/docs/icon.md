@@ -86,3 +86,42 @@ screen-readers. The most straightforward way to do this is to
 information as the icon.
 2. Add the `apto-sr-only` class to the `<span>`. This will make the message invisible
 on-screen but still available to screen-reader users.
+
+## Circle
+```
+<apto-icon circle icon="property"></apto-icon>
+```
+
+## Inline
+```
+<apto-icon inline icon="property"></apto-icon> Some Text
+<apto-button><apto-icon inline icon="property"></apto-icon> Button</apto-button>
+```
+
+## Size
+```
+<apto-icon size="1" icon="property"></apto-icon>
+<apto-icon size="2" icon="property"></apto-icon>
+<apto-icon icon="property"></apto-icon>
+<apto-icon size="4" icon="property"></apto-icon>
+<apto-icon size="5" icon="property"></apto-icon>
+<apto-icon size="6" icon="property"></apto-icon>
+```
+
+## CircleColor
+```
+<apto-icon circle icon="property"></apto-icon>
+<apto-icon circle circleColor="white" icon="property"></apto-icon>
+<apto-icon circle circleColor="blue" icon="property"></apto-icon>
+<apto-icon circle circleColor="orange" icon="property"></apto-icon>
+<apto-icon circle circleColor="gray" icon="property"></apto-icon>
+<apto-icon circle circleColor="lightGray" icon="property"></apto-icon>
+```
+
+## Apto Icon Properties `<apto-icon>`
+Name | Description
+---- | -----------
+@Attribute() circle | Adding the `circle` attribute turns the icon into a circle
+@Attribute() inline | Adding the `inline` attribute aligns the icon with text
+@Input() size: number = 3 | Size of icon 1-6.
+@Input() circleColor: string = null | Use with the `circle` attribute to color the circle bg: white|blue|orange|gray|lightGray

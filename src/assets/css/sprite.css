@@ -8,7 +8,7 @@
     display: inline-block;
     background-image: url("../apto-icon-sprite.svg");
     background-repeat: no-repeat;
-    background-size: 2.4em 76.8em;
+    background-size: 2.4em 93.6em;
 }
 
 .no-svg .icon:before {
@@ -26,7 +26,7 @@
 
 
 
-  .icon.callList:before {
+  .icon.assignment:before {
       background-position: 0em -2.4em;
       width: 2.4em;
       height: 2.4em;
@@ -35,7 +35,7 @@
 
 
 
-  .icon.check:before {
+  .icon.callList:before {
       background-position: 0em -4.8em;
       width: 2.4em;
       height: 2.4em;
@@ -44,7 +44,7 @@
 
 
 
-  .icon.checkCircle:before {
+  .icon.check:before {
       background-position: 0em -7.2em;
       width: 2.4em;
       height: 2.4em;
@@ -53,7 +53,7 @@
 
 
 
-  .icon.close:before {
+  .icon.checkCircle:before {
       background-position: 0em -9.6em;
       width: 2.4em;
       height: 2.4em;
@@ -62,7 +62,7 @@
 
 
 
-  .icon.company:before {
+  .icon.checkboxChecked:before {
       background-position: 0em -12em;
       width: 2.4em;
       height: 2.4em;
@@ -71,7 +71,7 @@
 
 
 
-  .icon.down:before {
+  .icon.checkboxOutline:before {
       background-position: 0em -14.4em;
       width: 2.4em;
       height: 2.4em;
@@ -80,7 +80,7 @@
 
 
 
-  .icon.download:before {
+  .icon.close:before {
       background-position: 0em -16.8em;
       width: 2.4em;
       height: 2.4em;
@@ -89,7 +89,7 @@
 
 
 
-  .icon.dropDown:before {
+  .icon.company:before {
       background-position: 0em -19.2em;
       width: 2.4em;
       height: 2.4em;
@@ -98,7 +98,7 @@
 
 
 
-  .icon.dropUp:before {
+  .icon.down:before {
       background-position: 0em -21.6em;
       width: 2.4em;
       height: 2.4em;
@@ -107,7 +107,7 @@
 
 
 
-  .icon.edit:before {
+  .icon.download:before {
       background-position: 0em -24em;
       width: 2.4em;
       height: 2.4em;
@@ -116,7 +116,7 @@
 
 
 
-  .icon.email:before {
+  .icon.dropDown:before {
       background-position: 0em -26.4em;
       width: 2.4em;
       height: 2.4em;
@@ -125,7 +125,7 @@
 
 
 
-  .icon.file:before {
+  .icon.dropUp:before {
       background-position: 0em -28.8em;
       width: 2.4em;
       height: 2.4em;
@@ -134,7 +134,7 @@
 
 
 
-  .icon.folder:before {
+  .icon.edit:before {
       background-position: 0em -31.2em;
       width: 2.4em;
       height: 2.4em;
@@ -143,7 +143,7 @@
 
 
 
-  .icon.help:before {
+  .icon.email:before {
       background-position: 0em -33.6em;
       width: 2.4em;
       height: 2.4em;
@@ -152,7 +152,7 @@
 
 
 
-  .icon.home:before {
+  .icon.file:before {
       background-position: 0em -36em;
       width: 2.4em;
       height: 2.4em;
@@ -161,7 +161,7 @@
 
 
 
-  .icon.left:before {
+  .icon.folder:before {
       background-position: 0em -38.4em;
       width: 2.4em;
       height: 2.4em;
@@ -170,7 +170,7 @@
 
 
 
-  .icon.list:before {
+  .icon.help:before {
       background-position: 0em -40.8em;
       width: 2.4em;
       height: 2.4em;
@@ -179,7 +179,7 @@
 
 
 
-  .icon.meeting:before {
+  .icon.home:before {
       background-position: 0em -43.2em;
       width: 2.4em;
       height: 2.4em;
@@ -188,7 +188,7 @@
 
 
 
-  .icon.menu:before {
+  .icon.left:before {
       background-position: 0em -45.6em;
       width: 2.4em;
       height: 2.4em;
@@ -197,7 +197,7 @@
 
 
 
-  .icon.money:before {
+  .icon.link:before {
       background-position: 0em -48em;
       width: 2.4em;
       height: 2.4em;
@@ -206,7 +206,7 @@
 
 
 
-  .icon.people:before {
+  .icon.list:before {
       background-position: 0em -50.4em;
       width: 2.4em;
       height: 2.4em;
@@ -215,7 +215,7 @@
 
 
 
-  .icon.person:before {
+  .icon.meeting:before {
       background-position: 0em -52.8em;
       width: 2.4em;
       height: 2.4em;
@@ -224,7 +224,7 @@
 
 
 
-  .icon.personCircle:before {
+  .icon.menu:before {
       background-position: 0em -55.2em;
       width: 2.4em;
       height: 2.4em;
@@ -233,7 +233,7 @@
 
 
 
-  .icon.phone:before {
+  .icon.money:before {
       background-position: 0em -57.6em;
       width: 2.4em;
       height: 2.4em;
@@ -242,7 +242,7 @@
 
 
 
-  .icon.property:before {
+  .icon.peaks:before {
       background-position: 0em -60em;
       width: 2.4em;
       height: 2.4em;
@@ -251,7 +251,7 @@
 
 
 
-  .icon.right:before {
+  .icon.people:before {
       background-position: 0em -62.4em;
       width: 2.4em;
       height: 2.4em;
@@ -260,7 +260,7 @@
 
 
 
-  .icon.search:before {
+  .icon.person:before {
       background-position: 0em -64.8em;
       width: 2.4em;
       height: 2.4em;
@@ -269,7 +269,7 @@
 
 
 
-  .icon.task:before {
+  .icon.personCircle:before {
       background-position: 0em -67.2em;
       width: 2.4em;
       height: 2.4em;
@@ -278,7 +278,7 @@
 
 
 
-  .icon.thumbUp:before {
+  .icon.phone:before {
       background-position: 0em -69.6em;
       width: 2.4em;
       height: 2.4em;
@@ -287,7 +287,7 @@
 
 
 
-  .icon.time:before {
+  .icon.property:before {
       background-position: 0em -72em;
       width: 2.4em;
       height: 2.4em;
@@ -296,8 +296,71 @@
 
 
 
-  .icon.up:before {
+  .icon.radioChecked:before {
       background-position: 0em -74.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.radioOutline:before {
+      background-position: 0em -76.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.right:before {
+      background-position: 0em -79.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.search:before {
+      background-position: 0em -81.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.task:before {
+      background-position: 0em -84em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.thumbUp:before {
+      background-position: 0em -86.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.time:before {
+      background-position: 0em -88.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.up:before {
+      background-position: 0em -91.2em;
       width: 2.4em;
       height: 2.4em;
   }

@@ -38,7 +38,7 @@ export class AptoIconInlineDirective {}
 export class AptoIconComponent implements OnChanges {
     @Input() public icon: string = null;
     @Input() public size: number = null;
-    @Input() public color: string = null;
+    @Input() public circleColor: string = null;
 
     constructor(
         private _elementRef: ElementRef,
@@ -61,11 +61,11 @@ export class AptoIconComponent implements OnChanges {
                 this._clearSvgElement();
             }
         }
-        if (changes.color) {
-            if (changes.color.previousValue) {
-                this._elementRef.nativeElement.classList.remove(`apto-icon--${changes.color.previousValue}`);
+        if (changes.circleColor) {
+            if (changes.circleColor.previousValue) {
+                this._elementRef.nativeElement.classList.remove(`apto-icon--${changes.circleColor.previousValue}`);
             }
-            this._elementRef.nativeElement.classList.add(`apto-icon--${this.color}`);
+            this._elementRef.nativeElement.classList.add(`apto-icon--${this.circleColor}`);
         }
         if (changes.size) {
             if (changes.size.previousValue) {
