@@ -53,7 +53,7 @@ export class AptoGridColumnDirective {
 
 @Component({
     selector: 'apto-row',
-    templateUrl: 'row.html',
+    template: '<ng-content select="apto-col"></ng-content>',
     styleUrls: ['./row.scss'],
     host: {
         'class': 'apto-row',

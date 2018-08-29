@@ -1,13 +1,8 @@
-`apto-icon` makes it easier to use _vector-based_ icons in your app.  This directive supports both
-icon fonts and SVG icons, but not bitmap-based formats (png, jpg, etc.).
-
-<!-- example(icon-overview) -->
+`apto-icon` makes it easier to use _vector-based_ icons in your app. This directive supports SVG icons, but not bitmap-based formats (png, jpg, etc.).
 
 ### Registering icons
 
-`AptoIconRegistry` is an injectable service that allows you to associate icon names with SVG URLs,
-HTML strings and to define aliases for CSS font classes. Its methods are discussed below and listed
-in the API summary.
+`AptoIconRegistry` is an injectable service that allows you to associate icon names with SVG URLs. Its methods are discussed below and listed in the API summary.
 
 ### SVG icons
 
@@ -16,10 +11,9 @@ into the page as a child of the component. (Rather than using an <img> tag or a 
 image). This makes it easier to apply CSS styles to SVG icons. For example, the default color of the
 SVG content is the CSS
 [currentColor](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor_keyword)
-value. This makes SVG icons by default have the same color as surrounding text, and allows you to
-change the color by setting the "color" style on the `apto-icon` element.
+value. This makes SVG icons by default have the same color as surrounding text.
 
-In order to prevent XSS vulnerabilities, any SVG URLs and HTML strings passed to the
+In order to prevent XSS vulnerabilities, any SVG URLs passed to the
 `AptoIconRegistry` must be marked as trusted by using Angular's `DomSanitizer` service.
 
 Also note that all SVG icons, registered by URL, are fetched via XmlHttpRequest, and due to the
@@ -28,10 +22,8 @@ must be configured to allow cross-domain access.
 
 #### Named icons
 
-To associate a name with an icon URL, use the `addSvgIcon` or `addSvgIconInNamespace` methods of `AptoIconRegistry`. After
-registering an icon, it can be displayed by setting the `svgIcon` input. For an icon in the
-default namespace, use the name directly. For a non-default namespace, use the format
-`[namespace]:[name]`.
+To associate a name with an icon URL, use the `addSvgIcon` or `addSvgIconInNamespace` methods of `AptoIconRegistry`. After registering an icon, it can be displayed by setting the `svgIcon` input. For an icon in the
+default namespace, use the name directly. For a non-default namespace, use the format `[namespace]:[name]`.
 
 #### Icon sets
 
@@ -46,12 +38,6 @@ as for individually registered icons.
 
 Multiple icon sets can be registered in the same namespace. Requesting an icon whose id appears in
 more than one icon set, the icon from the most recently registered set will be used.
-
-### Theming
-
-By default, icons will use the current font color (`currentColor`). this color can be changed to
-match the current theme's colors using the `color` attribute. This can be changed to
-`'primary'`, `'accent'`, or `'warn'`.
 
 ### Accessibility
 
@@ -88,17 +74,20 @@ information as the icon.
 on-screen but still available to screen-reader users.
 
 ## Circle
+You can turn any icon into a circle by adding the `circle` attribute.
 ```
 <apto-icon circle icon="property"></apto-icon>
 ```
 
 ## Inline
+In order to align icons with text add the `inline` attribute.
 ```
 <apto-icon inline icon="property"></apto-icon> Some Text
 <apto-button><apto-icon inline icon="property"></apto-icon> Button</apto-button>
 ```
 
 ## Size
+You can scale the icon using the `size` input with values from 1 to 6. 3 is the default size.
 ```
 <apto-icon size="1" icon="property"></apto-icon>
 <apto-icon size="2" icon="property"></apto-icon>
@@ -108,7 +97,10 @@ on-screen but still available to screen-reader users.
 <apto-icon size="6" icon="property"></apto-icon>
 ```
 
-## CircleColor
+## Theming
+By default, icons will use the current font color for the fill of the icon.
+For icons that are a `circle` you may want to have special colors for the fill of the circle.
+To do this, use the `circleColor` attribute. You can use `white, blue, orange, gray, or lightGray`
 ```
 <apto-icon circle icon="property"></apto-icon>
 <apto-icon circle circleColor="white" icon="property"></apto-icon>
