@@ -45,9 +45,10 @@ gulp.task('sprites', function() {
             preview: false
         }))
         .pipe(gulp.dest(`${paths.src}/assets`));
-})
+});
 
 gulp.task('publish', function(cb) {
     runSequence('sprites', 'copy', 'versions', cb);
 });
+
 gulp.task('default', []);
