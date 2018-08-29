@@ -1,17 +1,24 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, Directive } from '@angular/core';
-
-@Directive({
-    selector: 'apto-card-content[noPadding]',
-    host: {'class': 'apto-card--content--no-padding'}
-})
-export class AptoCardNoPaddingDirective {}
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, Input } from '@angular/core';
+import { coerceBooleanProperty } from '../utils';
 
 @Component({
     selector: 'apto-card-content',
-    templateUrl: 'card-content.html',
+    template: '<ng-content></ng-content>',
     styleUrls: ['./card-content.scss'],
-    host: {'class': 'apto-card--content'},
+    host: {
+        'class': 'apto-card--content',
+        '[class.apto-card--content--no-padding]': 'noPadding',
+    },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AptoCardContentComponent {}
+export class AptoCardContentComponent {
+    @Input()
+        get noPadding(): boolean {
+            return this._noPadding;
+        }
+        set noPadding(noPadding: boolean) {
+            this._noPadding = coerceBooleanProperty(noPadding);
+        }
+    private _noPadding = false;
+}

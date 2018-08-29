@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AptoGridContainerComponent, AptoGridContainerScrollDirective, AptoGridContainerFixedDirective } from './container.component';
-import { AptoGridRowComponent, AptoGridColumnDirective, AptoGridNoGutterDirective  } from './row.component';
+import { AptoGridContainerComponent} from './container.component';
+import { AptoGridRowComponent, AptoGridColumnDirective  } from './row.component';
 
 @NgModule({
     imports: [
@@ -9,18 +9,12 @@ import { AptoGridRowComponent, AptoGridColumnDirective, AptoGridNoGutterDirectiv
     ],
     declarations: [
         AptoGridContainerComponent,
-        AptoGridContainerScrollDirective,
-        AptoGridContainerFixedDirective,
         AptoGridColumnDirective,
-        AptoGridNoGutterDirective,
         AptoGridRowComponent
     ],
     exports: [
         AptoGridContainerComponent,
-        AptoGridContainerScrollDirective,
-        AptoGridContainerFixedDirective,
         AptoGridColumnDirective,
-        AptoGridNoGutterDirective,
         AptoGridRowComponent
     ]
 })

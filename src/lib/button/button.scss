@@ -22,6 +22,7 @@ $button-secondary-link-color:   $gray-500 !default;
     border-radius: $button-border-radius;
     padding: $button-padding;
     outline: none;
+    white-space: nowrap;
     cursor: pointer;
     text-transform: uppercase;
     transition: color .15s ease-in-out, background-color .15s ease-in-out;

@@ -1,0 +1,80 @@
+@import '../scss/theme/variables.scss';
+@import '../scss/mixins/_size.scss';
+
+.apto-icon {
+    display: inline-block;
+    fill: currentColor;
+    line-height: 0;
+    box-sizing: border-box;
+    @include square(2.0rem);
+    &.apto-icon--inline {
+        vertical-align: middle;
+    }
+    &.apto-icon--circle {
+        border-radius: 100%;
+        background-color: currentColor;
+        border: 3px solid currentColor;
+        fill: $white;
+        &.apto-icon--color-white {
+            background-color: $white;
+            border-color: $white;
+            fill: $blue-500;
+        }
+        &.apto-icon--color-blue {
+            background-color: $blue-500;
+            border-color: $blue-500;
+            fill: $white;
+        }
+        &.apto-icon--color-orange {
+            background-color: $orange-500;
+            border-color: $orange-500;
+            fill: $white;
+        }
+        &.apto-icon--color-gray {
+            background-color: $gray-600;
+            border-color: $gray-600;
+            fill: $white;
+        }
+        &.apto-icon--color-lightGray {
+            background-color: $gray-300;
+            border-color: $gray-300;
+            fill: $white;
+        }
+    }
+    &.apto-icon--size-1 {
+        @include square($font-size-base);
+        &.apto-icon--circle {
+            border-width: 2px;
+        }
+    }
+    &.apto-icon--size-2 {
+        @include square(1.8rem);
+        &.apto-icon--circle {
+            border-width: 2px;
+        }
+    }
+    &.apto-icon--size-3 {
+        @include square(2.0rem);
+        &.apto-icon--circle {
+            border-width: 3px;
+        }
+    }
+    &.apto-icon--size-4 {
+        @include square(2.4rem);
+        &.apto-icon--circle {
+            border-width: 4px;
+        }
+    }
+    &.apto-icon--size-5 {
+        @include square(2.8rem);
+        &.apto-icon--circle {
+            border-width: 5px;
+        }
+    }
+    &.apto-icon--size-6 {
+        @include square(5.0rem);
+        &.apto-icon--circle {
+            border-width: 7px;
+        }
+    }
+}

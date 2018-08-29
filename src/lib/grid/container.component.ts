@@ -1,23 +1,34 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Directive } from '@angular/core';
-
-@Directive({
-    selector: 'apto-container[fixed]',
-    host: {'class': 'apto-container--fixed'}
-})
-export class AptoGridContainerFixedDirective {}
-
-@Directive({
-    selector: 'apto-container[scroll]',
-    host: {'class': 'apto-container--scroll'}
-})
-export class AptoGridContainerScrollDirective {}
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input } from '@angular/core';
+import { coerceBooleanProperty } from '../utils';
 
 @Component({
     selector: 'apto-container',
-    templateUrl: 'container.html',
+    template: '<ng-content></ng-content>',
     styleUrls: ['./container.scss'],
-    host: {'class': 'apto-container'},
+    host: {
+        'class': 'apto-container',
+        '[class.apto-container--scroll]': 'scroll',
+        '[class.apto-container--fixed]': 'fixed'
+    },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AptoGridContainerComponent {}
+export class AptoGridContainerComponent {
+    @Input()
+        get scroll(): boolean {
+            return this._scroll;
+        }
+        set scroll(scroll: boolean) {
+            this._scroll = coerceBooleanProperty(scroll);
+        }
+    private _scroll = false;
+
+    @Input()
+        get fixed(): boolean {
+            return this._fixed;
+        }
+        set fixed(fixed: boolean) {
+            this._fixed = coerceBooleanProperty(fixed);
+        }
+    private _fixed = false;
+}
