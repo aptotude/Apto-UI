@@ -128,7 +128,10 @@ export class IconStoryComponent {
     @Input() public iconColor: string;
     @Input() public isCircle: boolean;
     constructor(iconRegistry: AptoIconRegistry, sanitizer: DomSanitizer) {
-        iconRegistry.addSvgIconSetInNamespace('', sanitizer.bypassSecurityTrustResourceUrl('/apto-icon-sprite.svg'));
+        const url = process.env.NODE_ENV === 'prod' ? '/apto-ui/assets' : '';
+        iconRegistry.addSvgIconSet(
+            sanitizer.bypassSecurityTrustResourceUrl(`${url}/apto-icon-sprite.svg`)
+        );
     }
 }
 
