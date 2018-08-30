@@ -50,6 +50,7 @@ import { IconColors } from './icon.component';
                 <apto-col sm="2"><apto-icon icon="loyalty"></apto-icon><span class="icon-meta">loyalty</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="trendingUp"></apto-icon><span class="icon-meta">trendingUp</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="trendingDown"></apto-icon><span class="icon-meta">trendingDown</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="apto"></apto-icon><span class="icon-meta">apto</span></apto-col>
             </apto-row>
             <h3 class="heading">Form Controls</h3>
             <apto-row class="icon-set-list">
@@ -68,6 +69,8 @@ import { IconColors } from './icon.component';
                 <apto-col sm="2"><apto-icon icon="down"></apto-icon><span class="icon-meta">down</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="dropDown"></apto-icon><span class="icon-meta">dropDown</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="dropUp"></apto-icon><span class="icon-meta">dropUp</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="arrowForward"></apto-icon><span class="icon-meta">arrowForward</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="arrowBack"></apto-icon><span class="icon-meta">arrowBack</span></apto-col>
             </apto-row>
             <h3 class="heading">Circle Icons ("circle" attribute)</h3>
             <p><apto-icon circle icon="property"></apto-icon></p>
