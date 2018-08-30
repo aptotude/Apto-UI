@@ -47,6 +47,9 @@ import { IconColors } from './icon.component';
                 <apto-col sm="2"><apto-icon icon="assignment"></apto-icon><span class="icon-meta">assignment</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="peaks"></apto-icon><span class="icon-meta">peaks</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="link"></apto-icon><span class="icon-meta">link</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="loyalty"></apto-icon><span class="icon-meta">loyalty</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="trendingUp"></apto-icon><span class="icon-meta">trendingUp</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="trendingDown"></apto-icon><span class="icon-meta">trendingDown</span></apto-col>
             </apto-row>
             <h3 class="heading">Form Controls</h3>
             <apto-row class="icon-set-list">
