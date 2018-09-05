@@ -103,6 +103,8 @@ class SvgIconConfig {
 export class AptoIconRegistry {
     private _document: Document;
 
+    private _supressErrors = false;
+
     /**
      * URLs and cached SVG elements for individual icons. Keys are of the format "[namespace]:[icon]".
      */
@@ -128,6 +130,10 @@ export class AptoIconRegistry {
         document: any
     ) {
         this._document = document;
+    }
+
+    public setErrorSupression(state: boolean): void {
+        this._supressErrors = state;
     }
 
     /**
@@ -222,6 +228,10 @@ export class AptoIconRegistry {
 
         if (iconSetConfigs) {
             return this._getSvgFromIconSetConfigs(name, iconSetConfigs);
+        }
+
+        if (this._supressErrors) {
+            return emptySvg();
         }
 
         return observableThrow(getAptoIconNameNotFoundError(key));
@@ -569,4 +579,8 @@ function cloneSvg(svg: SVGElement): SVGElement {
 /** Returns the cache key to use for an icon namespace and name. */
 function iconKey(namespace: string, name: string) {
     return `${namespace}:${name}`;
+}
+
+function emptySvg(): Observable<SVGElement> {
+    return observableOf(cloneSvg(this._document.createElement('SVG')));
 }
