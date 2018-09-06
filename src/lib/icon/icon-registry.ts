@@ -231,7 +231,7 @@ export class AptoIconRegistry {
         }
 
         if (this._supressErrors) {
-            return emptySvg();
+            return this._getEmptySvg();
         }
 
         return observableThrow(getAptoIconNameNotFoundError(key));
@@ -548,6 +548,10 @@ export class AptoIconRegistry {
 
         return this;
     }
+
+    private _getEmptySvg(): Observable<SVGElement> {
+        return observableOf(cloneSvg(this._svgElementFromString('<svg></svg>')));
+    }
 }
 
 export function ICON_REGISTRY_PROVIDER_FACTORY(
@@ -579,8 +583,4 @@ function cloneSvg(svg: SVGElement): SVGElement {
 /** Returns the cache key to use for an icon namespace and name. */
 function iconKey(namespace: string, name: string) {
     return `${namespace}:${name}`;
-}
-
-function emptySvg(): Observable<SVGElement> {
-    return observableOf(cloneSvg(this._document.createElement('SVG')));
 }
