@@ -24,35 +24,33 @@ import { IconColors } from './icon.component';
                 <apto-col sm="2"><apto-icon icon="company"></apto-icon><span class="icon-meta">company</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="home"></apto-icon><span class="icon-meta">home</span></apto-col>
                 <apto-col sm="2"><apto-icon aria-label="Email" icon="email"></apto-icon><span class="icon-meta">email</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="add"></apto-icon><span class="icon-meta">add</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="menu"></apto-icon><span class="icon-meta">menu</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="phone"></apto-icon><span class="icon-meta">phone</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="smartPhone"></apto-icon><span class="icon-meta">smartPhone</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="folder"></apto-icon><span class="icon-meta">folder</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="edit"></apto-icon><span class="icon-meta">edit</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="file"></apto-icon><span class="icon-meta">file</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="help"></apto-icon><span class="icon-meta">help</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="callList"></apto-icon><span class="icon-meta">callList</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="close"></apto-icon><span class="icon-meta">close</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="person"></apto-icon><span class="icon-meta">person</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="personCircle"></apto-icon><span class="icon-meta">personCircle</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="people"></apto-icon><span class="icon-meta">people</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="download"></apto-icon><span class="icon-meta">download</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="search"></apto-icon><span class="icon-meta">search</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="link"></apto-icon><span class="icon-meta">link</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="thumbUp"></apto-icon><span class="icon-meta">thumbUp</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="time"></apto-icon><span class="icon-meta">time</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="task"></apto-icon><span class="icon-meta">task</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="money"></apto-icon><span class="icon-meta">money</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="list"></apto-icon><span class="icon-meta">list</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="menu"></apto-icon><span class="icon-meta">menu</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="meeting"></apto-icon><span class="icon-meta">meeting</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="file"></apto-icon><span class="icon-meta">file</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="assignment"></apto-icon><span class="icon-meta">assignment</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="peaks"></apto-icon><span class="icon-meta">peaks</span></apto-col>
-                <apto-col sm="2"><apto-icon icon="link"></apto-icon><span class="icon-meta">link</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="loyalty"></apto-icon><span class="icon-meta">loyalty</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="trendingUp"></apto-icon><span class="icon-meta">trendingUp</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="trendingDown"></apto-icon><span class="icon-meta">trendingDown</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="apto"></apto-icon><span class="icon-meta">apto</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="briefCase"></apto-icon><span class="icon-meta">briefCase</span></apto-col>
             </apto-row>
-            <h3 class="heading">Form Controls</h3>
+            <h3 class="heading">Controls</h3>
             <apto-row class="icon-set-list">
                 <apto-col sm="2"><apto-icon icon="radioOutline"></apto-icon><span class="icon-meta">radioOutline</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="radioChecked"></apto-icon><span class="icon-meta">radioChecked</span></apto-col>
@@ -60,6 +58,10 @@ import { IconColors } from './icon.component';
                 <apto-col sm="2"><apto-icon icon="checkboxChecked"></apto-icon><span class="icon-meta">checkboxChecked</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="check"></apto-icon><span class="icon-meta">check</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="checkCircle"></apto-icon><span class="icon-meta">checkCircle</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="add"></apto-icon><span class="icon-meta">add</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="edit"></apto-icon><span class="icon-meta">edit</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="close"></apto-icon><span class="icon-meta">close</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="search"></apto-icon><span class="icon-meta">search</span></apto-col>
             </apto-row>
             <h3 class="heading">Directions</h3>
             <apto-row class="icon-set-list">
