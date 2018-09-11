@@ -5,6 +5,7 @@ import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as primaryButtonMd from './docs/primary-button.md';
 import * as primaryLinkButtonMd from './docs/link-primary-button.md';
 import * as secondaryLinkButtonMd from './docs/link-secondary-button.md';
+import * as secondaryDarkLinkButtonMd from './docs/link-secondary-dark-button.md';
 import * as buttonPropsMd from './docs/properties.md';
 
 storiesOf('Buttons/Button', module)
@@ -60,6 +61,21 @@ storiesOf('Buttons/Link', module)
             <apto-button
                 automation="foo"
                 kind="${ButtonKinds.Secondary}"
+                type="${ButtonTypes.Link}">Button  with data-automation="foo"</apto-button>
+        `
+    })))
+    .add('Secondary Dark', withMarkdownNotes(`${secondaryDarkLinkButtonMd}${buttonPropsMd}`)(() => ({
+        template: `
+            <apto-button kind="${ButtonKinds.SecondaryDark}" type="${ButtonTypes.Link}">Button</apto-button>
+            <br><br>
+            <apto-button
+                [disabled]="true"
+                kind="${ButtonKinds.SecondaryDark}"
+                type="${ButtonTypes.Link}">Disabled Button</apto-button>
+            <br><br>
+            <apto-button
+                automation="foo"
+                kind="${ButtonKinds.SecondaryDark}"
                 type="${ButtonTypes.Link}">Button  with data-automation="foo"</apto-button>
         `
     })))

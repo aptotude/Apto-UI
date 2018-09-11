@@ -88,6 +88,19 @@ describe('apto-button', () => {
                     expect(button.className.includes('apto-button--secondary')).toBe(true);
                 });
             });
+
+            describe('secondaryDark', () => {
+                beforeEach(() => {
+                    testComponent.buttonKind = ButtonKinds.SecondaryDark;
+                    fixture.detectChanges();
+                });
+
+                it('has the correct class name', () => {
+                    const button = fixture.nativeElement.querySelector('button');
+
+                    expect(button.className.includes('apto-button--secondaryDark')).toBe(true);
+                });
+            });
         });
 
         describe('when type is', () => {

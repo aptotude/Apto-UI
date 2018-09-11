@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 
 export enum ButtonKinds {
     Primary = 'primary',
-    Secondary = 'secondary'
+    Secondary = 'secondary',
+    SecondaryDark = 'secondaryDark'
 }
 
 export enum ButtonTypes {
