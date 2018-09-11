@@ -1,15 +1,22 @@
 @import '../scss/theme/variables.scss';
 
-$button-font-family:            $font-family-base !default;
-$button-font-size:              1.4rem !default; // 14px
-$button-font-weight:            $font-weight-base !default;
-$button-padding:                0.7rem 2rem !default;
-$button-border-radius:          3px !default;
-$button-primary-color:          $white !default;
-$button-primary-bg:             $blue-500 !default;
-$button-primary-disabled-bg:    $gray-400 !default;
-$button-primary-link-color:     $blue-500 !default;
-$button-secondary-link-color:   $gray-500 !default;
+$button-font-family:                    $font-family-base !default;
+$button-font-size:                      1.4rem !default; // 14px
+$button-font-weight:                    $font-weight-base !default;
+$button-padding:                        0.7rem 2rem !default;
+$button-border-radius:                  3px !default;
+$button-primary-color:                  $white !default;
+$button-primary-bg:                     $blue-500 !default;
+$button-primary-disabled-bg:            $gray-400 !default;
+$button-primary-hover-color:            darken($button-primary-bg, 15%) !default;
+
+$button-primary-link-color:             $blue-500 !default;
+$button-primary-link-hover-color:       darken($button-primary-link-color, 15%) !default;
+$button-primary-link-disabled-color:    lighten($button-primary-link-color, 15%) !default;
+
+$button-secondary-link-color:           $gray-500 !default;
+$button-secondary-link-hover-color:     darken($blue-500, 15%) !default;
+$button-secondary-link-disabled-color:  lighten($button-secondary-link-color, 15%) !default;
 
 .apto-button {
     display: inline-block;
@@ -39,7 +46,7 @@ $button-secondary-link-color:   $gray-500 !default;
     color: $button-primary-color;
     background-color: $button-primary-bg;
     &:hover {
-        background-color: darken($button-primary-bg, 15%);
+        background-color: $button-primary-hover-color;
     }
     &:disabled {
         background-color: $button-primary-disabled-bg;
@@ -50,10 +57,10 @@ $button-secondary-link-color:   $gray-500 !default;
     color: $button-primary-link-color;
     background-color: transparent;
     &:hover {
-        color: darken($button-primary-link-color, 15%);
+        color: $button-primary-link-hover-color;
     }
     &:disabled {
-        color: lighten($button-primary-link-color, 15%);
+        color: $button-primary-link-disabled-color;
     }
 }
 
@@ -61,9 +68,9 @@ $button-secondary-link-color:   $gray-500 !default;
     color: $button-secondary-link-color;
     background-color: transparent;
     &:hover {
-        color: darken($button-secondary-link-color, 15%);
+        color: $button-secondary-link-hover-color;
     }
     &:disabled {
-        color: lighten($button-secondary-link-color, 15%);
+        color: $button-secondary-link-disabled-color;
     }
 }

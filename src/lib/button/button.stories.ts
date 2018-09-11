@@ -15,7 +15,7 @@ storiesOf('Buttons/Button', module)
     )
     .add('Primary', withMarkdownNotes(`${primaryButtonMd}${buttonPropsMd}`)(() => ({
         template: `
-            <apto-button>Active Button</apto-button>
+            <apto-button>Button</apto-button>
             <br><br>
             <apto-button
                 [disabled]="true">Disabled Button</apto-button>
@@ -35,7 +35,7 @@ storiesOf('Buttons/Link', module)
         template: `
             <apto-button
                 kind="${ButtonKinds.Primary}"
-                type="${ButtonTypes.Link}">Active Button</apto-button>
+                type="${ButtonTypes.Link}">Button</apto-button>
             <br><br>
             <apto-button
                 [disabled]="true"
@@ -50,7 +50,7 @@ storiesOf('Buttons/Link', module)
     })))
     .add('Secondary', withMarkdownNotes(`${secondaryLinkButtonMd}${buttonPropsMd}`)(() => ({
         template: `
-            <apto-button kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Active Button</apto-button>
+            <apto-button kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Button</apto-button>
             <br><br>
             <apto-button
                 [disabled]="true"
