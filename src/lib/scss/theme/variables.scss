@@ -20,12 +20,14 @@ $blue-300:      #EDF4FA !default;
 // Assorted Colors
 $orange-700:    #D48004 !default;
 $orange-500:    #FF9800 !default;
+$orange-400:    #F6A623 !default;
 $orange-300:    #FDDFB4 !default;
 
 $purple-500:    #b175e8 !default;
 
 $red-700:       #981818 !default;
 $red-500:       #D32F2F !default;
+$red-400:       #dc3545 !default;
 $red-300:       #FEE9E9 !default;
 
 $green-700:     #4CAF50 !default;
@@ -53,8 +55,9 @@ $body-text:     $gray-700 !default;
 $font-family-sans-serif:      	"Open Sans", sans-serif !default;
 $font-family-base:            	$font-family-sans-serif !default;
 
-$font-size-base:             	1.4rem !default; // 14px
 $font-size-lg:               	1.8rem !default; // 18px
+$font-size-base:             	1.4rem !default; // 14px
+$font-size-md:                  1.2rem !default; // 12px
 $font-size-sm:                	1.0rem !default; // 10px
 
 $font-weight-light:           	400 !default;
