@@ -47,22 +47,22 @@ describe('apto-container', () => {
     describe('Fix/Fluid', () => {
         it ('should be fluid', () => {
             const el = fixture.nativeElement.querySelector('apto-container');
-            expect(el.className).toEqual('apto-container');
+            expect(el.className).toEqual('AptoContainer');
         });
         it ('should not be fixed', () => {
             const el = fixture.nativeElement.querySelector('apto-container[data-fixed-version]');
-            expect(el.className).toEqual('apto-container apto-container--fixed');
+            expect(el.className).toEqual('AptoContainer AptoContainer--fixed');
         });
     });
 
     describe('Scrollable', () => {
         it ('should not be scrollable', () => {
             const el = fixture.nativeElement.querySelector('apto-container');
-            expect(el.className).toEqual('apto-container');
+            expect(el.className).toEqual('AptoContainer');
         });
         it ('should not be scrollable', () => {
             const el = fixture.nativeElement.querySelector('apto-container[data-scroll-version]');
-            expect(el.className).toEqual('apto-container apto-container--scroll');
+            expect(el.className).toEqual('AptoContainer AptoContainer--scroll');
         });
     });
 

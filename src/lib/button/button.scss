@@ -22,7 +22,7 @@ $button-secondaryDark-link-color:           $gray-650 !default;
 $button-secondaryDark-link-hover-color:     darken($blue-500, 15%) !default;
 $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-color, 15%) !default;
 
-.apto-button {
+.AptoButton {
     display: inline-block;
     margin: 0;
     background: none;
@@ -42,11 +42,11 @@ $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-c
     }
 }
 
-.apto-button--link {
+.AptoButton--link {
     padding: 0;
 }
 
-.apto-button--primary {
+.AptoButton--primary {
     color: $button-primary-color;
     background-color: $button-primary-bg;
     &:hover {
@@ -57,7 +57,7 @@ $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-c
     }
 }
 
-.apto-button--link.apto-button--primary {
+.AptoButton--link.AptoButton--primary {
     color: $button-primary-link-color;
     background-color: transparent;
     &:hover {
@@ -68,7 +68,7 @@ $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-c
     }
 }
 
-.apto-button--link.apto-button--secondary {
+.AptoButton--link.AptoButton--secondary {
     color: $button-secondary-link-color;
     background-color: transparent;
     &:hover {

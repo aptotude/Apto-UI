@@ -1,6 +1,6 @@
 @import '../scss/theme/variables.scss';
 
-.apto-tab-group {
+.AptoTabGroup {
     font-family: $font-family-base;
     font-size: $font-size-base;
     font-weight: $font-weight-base;
@@ -10,6 +10,6 @@
     display: block;
 }
 
-.apto-tab-group + .apto-tab-group {
+.AptoTabGroup + .AptoTabGroup {
     margin-top: $grid-gutter-width / 2;
 }

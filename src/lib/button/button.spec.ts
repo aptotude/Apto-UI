@@ -51,7 +51,7 @@ describe('apto-button', () => {
         it('has the correct base class name', () => {
             const button = fixture.nativeElement.querySelector('button');
 
-            expect(button.className.includes('apto-button')).toBe(true);
+            expect(button.className.includes('AptoButton')).toBe(true);
         });
 
         describe('when kind is', () => {
@@ -59,7 +59,7 @@ describe('apto-button', () => {
                 it('has the correct default class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
 
-                    expect(button.className.includes('apto-button--primary')).toBe(true);
+                    expect(button.className.includes('AptoButton--primary')).toBe(true);
                 });
             });
 
@@ -72,7 +72,7 @@ describe('apto-button', () => {
                 it('has the correct class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
 
-                    expect(button.className.includes('apto-button--primary')).toBe(true);
+                    expect(button.className.includes('AptoButton--primary')).toBe(true);
                 });
             });
 
@@ -85,7 +85,7 @@ describe('apto-button', () => {
                 it('has the correct class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
 
-                    expect(button.className.includes('apto-button--secondary')).toBe(true);
+                    expect(button.className.includes('AptoButton--secondary')).toBe(true);
                 });
             });
 
@@ -98,7 +98,7 @@ describe('apto-button', () => {
                 it('has the correct class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
 
-                    expect(button.className.includes('apto-button--secondaryDark')).toBe(true);
+                    expect(button.className.includes('AptoButton--secondaryDark')).toBe(true);
                 });
             });
         });
@@ -108,7 +108,7 @@ describe('apto-button', () => {
                 it('has the correct default class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
 
-                    expect(button.className.includes('apto-button--button')).toBe(true);
+                    expect(button.className.includes('AptoButton--button')).toBe(true);
                 });
             });
 
@@ -121,7 +121,7 @@ describe('apto-button', () => {
                 it('has the correct class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
 
-                    expect(button.className.includes('apto-button--button')).toBe(true);
+                    expect(button.className.includes('AptoButton--button')).toBe(true);
                 });
             });
 
@@ -133,7 +133,7 @@ describe('apto-button', () => {
 
                 it('has the correct class name', () => {
                     const button = fixture.nativeElement.querySelector('button');
-                    expect(button.className.includes('apto-button--link')).toBe(true);
+                    expect(button.className.includes('AptoButton--link')).toBe(true);
                 });
             });
         });

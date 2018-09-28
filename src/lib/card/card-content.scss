@@ -1,10 +1,10 @@
 @import './card.scss';
 
-.apto-card--content {
+.AptoCardContent {
     margin: 0;
     padding: $card-content-padding;
     display: block;
-    &.apto-card--content--no-padding {
+    &.AptoCardContent--noPadding {
         padding: 0;
     }
 }

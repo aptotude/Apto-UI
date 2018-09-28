@@ -78,34 +78,34 @@ describe('apto-tabs', () => {
 
     describe('dom structure', () => {
         it('should have nav in a header', () => {
-            const nav = defaultTab.querySelector('.apto-tabs-header nav.apto-tabs-nav');
+            const nav = defaultTab.querySelector('.AptoTabNav-wrapper nav.AptoTabNav');
             expect(nav).not.toEqual(null);
         });
 
         it('should have 3 nav items', () => {
-            const nav = defaultTab.querySelectorAll('.apto-tabs-nav .apto-tabs-nav-item');
+            const nav = defaultTab.querySelectorAll('.AptoTabNav .AptoTabNav-item');
             expect(nav.length).toEqual(3);
         });
 
         it('should have 3 content sections', () => {
-            const nav = defaultTab.querySelectorAll('.apto-tabs-content .apto-tabs-pane');
+            const nav = defaultTab.querySelectorAll('.AptoTabPane-wrapper .AptoTabPane');
             expect(nav.length).toEqual(3);
         });
     });
 
     describe('dom injection', () => {
         it('should have label html', () => {
-            const nav = defaultTab.querySelector('.apto-tabs-nav-item');
+            const nav = defaultTab.querySelector('.AptoTabNav-item');
             expect(nav.innerText).toContain('One');
         });
 
         it('should have content html', () => {
-            const pane = defaultTab.querySelector('.apto-tabs-pane');
+            const pane = defaultTab.querySelector('.AptoTabPane');
             expect(pane.innerText).toContain('Tab 1 Content');
         });
 
         it('should have custom label html using ng-template', () => {
-            const nav = customTab.querySelector('.apto-tabs-nav-item');
+            const nav = customTab.querySelector('.AptoTabNav-item');
             expect(nav.innerText).toContain('Custom Label');
         });
 
@@ -113,7 +113,7 @@ describe('apto-tabs', () => {
             testComponent.currTab = 2;
             fixture.detectChanges();
 
-            const pane = customTab.querySelector('.apto-tabs-pane:nth-of-type(3)');
+            const pane = customTab.querySelector('.AptoTabPane:nth-of-type(3)');
             expect(pane.innerText).toContain('Tab 3 Custom Content');
         });
 
@@ -121,9 +121,9 @@ describe('apto-tabs', () => {
             testComponent.currTab = 2;
             fixture.detectChanges();
 
-            const pane = customTab.querySelector('.apto-tabs-pane:nth-of-type(3)');
+            const pane = customTab.querySelector('.AptoTabPane:nth-of-type(3)');
             expect(pane.innerText).toContain('Tab 3 Custom Content');
-            const nav = customTab.querySelector('.apto-tabs-nav-item:nth-of-type(3)');
+            const nav = customTab.querySelector('.AptoTabNav-item:nth-of-type(3)');
             expect(nav.innerText).toContain('Custom Label 3');
         });
     });
@@ -133,14 +133,14 @@ describe('apto-tabs', () => {
             testComponent.currTab = 1;
             fixture.detectChanges();
 
-            const nav = defaultTab.querySelectorAll('.apto-tabs-nav-item');
-            expect(nav[1].className).toContain('apto-tabs-nav-item--active');
+            const nav = defaultTab.querySelectorAll('.AptoTabNav-item');
+            expect(nav[1].className).toContain('AptoTabNav-item--active');
         });
     });
 
     describe('aria', () => {
         it('should have tablist on nav', () => {
-            const nav = defaultTab.querySelector('.apto-tabs-nav');
+            const nav = defaultTab.querySelector('.AptoTabNav');
             expect(nav.getAttribute('role')).toEqual('tablist');
         });
 
@@ -148,7 +148,7 @@ describe('apto-tabs', () => {
             let navItem: any;
 
             beforeEach(() => {
-                navItem = defaultTab.querySelector('.apto-tabs-nav-item');
+                navItem = defaultTab.querySelector('.AptoTabNav-item');
             });
 
             it('should have role', () => {
@@ -164,15 +164,15 @@ describe('apto-tabs', () => {
             });
 
             it('should have aria-controls index', () => {
-                expect(navItem.getAttribute('aria-controls')).toEqual(`apto-tab-pane-${groupId}-0`);
+                expect(navItem.getAttribute('aria-controls')).toEqual(`AptoTabPane-${groupId}-0`);
             });
 
             it('should have href index', () => {
-                expect(navItem.getAttribute('href')).toEqual(`#apto-tab-pane-${groupId}-0`);
+                expect(navItem.getAttribute('href')).toEqual(`#AptoTabPane-${groupId}-0`);
             });
 
             it('should have id index', () => {
-                expect(navItem.getAttribute('id')).toEqual(`apto-tab-nav-${groupId}-0`);
+                expect(navItem.getAttribute('id')).toEqual(`AptoTabNav-${groupId}-0`);
             });
 
             it('should have aria-setsize index', () => {
@@ -188,7 +188,7 @@ describe('apto-tabs', () => {
             let navPane: any;
 
             beforeEach(() => {
-                navPane = defaultTab.querySelector('.apto-tabs-pane');
+                navPane = defaultTab.querySelector('.AptoTabPane');
             });
 
             it('should have role', () => {
@@ -196,11 +196,11 @@ describe('apto-tabs', () => {
             });
 
             it('should have aria-labelledby index', () => {
-                expect(navPane.getAttribute('aria-labelledby')).toEqual(`apto-tab-nav-${groupId}-0`);
+                expect(navPane.getAttribute('aria-labelledby')).toEqual(`AptoTabNav-${groupId}-0`);
             });
 
             it('should have id index', () => {
-                expect(navPane.getAttribute('id')).toEqual(`apto-tab-pane-${groupId}-0`);
+                expect(navPane.getAttribute('id')).toEqual(`AptoTabPane-${groupId}-0`);
             });
         });
     });
@@ -210,8 +210,8 @@ describe('apto-tabs', () => {
         let navItems: any;
 
         beforeEach(() => {
-            navItems = customTab.querySelectorAll('.apto-tabs-nav-item');
-            navPanes = customTab.querySelectorAll('.apto-tabs-pane');
+            navItems = customTab.querySelectorAll('.AptoTabNav-item');
+            navPanes = customTab.querySelectorAll('.AptoTabPane');
         });
 
         it('should have data-automation attributes', () => {
@@ -230,30 +230,30 @@ describe('apto-tabs', () => {
         let navItems: any;
 
         beforeEach(() => {
-            navItems = defaultTab.querySelectorAll('.apto-tabs-nav-item');
-            navPanes = defaultTab.querySelectorAll('.apto-tabs-pane');
+            navItems = defaultTab.querySelectorAll('.AptoTabNav-item');
+            navPanes = defaultTab.querySelectorAll('.AptoTabPane');
         });
 
         it('should toggle', async () => {
-            expect(navItems[0].className).toEqual('apto-tabs-nav-item apto-tabs-nav-item--active');
+            expect(navItems[0].className).toEqual('AptoTabNav-item AptoTabNav-item--active');
             expect(navItems[0].getAttribute('aria-selected')).toEqual('true');
-            expect(navPanes[0].className).toEqual('apto-tabs-pane apto-tabs-pane--active');
+            expect(navPanes[0].className).toEqual('AptoTabPane AptoTabPane--active');
 
-            expect(navItems[1].className).toEqual('apto-tabs-nav-item');
+            expect(navItems[1].className).toEqual('AptoTabNav-item');
             expect(navItems[1].getAttribute('aria-selected')).toEqual('false');
-            expect(navPanes[1].className).toEqual('apto-tabs-pane');
+            expect(navPanes[1].className).toEqual('AptoTabPane');
 
             navItems[1].click();
             fixture.detectChanges();
             await fixture.whenStable();
 
-            expect(navItems[1].className).toEqual('apto-tabs-nav-item apto-tabs-nav-item--active');
+            expect(navItems[1].className).toEqual('AptoTabNav-item AptoTabNav-item--active');
             expect(navItems[1].getAttribute('aria-selected')).toEqual('true');
-            expect(navPanes[1].className).toEqual('apto-tabs-pane apto-tabs-pane--active');
+            expect(navPanes[1].className).toEqual('AptoTabPane AptoTabPane--active');
 
-            expect(navItems[0].className).toEqual('apto-tabs-nav-item');
+            expect(navItems[0].className).toEqual('AptoTabNav-item');
             expect(navItems[0].getAttribute('aria-selected')).toEqual('false');
-            expect(navPanes[0].className).toEqual('apto-tabs-pane');
+            expect(navPanes[0].className).toEqual('AptoTabPane');
         });
 
         it('should fire selectedTabChange', async () => {
@@ -269,7 +269,7 @@ describe('apto-tabs', () => {
         let nav: any;
 
         beforeEach(() => {
-            nav = defaultTab.querySelector('.apto-tabs-nav');
+            nav = defaultTab.querySelector('.AptoTabNav');
         });
 
         it('should open last on end key', async () => {

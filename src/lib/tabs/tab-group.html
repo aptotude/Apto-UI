@@ -1,16 +1,16 @@
-<div class="apto-tabs-header">
+<div class="AptoTabNav-wrapper">
     <nav
-        aptoTabHeader
+        aptoTabNav
         role="tablist"
         (keydown)="keyDownHandler($event)">
         <a
             *ngFor="let tab of tabs; let i = index"
             role="tab"
             tabindex="{{ i }}"
-            class="apto-tabs-nav-item"
+            class="AptoTabNav-item"
             [id]="getTabNavId(i)"
             [attr.href]="getTabNavPaneId(i)"
-            [class.apto-tabs-nav-item--active]="selectedIndex == i"
+            [class.AptoTabNav-item--active]="selectedIndex == i"
             [attr.aria-selected]="selectedIndex == i ? 'true' : 'false'"
             [attr.aria-controls]="getTabPaneId(i)"
             [attr.aria-setsize]="tabs.length"
@@ -24,7 +24,7 @@
         </a>
     </nav>
 </div>
-<div class="apto-tabs-content">
+<div class="AptoTabPane-wrapper">
     <div
         aptoTabPane
         *ngFor="let tab of tabs; let i = index"
@@ -32,7 +32,7 @@
         [id]="getTabPaneId(i)"
         [content]="tab.contentRef"
         [active]="tab.active"
-        [class.apto-tabs-pane--active]="selectedIndex == i"
+        [class.AptoTabPane--active]="selectedIndex == i"
         [attr.aria-labelledby]="getAriaLabelledby(i)"
         [attr.data-automation]="tab.automation">
     </div>

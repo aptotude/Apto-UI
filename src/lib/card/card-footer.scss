@@ -1,15 +1,15 @@
 @import './card.scss';
 
-.apto-card--footer {
+.AptoCardFooter {
     display: flex;
     padding: $card-padding;
     justify-content: space-between;
 }
 
-.apto-card--footer--left {
+.AptoCardFooter-left {
     margin-right: auto;
 }
 
-.apto-card--footer--right {
+.AptoCardFooter-right {
     margin-left: auto;
 }

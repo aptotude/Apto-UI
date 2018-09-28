@@ -118,7 +118,7 @@ describe('Apto Icon', () => {
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
         testComponent.iconColor = IconColors.blue;
         fixture.detectChanges();
-        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--color-blue']);
+        expect(sortedClassNames(matIconElement)).toEqual(['AptoIcon', 'AptoIcon--colorBlue']);
     });
 
     it('should apply class based on color attribute', () => {
@@ -127,21 +127,21 @@ describe('Apto Icon', () => {
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
         testComponent.iconSize = 5;
         fixture.detectChanges();
-        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--size-5']);
+        expect(sortedClassNames(matIconElement)).toEqual(['AptoIcon', 'AptoIcon--size5']);
     });
 
     it('should apply class based on inline attribute', () => {
         const fixture = TestBed.createComponent(IconWithInlineComponent);
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
         fixture.detectChanges();
-        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--inline']);
+        expect(sortedClassNames(matIconElement)).toEqual(['AptoIcon', 'AptoIcon--inline']);
     });
 
     it('should apply class based on circle attribute', () => {
         const fixture = TestBed.createComponent(IconWithCircleComponent);
         const matIconElement = fixture.debugElement.nativeElement.querySelector('apto-icon');
         fixture.detectChanges();
-        expect(sortedClassNames(matIconElement)).toEqual(['apto-icon', 'apto-icon--circle']);
+        expect(sortedClassNames(matIconElement)).toEqual(['AptoIcon', 'AptoIcon--circle']);
     });
 
     it('should mark apto-icon as aria-hidden by default', () => {

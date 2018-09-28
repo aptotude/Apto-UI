@@ -102,8 +102,8 @@ storiesOf('Grid', module)
         ${styles}
         <apto-container>
             <apto-row>
-                <apto-col xs="12" md="8">xs="12" md="8"</apto-col>
-                <apto-col xs="6" md="4">xs="6" md="4"</apto-col>
+                <apto-col xs="12" sm="5" md="8" lg="6">xs="12" sm="5" md="8" lg="6"</apto-col>
+                <apto-col xs="6" sm="7" md="4" lg="6">xs="6" sm="7" md="4" lg="6"</apto-col>
             </apto-row>
         </apto-container>
         `

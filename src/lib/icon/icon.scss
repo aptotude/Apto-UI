@@ -1,79 +1,79 @@
 @import '../scss/theme/variables.scss';
 @import '../scss/mixins/_size.scss';
 
-.apto-icon {
+.AptoIcon {
     display: inline-block;
     fill: currentColor;
     line-height: 0;
     box-sizing: border-box;
     @include square(2.0rem);
-    &.apto-icon--inline {
+    &.AptoIcon--inline {
         vertical-align: middle;
     }
-    &.apto-icon--circle {
+    &.AptoIcon--circle {
         border-radius: 100%;
         background-color: currentColor;
         border: 3px solid currentColor;
         fill: $white;
-        &.apto-icon--color-white {
+        &.AptoIcon--colorWhite {
             background-color: $white;
             border-color: $white;
             fill: $blue-500;
         }
-        &.apto-icon--color-blue {
+        &.AptoIcon--colorBlue {
             background-color: $blue-500;
             border-color: $blue-500;
             fill: $white;
         }
-        &.apto-icon--color-orange {
+        &.AptoIcon--colorOrange {
             background-color: $orange-500;
             border-color: $orange-500;
             fill: $white;
         }
-        &.apto-icon--color-gray {
+        &.AptoIcon--colorGray {
             background-color: $gray-600;
             border-color: $gray-600;
             fill: $white;
         }
-        &.apto-icon--color-lightGray {
+        &.AptoIcon--colorLightGray {
             background-color: $gray-300;
             border-color: $gray-300;
             fill: $white;
         }
     }
-    &.apto-icon--size-1 {
+    &.AptoIcon--size1 {
         @include square($font-size-base);
-        &.apto-icon--circle {
+        &.AptoIcon--circle {
             border-width: 2px;
         }
     }
-    &.apto-icon--size-2 {
+    &.AptoIcon--size2 {
         @include square(1.8rem);
-        &.apto-icon--circle {
+        &.AptoIcon--circle {
             border-width: 2px;
         }
     }
-    &.apto-icon--size-3 {
+    &.AptoIcon--size3 {
         @include square(2.0rem);
-        &.apto-icon--circle {
+        &.AptoIcon--circle {
             border-width: 3px;
         }
     }
-    &.apto-icon--size-4 {
+    &.AptoIcon--size4 {
         @include square(2.4rem);
-        &.apto-icon--circle {
+        &.AptoIcon--circle {
             border-width: 4px;
         }
     }
-    &.apto-icon--size-5 {
+    &.AptoIcon--size5 {
         @include square(2.8rem);
-        &.apto-icon--circle {
+        &.AptoIcon--circle {
             border-width: 5px;
         }
     }
-    &.apto-icon--size-6 {
+    &.AptoIcon--size6 {
         @include square(5.0rem);
-        &.apto-icon--circle {
+        &.AptoIcon--circle {
             border-width: 7px;
         }
     }

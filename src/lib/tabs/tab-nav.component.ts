@@ -5,11 +5,11 @@ import {
 } from '@angular/core';
 
 @Component({
-    selector: 'apto-tab-header, [aptoTabHeader]',
+    selector: 'apto-tab-nav,[aptoTabNav]',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./tab-header.scss'],
-    host: {'class': 'apto-tabs-nav'},
+    styleUrls: ['./tab-nav.scss'],
+    host: {'class': 'AptoTabNav'},
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AptoTabHeaderComponent {}
+export class AptoTabNavComponent {}

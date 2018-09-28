@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
     selector: 'apto-card',
     templateUrl: 'card.html',
     styleUrls: ['./card.scss'],
-    host: {'class': 'apto-card'},
+    host: {'class': 'AptoCard'},
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -16,7 +16,7 @@ $card-header-color:           $gray-600 !default;
 $card-header-font-size:       1.2rem !default;
 $card-header-font-weight:     $font-weight-base !default;
 
-.apto-card {
+.AptoCard {
     margin: 0;
     background: $card-bg;
     border: $card-border;
@@ -29,6 +29,6 @@ $card-header-font-weight:     $font-weight-base !default;
     display: block;
     position: relative;
 }
-.apto-card + .apto-card {
+.AptoCard + .AptoCard {
     margin-top: $card-margin;
 }

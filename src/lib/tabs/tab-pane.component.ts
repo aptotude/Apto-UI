@@ -11,7 +11,7 @@ import {
     styleUrls: ['tab-pane.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {'class': 'apto-tabs-pane'},
+    host: {'class': 'AptoTabPane'},
 })
 export class AptoTabPaneComponent {
     @Input() public content: any;
