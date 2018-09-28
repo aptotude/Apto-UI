@@ -1,35 +1,35 @@
 @import '../scss/theme/variables.scss';
 
-.apto-header {
+.AptoHeader {
     font-family: $font-family-base;
     display: block;
     line-height: $line-height-base;
     margin: 0;
     padding: 0;
-}
-.apto-header--h1 {
-    font-size: $h1-font-size;
-    font-weight: $font-weight-light;
-    text-transform: uppercase;
-}
-.apto-header--h2 {
-    font-size: $h2-font-size;
-    font-weight: $font-weight-light;
-    text-transform: uppercase;
-}
-.apto-header--h3 {
-    font-size: $h3-font-size;
-    font-weight: $font-weight-bold;
-}
-.apto-header--h4 {
-    font-size: $h4-font-size;
-    font-weight: $font-weight-bold;
-}
-.apto-header--h5 {
-    font-size: $h5-font-size;
-    font-weight: $font-weight-bold;
-}
-.apto-header--h6 {
-    font-size: $h6-font-size;
-    font-weight: $font-weight-bold;
+    &.AptoHeader--h1 {
+        font-size: $h1-font-size;
+        font-weight: $font-weight-light;
+        text-transform: uppercase;
+    }
+    &.AptoHeader--h2 {
+        font-size: $h2-font-size;
+        font-weight: $font-weight-light;
+        text-transform: uppercase;
+    }
+    &.AptoHeader--h3 {
+        font-size: $h3-font-size;
+        font-weight: $font-weight-bold;
+    }
+    &.AptoHeader--h4 {
+        font-size: $h4-font-size;
+        font-weight: $font-weight-bold;
+    }
+    &.AptoHeader--h5 {
+        font-size: $h5-font-size;
+        font-weight: $font-weight-bold;
+    }
+    &.AptoHeader--h6 {
+        font-size: $h6-font-size;
+        font-weight: $font-weight-bold;
+    }
 }

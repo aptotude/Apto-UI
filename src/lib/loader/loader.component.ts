@@ -6,8 +6,8 @@ import { coerceBooleanProperty } from '../utils';
     templateUrl: 'loader.html',
     styleUrls: ['./loader.scss'],
     host: {
-        'class': 'apto-loader',
-        '[class.apto-loader--no-overlay]': 'noOverlay'
+        'class': 'AptoLoader',
+        '[class.AptoLoader--noOverlay]': 'noOverlay'
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None

@@ -1,6 +1,6 @@
 @import '../scss/theme/variables.scss';
 
-.apto-paragraph {
+.AptoParagraph {
     font-family: $font-family-base;
     font-size: $font-size-base;
     font-weight: $font-weight-base;
@@ -10,11 +10,11 @@
     display: block;
 }
 // space successive paragraphs
-apto-paragraph + apto-paragraph .apto-paragraph{
+apto-paragraph + apto-paragraph .AptoParagraph{
     padding-top: $grid-gutter-width / 2;
 }
 
 // space successive compact paragraphs
-apto-paragraph[compact] + apto-paragraph[compact] .apto-paragraph{
+apto-paragraph[compact] + apto-paragraph[compact] .AptoParagraph{
     padding-top: 0.2rem;
 }

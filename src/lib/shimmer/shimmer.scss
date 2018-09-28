@@ -3,7 +3,7 @@
 $shimmer-transition-from: $gray-200 !default;
 $shimmer-transition-to: $gray-400 !default;
 
-@keyframes aptoShimmer {
+@keyframes aptoShimmerAnimation {
     0% {
         background-position: -468px 0;
     }
@@ -12,8 +12,8 @@ $shimmer-transition-to: $gray-400 !default;
     }
 }
 
-.apto-shimmer {
-    animation: aptoShimmer 2s linear infinite;
+.AptoShimmer {
+    animation: aptoShimmerAnimation 2s linear infinite;
     animation-fill-mode: forwards;
     background: $shimmer-transition-from;
     background: linear-gradient(to right, $shimmer-transition-from 8%, $shimmer-transition-to 18%, $shimmer-transition-from 33%);

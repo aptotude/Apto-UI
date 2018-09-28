@@ -36,7 +36,7 @@ describe('apto-loader', () => {
         testComponent.loadText = 'Loading';
         fixture.detectChanges();
 
-        const el = fixture.nativeElement.querySelector('apto-loader .apto-loader--content');
+        const el = fixture.nativeElement.querySelector('apto-loader .AptoLoader-content');
         expect(el.innerText.includes('Loading')).toBe(true);
     });
 
@@ -44,17 +44,17 @@ describe('apto-loader', () => {
         testComponent.loadText = null;
         fixture.detectChanges();
 
-        const el = fixture.nativeElement.querySelector('apto-loader .apto-loader--content');
+        const el = fixture.nativeElement.querySelector('apto-loader .AptoLoader-content');
         expect(el).toBe(null);
     });
 
     it('should have loader class', () => {
         const el = fixture.nativeElement.querySelector('apto-loader');
-        expect(el.className).toBe('apto-loader');
+        expect(el.className).toBe('AptoLoader');
     });
 
     it('should have no overlay loader class', () => {
         const el = fixture.nativeElement.querySelector('apto-loader[data-no-overlay]');
-        expect(el.className).toBe('apto-loader apto-loader--no-overlay');
+        expect(el.className).toBe('AptoLoader AptoLoader--noOverlay');
     });
 });

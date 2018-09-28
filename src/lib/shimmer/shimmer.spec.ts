@@ -31,6 +31,6 @@ describe('apto-shimmer', () => {
 
     it('should have loader class', () => {
         const el = fixture.nativeElement.querySelector('apto-shimmer');
-        expect(el.className).toBe('apto-shimmer');
+        expect(el.className).toBe('AptoShimmer');
     });
 });

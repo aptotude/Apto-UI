@@ -39,7 +39,7 @@ describe('apto-paragraph', () => {
 
         it('should have class', () => {
             const p = fixture.nativeElement.querySelector('p');
-            expect(p.className).toBe('apto-paragraph');
+            expect(p.className).toBe('AptoParagraph');
         });
     });
 });

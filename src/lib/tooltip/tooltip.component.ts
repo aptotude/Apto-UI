@@ -6,6 +6,8 @@ import {
     Directive,
     Inject,
     OnInit,
+    ViewEncapsulation,
+    ChangeDetectionStrategy,
     OnDestroy
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
@@ -26,7 +28,9 @@ let nextAptoTooltipId = 0;
 @Component({
     selector: 'apto-tooltip',
     templateUrl: 'tooltip.html',
-    styleUrls: ['./tooltip.scss']
+    styleUrls: ['./tooltip.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class AptoTooltipComponent implements OnInit, OnDestroy {
     @Input() public hoverDelay = 200;

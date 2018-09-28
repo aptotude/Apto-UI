@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
     selector: 'apto-shimmer',
     template: '<ng-content></ng-content>',
     styleUrls: ['./shimmer.scss'],
-    host: {'class': 'apto-shimmer'},
+    host: {'class': 'AptoShimmer'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
