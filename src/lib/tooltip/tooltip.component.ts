@@ -41,7 +41,7 @@ export class AptoTooltipComponent implements OnInit, OnDestroy {
     private _subscriptions: Subscription[] = [];
 
     constructor(@Inject(DOCUMENT) private _doc: any) {
-        this.tipId = 'apto-tooltip-' + nextAptoTooltipId++;
+        this.tipId = 'AptoTooltip--' + nextAptoTooltipId++;
     }
 
     public ngOnInit(): void {

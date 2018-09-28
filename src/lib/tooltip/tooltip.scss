@@ -7,12 +7,12 @@ $tooltip-padding:               0.5rem !default;
 $tooltip-color:                 $body-text !default;
 $tooltip-bg:                    $white !default;
 
-.apto-tooltip--trigger {
+.AptoTooltip-trigger {
     display: inline-block;
     cursor: pointer;
 }
 
-.apto-tooltip {
+.AptoTooltip {
     position: absolute;
     background: $tooltip-bg;
     top: 0;
@@ -24,7 +24,7 @@ $tooltip-bg:                    $white !default;
     &[hidden] {
         display: none;
     }
-    .apto-tooltip--inner {
+    .AptoTooltip-inner {
         font-family: $tooltip-font-family;
         font-size: $tooltip-font-size;
         font-weight: $tooltip-font-weight;
