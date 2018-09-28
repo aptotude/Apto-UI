@@ -30,6 +30,8 @@ import { AptoButtonComponentModule } from 'apto-ui';
 export class SuperAwesomeAppModule { }
 ```
 
+## SUIT CSS Naming Conventions
+
 ## [Components](components.md)
 
 The CSS responsible for component-specific styling.
@@ -42,9 +44,6 @@ This has several benefits when reading and writing HTML and CSS:
   descendent elements, and modifications.
 * It keeps the specificity of selectors low.
 * It helps to decouple presentation semantics from document semantics.
-
-
-## SUIT CSS Conventions
 
 <a name="ComponentName"></a>
 ### ComponentName
