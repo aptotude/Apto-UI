@@ -52,30 +52,30 @@
 
         // Allow columns to stretch full width below their breakpoints
         @for $i from 1 through $columns {
-            .apto-col#{$infix}-#{$i} {
+            .AptoCol#{$infix}-#{$i} {
                 @extend %grid-column;
             }
         }
-        .apto-col#{$infix},
-        .apto-col#{$infix}-auto {
+        .AptoCol#{$infix},
+        .AptoCol#{$infix}-auto {
             @extend %grid-column;
         }
 
         @include media-breakpoint-up($breakpoint, $breakpoints) {
-            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-            .apto-col#{$infix} {
+            // Provide basic `.AptoCol-{bp}` classes for equal-width flexbox columns
+            .AptoCol#{$infix} {
                 flex-basis: 0;
                 flex-grow: 1;
                 max-width: 100%;
             }
-            .apto-col#{$infix}-auto {
+            .AptoCol#{$infix}-auto {
                 flex: 0 0 auto;
                 width: auto;
                 max-width: none; // Reset earlier grid tiers
             }
 
             @for $i from 1 through $columns {
-                .apto-col#{$infix}-#{$i} {
+                .AptoCol#{$infix}-#{$i} {
                     @include make-apto-col($i, $columns);
                 }
             }

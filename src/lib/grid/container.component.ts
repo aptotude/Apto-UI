@@ -6,9 +6,9 @@ import { coerceBooleanProperty } from '../utils';
     template: '<ng-content></ng-content>',
     styleUrls: ['./container.scss'],
     host: {
-        'class': 'apto-container',
-        '[class.apto-container--scroll]': 'scroll',
-        '[class.apto-container--fixed]': 'fixed'
+        'class': 'AptoContainer',
+        '[class.AptoContainer--scroll]': 'scroll',
+        '[class.AptoContainer--fixed]': 'fixed'
     },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush

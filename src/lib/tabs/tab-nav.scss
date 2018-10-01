@@ -12,19 +12,19 @@ $tab-header-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 
 $tab-header-border-radius: 2px !default;
 $tab-header-bg-color: $white !default;
 
-.apto-tabs-header {
+.AptoTabNav-wrapper {
     margin-bottom: $tab-nav-margin;
     border: $tab-header-border;
     box-shadow: $tab-header-box-shadow;
     border-radius: $tab-header-border-radius;
     background-color: $tab-header-bg-color;
 }
-.apto-tabs-nav {
+.AptoTabNav {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: -1px;
 }
-.apto-tabs-nav-item {
+.AptoTabNav-item {
     display: inline-block;
     flex: 1 1 auto;
     line-height: 1;
@@ -36,7 +36,7 @@ $tab-header-bg-color: $white !default;
     border-bottom: 2px solid transparent;
     transition: color .15s ease-in-out, border-color .15s ease-in-out, font-weight .15s ease-in-out;
     outline: none;
-    &.apto-tabs-nav-item--active {
+    &.AptoTabNav-item--active {
         border-bottom-color: $tab-nav-active-border-color;
         color: $tab-nav-active-color;
         font-weight: $tab-nav-active-font-weight;

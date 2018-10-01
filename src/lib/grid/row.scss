@@ -1,13 +1,13 @@
 @import '../scss/mixins/_grid.scss';
 
-.apto-row {
+.AptoRow {
     @include make-apto-row()
 }
-.apto-row--no-gutter {
+.AptoRow--noGutter {
     margin-right: 0;
     margin-left: 0;
-    > .apto-col,
-    > [class*="apto-col-"] {
+    > .AptoCol,
+    > [class*="AptoCol-"] {
       padding-right: 0;
       padding-left: 0;
     }

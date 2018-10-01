@@ -25,10 +25,10 @@ export enum IconColors {
     styleUrls: ['./icon.scss'],
     template: '<ng-content></ng-content>',
     host: {
-        'class': 'apto-icon',
+        'class': 'AptoIcon',
         'role': 'img',
-        '[class.apto-icon--inline]': 'inline',
-        '[class.apto-icon--circle]': 'circle'
+        '[class.AptoIcon--inline]': 'inline',
+        '[class.AptoIcon--circle]': 'circle'
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
@@ -79,17 +79,21 @@ export class AptoIconComponent implements OnChanges {
 
         if (changes.circleColor) {
             if (changes.circleColor.previousValue) {
-                this._elementRef.nativeElement.classList.remove(`apto-icon--color-${changes.circleColor.previousValue}`);
+                this._elementRef.nativeElement.classList.remove(`AptoIcon--color${this.capitailize(changes.circleColor.previousValue)}`);
             }
-            this._elementRef.nativeElement.classList.add(`apto-icon--color-${this.circleColor}`);
+            this._elementRef.nativeElement.classList.add(`AptoIcon--color${this.capitailize(this.circleColor)}`);
         }
 
         if (changes.size) {
             if (changes.size.previousValue) {
-                this._elementRef.nativeElement.classList.remove(`apto-icon--size-${changes.size.previousValue}`);
+                this._elementRef.nativeElement.classList.remove(`AptoIcon--size${changes.size.previousValue}`);
             }
-            this._elementRef.nativeElement.classList.add(`apto-icon--size-${this.size}`);
+            this._elementRef.nativeElement.classList.add(`AptoIcon--size${this.size}`);
         }
+    }
+
+    private capitailize(str: string): string {
+        return str.charAt(0).toUpperCase() + str.substr(1);
     }
 
     private _splitIconName(iconName: string): [string, string] {

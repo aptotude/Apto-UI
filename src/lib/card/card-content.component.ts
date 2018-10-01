@@ -6,8 +6,8 @@ import { coerceBooleanProperty } from '../utils';
     template: '<ng-content></ng-content>',
     styleUrls: ['./card-content.scss'],
     host: {
-        'class': 'apto-card--content',
-        '[class.apto-card--content--no-padding]': 'noPadding',
+        'class': 'AptoCardContent',
+        '[class.AptoCardContent--noPadding]': 'noPadding',
     },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush

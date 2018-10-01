@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AptoTabComponent, AptoTabContentDirective, AptoTabLabelDirective } from './tab.component';
-import { AptoTabHeaderComponent } from './tab-header.component';
+import { AptoTabNavComponent } from './tab-nav.component';
 import { AptoTabGroupComponent } from './tab-group.component';
 import { AptoTabPaneComponent } from './tab-pane.component';
 
@@ -12,7 +12,7 @@ import { AptoTabPaneComponent } from './tab-pane.component';
     declarations: [
         AptoTabGroupComponent,
         AptoTabComponent,
-        AptoTabHeaderComponent,
+        AptoTabNavComponent,
         AptoTabPaneComponent,
         AptoTabContentDirective,
         AptoTabLabelDirective
@@ -20,7 +20,7 @@ import { AptoTabPaneComponent } from './tab-pane.component';
     exports: [
         AptoTabGroupComponent,
         AptoTabComponent,
-        AptoTabHeaderComponent,
+        AptoTabNavComponent,
         AptoTabPaneComponent,
         AptoTabContentDirective,
         AptoTabLabelDirective

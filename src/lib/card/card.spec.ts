@@ -53,31 +53,31 @@ describe('apto-card', () => {
     describe('classes', () => {
         it('has the correct base class name', () => {
             const card = fixture.nativeElement.querySelector('apto-card');
-            expect(card.className).toBe('apto-card');
+            expect(card.className).toBe('AptoCard');
         });
 
         it('has the correct header class name', () => {
             const cardHeader = fixture.nativeElement.querySelector('apto-card apto-card-header');
 
-            expect(cardHeader.className).toBe('apto-card--header');
+            expect(cardHeader.className).toBe('AptoCardHeader');
         });
 
         it('has the correct content class name', () => {
             const cardContent = fixture.nativeElement.querySelector('apto-card apto-card-content');
 
-            expect(cardContent.className).toBe('apto-card--content');
+            expect(cardContent.className).toBe('AptoCardContent');
         });
 
         it('has the correct content no padding class name', () => {
             const cardContent = fixture.nativeElement.querySelector('apto-card[data-no-content-padding-card] apto-card-content');
 
-            expect(cardContent.className).toBe('apto-card--content apto-card--content--no-padding');
+            expect(cardContent.className).toBe('AptoCardContent AptoCardContent--noPadding');
         });
 
         it('has the correct header no padding class name', () => {
             const cardHeader = fixture.nativeElement.querySelector('apto-card[data-no-header-padding-card] apto-card-header');
 
-            expect(cardHeader.className).toBe('apto-card--header apto-card--header--no-bottom-padding');
+            expect(cardHeader.className).toBe('AptoCardHeader AptoCardHeader--noBottomPadding');
         });
 
         it('has the correct footer class names', () => {
@@ -85,9 +85,9 @@ describe('apto-card', () => {
             const cardFooterRight = fixture.nativeElement.querySelector('apto-card apto-card-footer apto-card-footer-right');
             const cardFooterLeft = fixture.nativeElement.querySelector('apto-card apto-card-footer apto-card-footer-left');
 
-            expect(cardFooter.className).toBe('apto-card--footer');
-            expect(cardFooterRight.className).toBe('apto-card--footer--right');
-            expect(cardFooterLeft.className).toBe('apto-card--footer--left');
+            expect(cardFooter.className).toBe('AptoCardFooter');
+            expect(cardFooterRight.className).toBe('AptoCardFooter-right');
+            expect(cardFooterLeft.className).toBe('AptoCardFooter-left');
         });
     });
 

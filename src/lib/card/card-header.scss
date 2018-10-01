@@ -1,11 +1,11 @@
 @import './card.scss';
 
-.apto-card--header {
+.AptoCardHeader {
     display: block;
     font-size: $card-header-font-size;
     color: $card-header-color;
     padding: $card-padding;
-    &.apto-card--header--no-bottom-padding {
+    &.AptoCardHeader--noBottomPadding {
         padding-bottom: 0;
     }
 }

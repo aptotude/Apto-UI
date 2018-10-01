@@ -26,7 +26,7 @@ export class AptoTabChangeEvent {
     selector: 'apto-tab-group',
     templateUrl: './tab-group.html',
     styleUrls: ['./tab-group.scss'],
-    host: {'class': 'apto-tab-group'},
+    host: {'class': 'AptoTabGroup'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
@@ -61,19 +61,19 @@ export class AptoTabGroupComponent implements AfterContentChecked {
     }
 
     public getAriaLabelledby(i: number): string {
-        return `apto-tab-nav-${this._groupId}-${i}`;
+        return `AptoTabNav-${this._groupId}-${i}`;
     }
 
     public getTabPaneId(i: number): string {
-        return `apto-tab-pane-${this._groupId}-${i}`;
+        return `AptoTabPane-${this._groupId}-${i}`;
     }
 
     public getTabNavId(i: number): string {
-        return `apto-tab-nav-${this._groupId}-${i}`;
+        return `AptoTabNav-${this._groupId}-${i}`;
     }
 
     public getTabNavPaneId(i: number): string {
-        return `#apto-tab-pane-${this._groupId}-${i}`;
+        return `#AptoTabPane-${this._groupId}-${i}`;
     }
 
     public keyDownHandler(event: KeyboardEvent) {

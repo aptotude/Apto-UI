@@ -34,7 +34,7 @@ export class AptoGridColumnDirective {
         if (classes.length) {
             return classes.join(' ');
         }
-        return 'apto-col';
+        return 'AptoCol';
     }
 
     // count can be [1-12], 'auto', true, 'true'
@@ -44,9 +44,9 @@ export class AptoGridColumnDirective {
             size = `-${size}`;
         }
         if (count === 'true' || count === true) {
-            return `apto-col${size}`;
+            return `AptoCol${size}`;
         } else {
-            return `apto-col${size}-${count}`;
+            return `AptoCol${size}-${count}`;
         }
     }
 }
@@ -56,8 +56,8 @@ export class AptoGridColumnDirective {
     template: '<ng-content select="apto-col"></ng-content>',
     styleUrls: ['./row.scss'],
     host: {
-        'class': 'apto-row',
-        '[class.apto-row--no-gutter]': 'noGutter'
+        'class': 'AptoRow',
+        '[class.AptoRow--noGutter]': 'noGutter'
     },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush

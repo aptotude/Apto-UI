@@ -31,6 +31,6 @@ export class AptoButtonComponent {
     }
 
     public classes(): string {
-        return `apto-button apto-button--${this.type || ButtonTypes.Button} apto-button--${this.kind || ButtonKinds.Primary}`;
+        return `AptoButton AptoButton--${this.type || ButtonTypes.Button} AptoButton--${this.kind || ButtonKinds.Primary}`;
     }
 }

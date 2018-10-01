@@ -42,13 +42,13 @@ describe('apto-row', () => {
     describe('Gutter', () => {
         it ('should have gutter', () => {
             const el = fixture.nativeElement.querySelector('apto-row');
-            expect(el.className).toEqual('apto-row');
+            expect(el.className).toEqual('AptoRow');
         });
 
         it ('should not have gutter', () => {
             const el = fixture.nativeElement.querySelector('apto-row[data-no-gutter]');
-            expect(el.classList.contains('apto-row')).toEqual(true);
-            expect(el.classList.contains('apto-row--no-gutter')).toEqual(true);
+            expect(el.classList.contains('AptoRow')).toEqual(true);
+            expect(el.classList.contains('AptoRow--noGutter')).toEqual(true);
         });
     });
 
@@ -63,7 +63,7 @@ describe('apto-row', () => {
         describe('xs', () => {
             it('should have apto-col by default', () => {
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col');
+                expect(el.className).toEqual('AptoCol');
             });
 
             it('should have auto width column', () => {
@@ -71,7 +71,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-auto');
+                expect(el.className).toEqual('AptoCol-auto');
             });
 
             it('should have numbered col', () => {
@@ -79,7 +79,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-6');
+                expect(el.className).toEqual('AptoCol-6');
             });
 
             it('should have auto size', () => {
@@ -87,7 +87,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col');
+                expect(el.className).toEqual('AptoCol');
             });
         });
 
@@ -97,7 +97,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-sm-auto');
+                expect(el.className).toEqual('AptoCol-sm-auto');
             });
 
             it('should have numbered col', () => {
@@ -105,7 +105,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-sm-6');
+                expect(el.className).toEqual('AptoCol-sm-6');
             });
 
             it('should have auto size', () => {
@@ -113,7 +113,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-sm');
+                expect(el.className).toEqual('AptoCol-sm');
             });
         });
 
@@ -123,7 +123,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-md-auto');
+                expect(el.className).toEqual('AptoCol-md-auto');
             });
 
             it('should have numbered col', () => {
@@ -131,7 +131,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-md-6');
+                expect(el.className).toEqual('AptoCol-md-6');
             });
 
             it('should have auto size', () => {
@@ -139,7 +139,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-md');
+                expect(el.className).toEqual('AptoCol-md');
             });
         });
 
@@ -149,7 +149,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-lg-auto');
+                expect(el.className).toEqual('AptoCol-lg-auto');
             });
 
             it('should have numbered col', () => {
@@ -157,7 +157,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-lg-6');
+                expect(el.className).toEqual('AptoCol-lg-6');
             });
 
             it('should have auto size', () => {
@@ -165,7 +165,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-lg');
+                expect(el.className).toEqual('AptoCol-lg');
             });
         });
 
@@ -175,7 +175,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-xl-auto');
+                expect(el.className).toEqual('AptoCol-xl-auto');
             });
 
             it('should have numbered col', () => {
@@ -183,7 +183,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-xl-6');
+                expect(el.className).toEqual('AptoCol-xl-6');
             });
 
             it('should have auto size', () => {
@@ -191,7 +191,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-xl');
+                expect(el.className).toEqual('AptoCol-xl');
             });
         });
 
@@ -202,7 +202,7 @@ describe('apto-row', () => {
                 fixture.detectChanges();
 
                 const el = fixture.nativeElement.querySelector('apto-col');
-                expect(el.className).toEqual('apto-col-md-4 apto-col-xl-6');
+                expect(el.className).toEqual('AptoCol-md-4 AptoCol-xl-6');
             });
         });
     });
