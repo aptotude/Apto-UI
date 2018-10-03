@@ -13,7 +13,8 @@ export class AptoListItemIconDirective {}
     styleUrls: ['./list-item.scss'],
     host: {
         'class': 'AptoListItem',
-        '[class.AptoListItem--link]': 'link'
+        '[class.AptoListItem--link]': 'link',
+        '[class.AptoListItem--empty]': 'empty'
     },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,6 +27,14 @@ export class AptoListItemComponent {
         set link(link: boolean) {
             this._link = coerceBooleanProperty(link);
         }
+    @Input()
+        get empty(): boolean {
+            return this._empty;
+        }
+        set empty(empty: boolean) {
+            this._empty = coerceBooleanProperty(empty);
+        }
 
     private _link = false;
+    private _empty = false;
 }

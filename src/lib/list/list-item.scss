@@ -22,9 +22,26 @@
             top: 50%;
             transform: rotate(-45deg) translateY(-50%);
         }
+        &:hover {
+            background-color: $gray-300;
+        }
+        .AptoListItem-text {
+            padding-right: 3.6rem;
+        }
     }
-    &:hover {
-        background-color: $gray-300;
+
+    &.AptoListItem--empty {
+        color: $gray-500;
+        .AptoListItem-text {
+            padding-left: 3.6rem;
+            padding-right: 3.6rem;
+        }
+        .AptoListItem-icon {
+            margin-left: 3.6rem;
+            & + .AptoListItem-text {
+                padding-left: 1rem;
+            }
+        }
     }
 }
 
@@ -34,7 +51,7 @@
 }
 
 .AptoListItem-text {
-    padding: 1.4rem 0 1.4rem 1.6rem;
+    padding: 1.4rem 1.6rem;
     margin: 0;
     width: 100%;
     border-bottom: 1px solid $gray-450;
