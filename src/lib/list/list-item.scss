@@ -1,0 +1,71 @@
+@import '../scss/theme/variables.scss';
+
+.AptoListItem {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: $white;
+
+    &.AptoListItem--link {
+        cursor: pointer;
+        &:after {
+            content: "";
+            display: inline-block;
+            border-right: 2px solid $gray-550;
+            border-bottom: 2px solid $gray-550;
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: rotate(-45deg) translateY(-50%);
+        }
+        &:hover {
+            background-color: $gray-300;
+        }
+        .AptoListItem-text {
+            padding-right: 3.6rem;
+        }
+    }
+
+    &.AptoListItem--empty {
+        color: $gray-500;
+        .AptoListItem-text {
+            padding-left: 3.6rem;
+            padding-right: 3.6rem;
+        }
+        .AptoListItem-icon {
+            margin-left: 3.6rem;
+            & + .AptoListItem-text {
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+
+.AptoListItem-content {
+    display: flex;
+    align-items: center;
+}
+
+.AptoListItem-text {
+    padding: 1.4rem 1.6rem;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid $gray-450;
+}
+
+.AptoListItem-icon {
+    margin: 0 0 0 1.6rem;
+    & + .AptoListItem-text {
+        padding-left: 1.3rem;
+    }
+}
+
+.AptoListItem:last-child {
+    .AptoListItem-text {
+        border-bottom-color: transparent;
+    }
+}
