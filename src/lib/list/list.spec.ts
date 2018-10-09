@@ -83,7 +83,7 @@ describe('apto-list', () => {
 
         it('should have correct number of apto-list-item', () => {
             const listItems = fixture.nativeElement.querySelectorAll('apto-list-item');
-            expect(listItems.length).toEqual(4);
+            expect(listItems.length).toEqual(5);
         });
     });
 
