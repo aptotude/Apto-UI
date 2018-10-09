@@ -20,6 +20,11 @@ export enum IconColors {
     lightGray = 'lightGray'
 }
 
+export enum IconStatus {
+    warning = 'warning',
+    danger = 'danger',
+}
+
 @Component({
     selector: 'apto-icon',
     styleUrls: ['./icon.scss'],
@@ -37,6 +42,7 @@ export class AptoIconComponent implements OnChanges {
     @Input() public icon: string = null;
     @Input() public size: number = null;
     @Input() public circleColor: IconColors = null;
+    @Input() public status: IconStatus = null;
     @Input()
         get circle(): boolean {
             return this._circle;
@@ -82,6 +88,13 @@ export class AptoIconComponent implements OnChanges {
                 this._elementRef.nativeElement.classList.remove(`AptoIcon--color${this.capitailize(changes.circleColor.previousValue)}`);
             }
             this._elementRef.nativeElement.classList.add(`AptoIcon--color${this.capitailize(this.circleColor)}`);
+        }
+
+        if (changes.status) {
+            if (changes.status.previousValue) {
+                this._elementRef.nativeElement.classList.remove(`AptoIcon--status${this.capitailize(changes.status.previousValue)}`);
+            }
+            this._elementRef.nativeElement.classList.add(`AptoIcon--status${this.capitailize(this.status)}`);
         }
 
         if (changes.size) {

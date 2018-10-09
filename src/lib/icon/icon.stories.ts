@@ -120,6 +120,20 @@ import { IconColors } from './icon.component';
             <p><apto-icon inline circle circleColor="orange" icon="property"></apto-icon> circleColor="orange"</p>
             <p><apto-icon inline circle circleColor="lightGray" icon="property"></apto-icon> circleColor="lightGray"</p>
             <p><apto-icon inline circle circleColor="gray" icon="property"></apto-icon> circleColor="gray"</p>
+
+            <h3 class="heading">Icon Status ("status" attribute)</h3>
+            <p>
+                <apto-icon inline circle circleColor="blue" size="5" status="danger" icon="company"></apto-icon>
+                circle circleColor="blue" status="danger"
+            </p>
+            <p>
+                <apto-icon inline circle circleColor="blue" size="5" status="warning" icon="company"></apto-icon>
+                circle circleColor="blue" status="warning"
+            </p>
+            <p>
+                <apto-icon inline status="danger" icon="company"></apto-icon>
+                status="danger"
+            </p>
             <h3 class="heading">Knobs</h3>
             <p>
                 <apto-icon inline [size]="iconSize" icon="property"></apto-icon>

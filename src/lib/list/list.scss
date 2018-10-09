@@ -3,4 +3,10 @@
     > * {
         box-sizing: border-box;
     }
+
+    .AptoListItem:last-child {
+        .AptoListItem-text {
+            border-bottom-color: transparent;
+        }
+    }
 }

@@ -117,3 +117,4 @@ Name | Description
 @Attribute() inline | Adding the `inline` attribute aligns the icon with text
 @Input() size: number = 3 | Size of icon 1-6.
 @Input() circleColor: IconColors = null | Use with the `circle` attribute to color the circle bg: white|blue|orange|gray|lightGray
+@Input() status: IconStatus = null | Use to add a ! icon and border: warning|danger
