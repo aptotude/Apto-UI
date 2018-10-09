@@ -3,6 +3,7 @@ export * from './card/index';
 export * from './grid/index';
 export * from './header/index';
 export * from './icon/index';
+export * from './list/index';
 export * from './loader/index';
 export * from './paragraph/index';
 export * from './shimmer/index';
