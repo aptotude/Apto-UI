@@ -11,9 +11,9 @@
                 <apto-icon aptoListItemIcon icon="property" size="5" circle circleColor="blue"></apto-icon>
                 Second Thing Icon With Link
             </apto-list-item>
-            <apto-list-item link>
+            <apto-list-item link active>
                 <apto-icon aptoListItemIcon icon="property" size="5" circle circleColor="blue"></apto-icon>
-                Third Thing Icon With Link
+                Third Thing Icon With Link and Active
             </apto-list-item>
         </apto-list>
     </apto-card-content>

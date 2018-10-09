@@ -22,9 +22,6 @@
             top: 50%;
             transform: rotate(-45deg) translateY(-50%);
         }
-        &:hover {
-            background-color: $gray-300;
-        }
         .AptoListItem-text {
             padding-right: 3.6rem;
         }
@@ -42,6 +39,11 @@
                 padding-left: 1rem;
             }
         }
+    }
+
+    &.AptoListItem--link:hover,
+    &.AptoListItem--active {
+        background-color: $gray-300;
     }
 }
 

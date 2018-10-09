@@ -9,8 +9,8 @@
             <apto-list-item link>
                 Second Thing Link
             </apto-list-item>
-            <apto-list-item link>
-                Third Thing Link
+            <apto-list-item link active>
+                Third Thing Link and active
             </apto-list-item>
         </apto-list>
     </apto-card-content>

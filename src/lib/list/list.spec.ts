@@ -17,6 +17,9 @@ import { AptoListComponentModule } from './list.module';
         <apto-list-item link data-item="link">
             Second Thing
         </apto-list-item>
+        <apto-list-item active data-item="active">
+            Active Thing
+        </apto-list-item>
         <apto-list-item empty data-item="empty">
             Third Thing
         </apto-list-item>
@@ -61,6 +64,11 @@ describe('apto-list', () => {
         it('should have empty class on empty apto-list-item', () => {
             const listItem = fixture.nativeElement.querySelector('apto-list-item[data-item="empty"]');
             expect(listItem.className).toBe('AptoListItem AptoListItem--empty');
+        });
+
+        it('should have active class on active apto-list-item', () => {
+            const listItem = fixture.nativeElement.querySelector('apto-list-item[data-item="active"]');
+            expect(listItem.className).toBe('AptoListItem AptoListItem--active');
         });
 
         it('should have link class on link apto-list-item', () => {

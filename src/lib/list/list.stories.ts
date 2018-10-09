@@ -61,8 +61,8 @@ import * as linkMd from './docs/linkList.md';
                 <apto-list-item link>
                     Second Thing Link
                 </apto-list-item>
-                <apto-list-item link>
-                    Third Thing Link
+                <apto-list-item link active>
+                    Third Thing Link and Active
                 </apto-list-item>
             </apto-list>
         </apto-card-content>
@@ -100,9 +100,9 @@ import * as linkMd from './docs/linkList.md';
                     <apto-icon aptoListItemIcon icon="property" size="5" circle circleColor="blue"></apto-icon>
                     Second Thing Icon With Link
                 </apto-list-item>
-                <apto-list-item link>
+                <apto-list-item link active>
                     <apto-icon aptoListItemIcon icon="property" size="5" circle circleColor="blue"></apto-icon>
-                    Third Thing Icon With Link
+                    Third Thing Icon With Link and Active
                 </apto-list-item>
             </apto-list>
         </apto-card-content>

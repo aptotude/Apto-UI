@@ -14,7 +14,8 @@ export class AptoListItemIconDirective {}
     host: {
         'class': 'AptoListItem',
         '[class.AptoListItem--link]': 'link',
-        '[class.AptoListItem--empty]': 'empty'
+        '[class.AptoListItem--empty]': 'empty',
+        '[class.AptoListItem--active]': 'active'
     },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -34,7 +35,15 @@ export class AptoListItemComponent {
         set empty(empty: boolean) {
             this._empty = coerceBooleanProperty(empty);
         }
+    @Input()
+        get active(): boolean {
+            return this._active;
+        }
+        set active(active: boolean) {
+            this._active = coerceBooleanProperty(active);
+        }
 
     private _link = false;
     private _empty = false;
+    private _active = false;
 }
