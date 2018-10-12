@@ -1,10 +1,5 @@
 .AptoList {
-    box-sizing: border-box;
-    > * {
-        box-sizing: border-box;
-    }
-
-    .AptoListItem:last-child {
+    > *:last-child {
         .AptoListItem-text {
             border-bottom-color: transparent;
         }

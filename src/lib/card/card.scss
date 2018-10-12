@@ -1,7 +1,7 @@
 @import '../scss/theme/variables.scss';
 
 $card-bg:                     $white !default;
-$card-border:                 1px solid $gray-300 !default;
+$card-border:                 none !default;
 $card-box-shadow:             0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
 $card-font-family:            $font-family-base !default;
 $card-font-size:              $font-size-base !default;
