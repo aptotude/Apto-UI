@@ -6,7 +6,7 @@ $card-box-shadow:             0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rg
 $card-font-family:            $font-family-base !default;
 $card-font-size:              $font-size-base !default;
 $card-font-weight:            $font-weight-base !default;
-$card-margin:                 $grid-gutter-width !default;
+$card-margin:                 $grid-gutter-width-half 0 !default;
 $card-padding:                1.6rem;
 $card-border-radius:          2px;
 
@@ -17,7 +17,7 @@ $card-header-font-size:       1.2rem !default;
 $card-header-font-weight:     $font-weight-base !default;
 
 .AptoCard {
-    margin: 0;
+    margin: $card-margin;
     background: $card-bg;
     border: $card-border;
     box-shadow: $card-box-shadow;
@@ -28,7 +28,4 @@ $card-header-font-weight:     $font-weight-base !default;
     padding: 0;
     display: block;
     position: relative;
-}
-.AptoCard + .AptoCard {
-    margin-top: $card-margin;
 }

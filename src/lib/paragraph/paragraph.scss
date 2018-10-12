@@ -11,7 +11,7 @@
 }
 // space successive paragraphs
 apto-paragraph + apto-paragraph .AptoParagraph{
-    padding-top: $grid-gutter-width / 2;
+    padding-top: $grid-gutter-width-half;
 }
 
 // space successive compact paragraphs
