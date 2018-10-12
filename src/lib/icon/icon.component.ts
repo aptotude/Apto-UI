@@ -28,7 +28,7 @@ export enum IconStatus {
 @Component({
     selector: 'apto-icon',
     styleUrls: ['./icon.scss'],
-    template: '<ng-content></ng-content>',
+    template: '<ng-content></ng-content><span *ngIf="status" class="AptoIcon-status">!</span>',
     host: {
         'class': 'AptoIcon',
         'role': 'img',

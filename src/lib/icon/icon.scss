@@ -6,15 +6,21 @@
     fill: currentColor;
     line-height: 0;
     box-sizing: border-box;
+    position: relative;
     @include square(2.0rem);
     &.AptoIcon--inline {
         vertical-align: middle;
     }
     &.AptoIcon--circle {
-        border-radius: 100%;
+        border-radius: 50%;
         background-color: currentColor;
         border: 3px solid currentColor;
         fill: $white;
+        &:after {
+            content: '';
+            display: table;
+            padding-top: 100%;
+        }
         &.AptoIcon--colorWhite {
             background-color: $white;
             border-color: $white;
@@ -78,27 +84,26 @@
         }
     }
 
-    &.AptoIcon--statusDanger,
-    &.AptoIcon--statusWarning {
-        position: relative;
-        &:after {
-            content: '!';
-            color: white;
-            display: block;
-            font-family: $font-family-sans-serif;
-            font-size: 9px;
-            font-weight: $font-weight-bold;
-            position: absolute;
-            top: -13px;
-            left: -9px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 8px * 1.732 solid $black;
-            line-height: 15px;
-            text-indent: -1.25px;
-        }
+    .AptoIcon-status {
+        color: white;
+        display: block;
+        font-family: $font-family-sans-serif;
+        font-size: 9px;
+        font-weight: $font-weight-bold;
+        position: absolute;
+        top: -13px;
+        left: -9px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px * 1.732 solid $black;
+        line-height: 15px;
+        text-indent: -1.25px;
+    }
+
+    &.AptoIcon--circle.AptoIcon--statusWarning,
+    &.AptoIcon--circle.AptoIcon--statusDanger {
         &:before {
             border: 3px solid $black;
             border-radius: 50%;
@@ -109,35 +114,28 @@
             bottom: -5px;
             position: absolute;
         }
-    }
-    &.AptoIcon--statusWarning{
-        &:after {
-            border-bottom-color: $orange-400;
-        }
-        &:before {
-            border-color: $orange-400;
-        }
-    }
-    &.AptoIcon--statusDanger{
-        &:after {
-            border-bottom-color: $red-400;
-        }
-        &:before {
-            border-color: $red-400;
-        }
-    }
-
-    &.AptoIcon--size6.AptoIcon--statusDanger,
-    &.AptoIcon--size6.AptoIcon--statusWarning {
-        &:after {
-            top: -10px;
-            left: -6px;
-        }
-        &:before {
+        &.AptoIcon--size6:before {
             top: -7px;
             left: -7px;
             right: -7px;
             bottom: -7px;
+        }
+    }
+
+    &.AptoIcon--statusWarning {
+        .AptoIcon-status {
+            border-bottom-color: $orange-400;
+        }
+        &:before {
+            border-color: $orange-400 !important;
+        }
+    }
+    &.AptoIcon--statusDanger {
+        .AptoIcon-status {
+            border-bottom-color: $red-400;
+        }
+        &:before {
+            border-color: $red-400 !important;;
         }
     }
 }
