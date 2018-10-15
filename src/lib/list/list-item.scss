@@ -65,6 +65,19 @@
 
 .AptoListItem-icon {
     margin: 0 0 0 1.6rem;
+    min-width: 20px;
+    &.AptoIcon--size3 {
+        min-width: 20px;
+    }
+    &.AptoIcon--size4 {
+        min-width: 24px;
+    }
+    &.AptoIcon--size5 {
+        min-width: 28px;
+    }
+    & + .AptoListItem-text {
+        padding-left: 1rem;
+    }
     & + .AptoListItem-text {
         padding-left: 1.3rem;
     }
