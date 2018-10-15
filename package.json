@@ -21,7 +21,7 @@
     "packagr": "ng-packagr -p src/lib/package.json && gulp publish -o docs"
   },
   "license": "MIT",
-  "version": "1.0.68",
+  "version": "1.0.69",
   "engines": {
     "node": ">= 8.9.0"
   },
