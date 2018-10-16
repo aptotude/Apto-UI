@@ -49,36 +49,42 @@
     }
     &.AptoIcon--size1 {
         @include square($font-size-base);
+        min-width: $font-size-base;
         &.AptoIcon--circle {
             border-width: 2px;
         }
     }
     &.AptoIcon--size2 {
         @include square(1.8rem);
+        min-width: 1.8rem;
         &.AptoIcon--circle {
             border-width: 2px;
         }
     }
     &.AptoIcon--size3 {
         @include square(2.0rem);
+        min-width: 2.0rem;
         &.AptoIcon--circle {
             border-width: 3px;
         }
     }
     &.AptoIcon--size4 {
         @include square(2.4rem);
+        min-width: 2.4rem;
         &.AptoIcon--circle {
             border-width: 4px;
         }
     }
     &.AptoIcon--size5 {
         @include square(2.8rem);
+        min-width: 2.8rem;
         &.AptoIcon--circle {
             border-width: 5px;
         }
     }
     &.AptoIcon--size6 {
         @include square(5.0rem);
+        min-width: 5rem;
         &.AptoIcon--circle {
             border-width: 7px;
         }
