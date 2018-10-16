@@ -1,21 +1,21 @@
-### Normal Help
+### Default Help Text
 ```
     <apto-help-text>
         This is help
     </apto-help-text>
 ```
 
-### Error Help
+### Error Help Text
 ```
     <apto-help-text [error]="true">
-        This is help with error
+        This is help text in the error state
     </apto-help-text>
 ```
 
-### Error Inlnine
+### Inline Help Text
 ```
 <p>
-    this is some stuff
+    Text with help text inline next to it
     <apto-help-text inline>
         This is inline help
     </apto-help-text>
