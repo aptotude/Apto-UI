@@ -1,0 +1,77 @@
+@import './variables.scss';
+
+.colorSwatch {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.colorSwatches {
+    apto-col {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+.gray-800 {background-color: $gray-800;}
+.gray-700 {background-color: $gray-700;}
+.gray-650 {background-color: $gray-650;}
+.gray-600 {background-color: $gray-600;}
+.gray-550 {background-color: $gray-550;}
+.gray-500 {background-color: $gray-500;}
+.gray-450 {background-color: $gray-450;}
+.gray-400 {background-color: $gray-400;}
+.gray-300 {background-color: $gray-300;}
+.gray-200 {background-color: $gray-200;}
+.gray-100 {background-color: $gray-100;}
+
+.blue-800 { background-color: $blue-800;}
+.blue-700 { background-color: $blue-700;}
+.blue-600 { background-color: $blue-600;}
+.blue-500 { background-color: $blue-500;}
+.blue-400 { background-color: $blue-400;}
+.blue-300 { background-color: $blue-300;}
+
+.orange-700 { background-color: $orange-700; }
+.orange-500 { background-color: $orange-500; }
+.orange-400 { background-color: $orange-400; }
+.orange-350 { background-color: $orange-350; }
+.orange-300 { background-color: $orange-300; }
+.orange-200 { background-color: $orange-200; }
+
+.red-700 { background-color: $red-700; }
+.red-500 { background-color: $red-500; }
+.red-400 { background-color: $red-400; }
+.red-300 { background-color: $red-300; }
+
+.green-700 { background-color: $green-700; }
+.green-500 { background-color: $green-500; }
+.green-300 { background-color: $green-300; }
+
+.yellow-700 { background-color: $yellow-700; }
+.yellow-600 { background-color: $yellow-600; }
+.yellow-500 { background-color: $yellow-500; }
+.yellow-300 { background-color: $yellow-300; }
+
+.purple-500 { background-color: $purple-500; }
+
+
+.black { background-color: $black; }
+.white {  background-color: $white }
+.primary-blue { background-color: $primary-blue }
+.danger { background-color: $danger }
+.warning { background-color: $warning }
+.success { background-color: $success }
+
+
+.font-size-xl { font-size: $font-size-xl; }
+.font-size-lg { font-size: $font-size-lg; }
+.font-size-base { font-size: $font-size-base; }
+.font-size-md { font-size: $font-size-md; }
+.font-size-sm { font-size: $font-size-sm; }
+
+.font-weight-light { font-weight: $font-weight-light; }
+.font-weight-normal { font-weight: $font-weight-normal; }
+.font-weight-semibold { font-weight: $font-weight-semibold; }
+.font-weight-bold { font-weight: $font-weight-bold; }
+
