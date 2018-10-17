@@ -20,7 +20,8 @@ storiesOf('Text (Paragraph)', module)
             Orci varius natoque penatibus et magnis dis parturient montes, nascetur
             ridiculus mus. Nam lacinia quam nibh, quis egestas purus hendrerit non</apto-paragraph>
 
-            <h5 style="margin-top: 30px; margin-bottom:5px; padding: 0;">Compact Spacing using the <code>compact</code> Attribute puts consecutive paragraphs closer together</h5>
+            <h5 style="margin-top: 30px; margin-bottom:5px; padding: 0;">Compact Spacing using the
+            <code>compact</code> Attribute puts consecutive paragraphs closer together</h5>
             <apto-paragraph compact>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et metus ex.
             Vestibulum nunc dolor, pellentesque eu tortor vitae, semper tempor lectus.
             Orci varius natoque penatibus et magnis dis parturient montes, nascetur
