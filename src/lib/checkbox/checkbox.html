@@ -1,7 +1,9 @@
 <label
     class="AptoCheckbox-label"
     [attr.for]="inputId">
-    <div class="AptoCheckbox-container">
+    <div
+        class="AptoCheckbox-container"
+        [class.AptoCheckbox-container--noSideMargin]="!checkboxLabel.textContent || !checkboxLabel.textContent.trim()">
         <input
             #input
             [id]="inputId"
@@ -28,8 +30,11 @@
             </svg>
         </span>
     </div>
-    <span class="AptoCheckbox-labelContainer">
-        <span style="display:none"></span>
+    <span
+        #checkboxLabel
+        class="AptoCheckbox-labelContainer"
+        (cdkObserveContent)="_onLabelTextChange()">
+        <span style="display:none">&nbsp;</span>
         <ng-content></ng-content>
     </span>
 </label>
