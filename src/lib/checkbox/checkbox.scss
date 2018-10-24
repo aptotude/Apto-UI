@@ -9,9 +9,11 @@ $AptoCheckbox-activeBackgroundColor: $blue-500;
 $AptoCheckbox-borderColor: $gray-500;
 $AptoCheckbox-backgroundColor: $white;
 $AptoCheckbox-fillColor: $white;
+$AptoCheckbox-hoverBackgroundColor: $gray-300;
 
 .AptoCheckbox {
     cursor: pointer;
+    display: inline-block;
     -webkit-tap-highlight-color: transparent;
 }
 .AptoCheckbox-label {
@@ -61,6 +63,9 @@ $AptoCheckbox-fillColor: $white;
         box-sizing: border-box;
         background-color: $AptoCheckbox-backgroundColor;
         border: 1px solid $AptoCheckbox-borderColor;
+        &:hover {
+            background-color: $AptoCheckbox-hoverBackgroundColor;
+        }
         .AptoCheckbox-checkmark {
             opacity: 0;
             top: 0;
@@ -74,9 +79,16 @@ $AptoCheckbox-fillColor: $white;
         }
     }
 
+    input:focus + .AptoCheckbox-state {
+        background-color: $AptoCheckbox-hoverBackgroundColor;
+    }
+
     input:checked + .AptoCheckbox-state {
         background-color: $AptoCheckbox-activeBackgroundColor;
         border-color: $AptoCheckbox-activeBorderColor;
+        &:hover {
+            background-color: $AptoCheckbox-activeBackgroundColor;
+        }
         .AptoCheckbox-checkmark {
             opacity: 1;
         }

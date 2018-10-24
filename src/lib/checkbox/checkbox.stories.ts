@@ -4,7 +4,7 @@ import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as paragraphMd from './docs/properties.md';
 import { action } from '@storybook/addon-actions';
 
-storiesOf('Toggles', module)
+storiesOf('Checkbox', module)
     .addDecorator(
         moduleMetadata({
             imports: [ AptoCheckboxComponentModule ]

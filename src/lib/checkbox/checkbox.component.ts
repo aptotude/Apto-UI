@@ -116,7 +116,7 @@ export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlVa
         return this.checked ? 'true' : 'false';
     }
 
-    public _onInteractionEvent(e: Event): void {
+    public _onInputChange(e: Event): void {
         event.stopPropagation();
     }
 
