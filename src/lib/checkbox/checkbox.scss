@@ -1,0 +1,88 @@
+@import '../scss/theme/variables.scss';
+@import '../scss/mixins/helpers';
+
+$AptoCheckbox-height: 14px;
+$AptoCheckbox-width: 14px;
+$AptoCheckbox-marginRight: 8px;
+$AptoCheckbox-activeBorderColor: $blue-500;
+$AptoCheckbox-activeBackgroundColor: $blue-500;
+$AptoCheckbox-borderColor: $gray-500;
+$AptoCheckbox-backgroundColor: $white;
+$AptoCheckbox-fillColor: $white;
+
+.AptoCheckbox {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.AptoCheckbox-label {
+    cursor: inherit;
+    align-items: baseline;
+    vertical-align: middle;
+    display: inline-flex;
+    white-space: nowrap;
+}
+
+.AptoCheckbox-labelContainer {
+    line-height: $AptoCheckbox-height;
+}
+
+.AptoCheckbox-container {
+    display: inline-block;
+    height: $AptoCheckbox-height;
+    width: $AptoCheckbox-width;
+    line-height: 0;
+    margin: auto;
+    margin-right: $AptoCheckbox-marginRight;
+    order: 0;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &.AptoCheckbox-container--noSideMargin {
+        margin-right: 0;
+    }
+
+    input {
+        bottom: 0;
+        left: 50%;
+        @include visually-hidden();
+    }
+
+    .AptoCheckbox-state {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        box-sizing: border-box;
+        background-color: $AptoCheckbox-backgroundColor;
+        border: 1px solid $AptoCheckbox-borderColor;
+        .AptoCheckbox-checkmark {
+            opacity: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+            pointer-events: none;
+            fill: $AptoCheckbox-fillColor;
+        }
+    }
+
+    input:checked + .AptoCheckbox-state {
+        background-color: $AptoCheckbox-activeBackgroundColor;
+        border-color: $AptoCheckbox-activeBorderColor;
+        .AptoCheckbox-checkmark {
+            opacity: 1;
+        }
+    }
+}
+
+.AptoCheckbox--disabled {
+    cursor: default;
+}
