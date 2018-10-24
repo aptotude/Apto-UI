@@ -10,3 +10,4 @@ export * from './shimmer/index';
 export * from './tabs/index';
 export * from './tooltip/index';
 export * from './utils/index';
+export * from './help-text/index';
