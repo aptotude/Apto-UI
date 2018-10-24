@@ -1,3 +1,4 @@
+export * from './core/index';
 export * from './button/index';
 export * from './card/index';
 export * from './grid/index';
@@ -12,3 +13,4 @@ export * from './tooltip/index';
 export * from './utils/index';
 export * from './thumbnail/index';
 export * from './help-text/index';
+export * from './checkbox/index';

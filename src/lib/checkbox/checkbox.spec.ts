@@ -1,6 +1,6 @@
 import { async as ngAsync, TestBed, ComponentFixture, fakeAsync, flush } from '@angular/core/testing';
-import { Component, DebugElement, Type } from '@angular/core';
-import { NgModel, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, DebugElement, Type, ViewChild } from '@angular/core';
+import { NgModel, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { AptoCheckboxComponent, AptoCheckboxChange } from './checkbox.component';
 import { AptoCheckboxComponentModule } from './checkbox.module';
 import { By } from '@angular/platform-browser';
@@ -8,9 +8,9 @@ import { By } from '@angular/platform-browser';
 @Component({
     template: `
         <apto-checkbox
-            [checked]="checked"
-            [required]="required"
-            [disabled]="disabled"
+            [checked]="isChecked"
+            [required]="isRequired"
+            [disabled]="isDisabled"
             [value]="value"
             [name]="name"
             [id]="id"
@@ -23,9 +23,9 @@ import { By } from '@angular/platform-browser';
     `
 })
 class TestComponent {
-    checked = false;
-    required = false;
-    disabled = false;
+    isChecked = false;
+    isRequired = false;
+    isDisabled = false;
     value = 'my_value';
     name = null;
     id = 'my-id';
@@ -35,6 +35,7 @@ class TestComponent {
     onCheckboxClick: (event?: Event) => void = () => {};
     onCheckboxChange: (event?: AptoCheckboxChange) => void = () => {};
 }
+
 @Component({
     template: `<apto-checkbox>{{ label }}</apto-checkbox>`
 })
@@ -57,25 +58,67 @@ class MultipleCheckboxesComponent {
 }
 
 @Component({
+    template: `<apto-checkbox tabindex="5"></apto-checkbox>`
+})
+class CheckboxWithTabindexAttrComponent {}
+
+@Component({
+    template: `
+      <apto-checkbox
+          [tabIndex]="customTabIndex"
+          [disabled]="isDisabled">
+      </apto-checkbox>`,
+})
+class CheckboxWithTabIndexComponent {
+    customTabIndex = 7;
+    isDisabled = false;
+}
+
+@Component({
     template: `
       <form>
-        <apto-checkbox name="cb" [(ngModel)]="isGood">Be good</apto-checkbox>
+        <apto-checkbox name="foo" [(ngModel)]="isGood">Be good</apto-checkbox>
       </form>
-    `,
+    `
 })
 class CheckboxWithFormDirectivesComponent {
-    isGood: boolean = false;
+    isGood = false;
+}
+
+@Component({
+    template: `<apto-checkbox (change)="lastEvent = $event"></apto-checkbox>`
+})
+class CheckboxWithChangeEventComponent {
+    lastEvent: AptoCheckboxChange;
+}
+
+@Component({
+    template: `<apto-checkbox></apto-checkbox>`
+})
+class CheckboxUsingViewChildComponent {
+    @ViewChild(AptoCheckboxComponent) checkbox;
+
+    public set isDisabled(value: boolean) {
+        this.checkbox.disabled = value;
+    }
+}
+
+@Component({
+    template: `<apto-checkbox [formControl]="formControl"></apto-checkbox>`
+})
+class CheckboxWithFormControlComponent {
+    formControl = new FormControl();
 }
 
 @Component({
     template: `<apto-checkbox [required]="isRequired" [(ngModel)]="isGood">Be good</apto-checkbox>`,
 })
 class CheckboxWithNgModelComponent {
-    isGood: boolean = false;
-    isRequired: boolean = true;
+    isGood = false;
+    isRequired = true;
 }
 
-fdescribe('apto-checkbox', () => {
+describe('apto-checkbox', () => {
     let fixture: ComponentFixture<any>;
 
     function createComponent<T>(componentType: Type<T>): ComponentFixture<T> {
@@ -107,24 +150,23 @@ fdescribe('apto-checkbox', () => {
             labelElement = <HTMLLabelElement>checkboxNativeElement.querySelector('label');
         }));
 
-
         it('should have correct base class', () => {
             expect(checkboxNativeElement.className).toBe('AptoCheckbox');
         });
 
         it('should add and remove checked state', () => {
-            expect(testComponent.checked).toBe(false);
+            expect(testComponent.isChecked).toBe(false);
             expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--checked');
             expect(inputElement.checked).toBe(false);
 
-            testComponent.checked = true;
+            testComponent.isChecked = true;
             fixture.detectChanges();
 
             expect(checkboxInstance.checked).toBe(true);
             expect(checkboxNativeElement.classList).toContain('AptoCheckbox--checked');
             expect(inputElement.checked).toBe(true);
 
-            testComponent.checked = false;
+            testComponent.isChecked = false;
             fixture.detectChanges();
 
             expect(checkboxInstance.checked).toBe(false);
@@ -161,14 +203,14 @@ fdescribe('apto-checkbox', () => {
             expect(inputElement.tabIndex).toBe(0);
             expect(inputElement.disabled).toBe(false);
 
-            testComponent.disabled = true;
+            testComponent.isDisabled = true;
             fixture.detectChanges();
 
             expect(checkboxInstance.disabled).toBe(true);
             expect(checkboxNativeElement.classList).toContain('AptoCheckbox--disabled');
             expect(inputElement.disabled).toBe(true);
 
-            testComponent.disabled = false;
+            testComponent.isDisabled = false;
             fixture.detectChanges();
 
             expect(checkboxInstance.disabled).toBe(false);
@@ -178,7 +220,7 @@ fdescribe('apto-checkbox', () => {
         });
 
         it('should not toggle checked state upon click while disabled', () => {
-            testComponent.disabled = true;
+            testComponent.isDisabled = true;
             fixture.detectChanges();
 
             checkboxNativeElement.click();
@@ -196,8 +238,8 @@ fdescribe('apto-checkbox', () => {
         });
 
         it('should project the checkbox content into the label element', () => {
-            let label = <HTMLLabelElement>checkboxNativeElement.querySelector('.AptoCheckbox-labelContainer');
-            expect(label.textContent!.trim()).toBe('my label');
+            const label = <HTMLLabelElement>checkboxNativeElement.querySelector('.AptoCheckbox-labelContainer');
+            expect(label.textContent).toContain('my label');
         });
 
         it('should make the host element a tab stop', () => {
@@ -243,7 +285,7 @@ fdescribe('apto-checkbox', () => {
             expect(inputElement.checked).toBe(false);
             expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--checked');
 
-            testComponent.checked = true;
+            testComponent.isChecked = true;
             fixture.detectChanges();
 
             expect(inputElement.checked).toBe(true);
@@ -256,12 +298,12 @@ fdescribe('apto-checkbox', () => {
         }));
 
         it('should forward the required attribute', () => {
-            testComponent.required = true;
+            testComponent.isRequired = true;
             fixture.detectChanges();
 
             expect(inputElement.required).toBe(true);
 
-            testComponent.required = false;
+            testComponent.isRequired = false;
             fixture.detectChanges();
 
             expect(inputElement.required).toBe(false);
@@ -284,10 +326,10 @@ fdescribe('apto-checkbox', () => {
         });
 
         it('should remove the SVG checkmark from the tab order', () => {
-            expect(checkboxNativeElement.querySelector('svg')!.getAttribute('focusable')).toBe('false');
+            expect(checkboxNativeElement.querySelector('svg').getAttribute('focusable')).toBe('false');
         });
 
-        describe('aria', () => {
+        describe('aria-label', () => {
             it('should have aria-label', () => {
                 testComponent.ariaLabel = 'labeled';
                 fixture.detectChanges();
@@ -299,7 +341,9 @@ fdescribe('apto-checkbox', () => {
                 fixture.detectChanges();
                 expect(inputElement.hasAttribute('aria-label')).toBe(false);
             });
+        });
 
+        describe('aria-labelledby', () => {
             it('should have aria-labelledby', () => {
                 testComponent.ariaLabelledby = 'labelledby';
                 fixture.detectChanges();
@@ -311,23 +355,155 @@ fdescribe('apto-checkbox', () => {
                 fixture.detectChanges();
                 expect(inputElement.hasAttribute('aria-labelledby')).toBe(false);
             });
+        });
 
+        describe('aria-checked', () => {
             it('should toggle aria-checked', () => {
                 expect(inputElement.getAttribute('aria-checked')).toEqual('false');
 
-                testComponent.checked = true;
+                testComponent.isChecked = true;
                 fixture.detectChanges();
                 expect(inputElement.getAttribute('aria-checked')).toEqual('true');
 
-                testComponent.checked = false;
+                testComponent.isChecked = false;
                 fixture.detectChanges();
                 expect(inputElement.getAttribute('aria-checked')).toEqual('false');
             });
         });
     });
 
-    describe('with provided tabIndex', () => {
+    describe('with change event and no initial value', () => {
+        let checkboxDebugElement: DebugElement;
+        let checkboxNativeElement: HTMLElement;
+        let checkboxInstance: AptoCheckboxComponent;
+        let testComponent: CheckboxWithChangeEventComponent;
+        let inputElement: HTMLInputElement;
+        let labelElement: HTMLLabelElement;
 
+        beforeEach(() => {
+            fixture = createComponent(CheckboxWithChangeEventComponent);
+            fixture.detectChanges();
+
+            checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            checkboxNativeElement = checkboxDebugElement.nativeElement;
+            checkboxInstance = checkboxDebugElement.componentInstance;
+            testComponent = fixture.debugElement.componentInstance;
+            inputElement = <HTMLInputElement>checkboxNativeElement.querySelector('input');
+            labelElement = <HTMLLabelElement>checkboxNativeElement.querySelector('label');
+        });
+
+        it('should emit the event to the change observable', () => {
+            const changeSpy = jasmine.createSpy('onChangeObservable');
+
+            checkboxInstance.change.subscribe(changeSpy);
+
+            fixture.detectChanges();
+            expect(changeSpy).not.toHaveBeenCalled();
+
+            labelElement.click();
+            fixture.detectChanges();
+
+            expect(changeSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not emit a DOM event to the change output', fakeAsync(() => {
+            fixture.detectChanges();
+            expect(testComponent.lastEvent).toBeUndefined();
+
+            inputElement.click();
+            fixture.detectChanges();
+            flush();
+
+            expect(testComponent.lastEvent.checked).toBe(true);
+        }));
+    });
+
+    describe('with provided tabIndex', () => {
+        let checkboxDebugElement: DebugElement;
+        let checkboxNativeElement: HTMLElement;
+        let testComponent: CheckboxWithTabIndexComponent;
+        let inputElement: HTMLInputElement;
+
+        beforeEach(() => {
+            fixture = createComponent(CheckboxWithTabIndexComponent);
+            fixture.detectChanges();
+
+            testComponent = fixture.debugElement.componentInstance;
+            checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            checkboxNativeElement = checkboxDebugElement.nativeElement;
+            inputElement = <HTMLInputElement>checkboxNativeElement.querySelector('input');
+        });
+
+        it('should preserve any given tabIndex', () => {
+            expect(inputElement.tabIndex).toBe(7);
+        });
+
+        it('should preserve given tabIndex when the checkbox is disabled then enabled', () => {
+            testComponent.isDisabled = true;
+            fixture.detectChanges();
+
+            testComponent.customTabIndex = 13;
+            fixture.detectChanges();
+
+            testComponent.isDisabled = false;
+            fixture.detectChanges();
+
+            expect(inputElement.tabIndex).toBe(13);
+        });
+
+    });
+
+    describe('with native tabindex attribute', () => {
+        it('should properly detect native tabindex attribute', fakeAsync(() => {
+            fixture = createComponent(CheckboxWithTabindexAttrComponent);
+            fixture.detectChanges();
+
+            const checkbox = fixture.debugElement
+                .query(By.directive(AptoCheckboxComponent)).componentInstance as AptoCheckboxComponent;
+
+            expect(checkbox.tabIndex)
+                .toBe(5, 'Expected tabIndex property to have been set based on the native attribute');
+        }));
+    });
+
+
+    describe('using ViewChild', () => {
+        let checkboxDebugElement: DebugElement;
+        let checkboxNativeElement: HTMLElement;
+        let testComponent: CheckboxUsingViewChildComponent;
+
+        beforeEach(() => {
+            fixture = createComponent(CheckboxUsingViewChildComponent);
+            fixture.detectChanges();
+
+            checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            checkboxNativeElement = checkboxDebugElement.nativeElement;
+            testComponent = fixture.debugElement.componentInstance;
+        });
+
+        it('should toggle checkbox disabledness correctly', () => {
+            const checkboxInstance = checkboxDebugElement.componentInstance;
+            const inputElement = <HTMLInputElement>checkboxNativeElement.querySelector('input');
+            expect(checkboxInstance.disabled).toBe(false);
+            expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--disabled');
+            expect(inputElement.tabIndex).toBe(0);
+            expect(inputElement.disabled).toBe(false);
+
+            testComponent.isDisabled = true;
+            fixture.detectChanges();
+
+            expect(checkboxInstance.disabled).toBe(true);
+            expect(checkboxNativeElement.classList).toContain('AptoCheckbox--disabled');
+            expect(inputElement.disabled).toBe(true);
+
+            testComponent.isDisabled = false;
+            fixture.detectChanges();
+
+            expect(checkboxInstance.disabled).toBe(false);
+            expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--disabled');
+            expect(inputElement.tabIndex).toBe(0);
+            expect(inputElement.disabled).toBe(false);
+        });
     });
 
     describe('with multiple checkboxes', () => {
@@ -337,7 +513,7 @@ fdescribe('apto-checkbox', () => {
         });
 
         it('should assign a unique id to each checkbox', () => {
-            let [firstId, secondId] =
+            const [firstId, secondId] =
                 fixture.debugElement.queryAll(By.directive(AptoCheckboxComponent))
                 .map(debugElement => debugElement.nativeElement.querySelector('input').id);
 
@@ -366,8 +542,8 @@ fdescribe('apto-checkbox', () => {
         it('should be in pristine, untouched, and valid states initially', fakeAsync(() => {
             flush();
 
-            let checkboxElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
-            let ngModel = checkboxElement.injector.get<NgModel>(NgModel);
+            const checkboxElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            const ngModel = checkboxElement.injector.get<NgModel>(NgModel);
 
             expect(ngModel.valid).toBe(true);
             expect(ngModel.pristine).toBe(true);
@@ -389,7 +565,7 @@ fdescribe('apto-checkbox', () => {
         });
     });
 
-    fdescribe('with required ngModel', () => {
+    describe('with required ngModel', () => {
         let checkboxInstance: AptoCheckboxComponent;
         let inputElement: HTMLInputElement;
         let testComponent: CheckboxWithNgModelComponent;
@@ -398,16 +574,16 @@ fdescribe('apto-checkbox', () => {
             fixture = createComponent(CheckboxWithNgModelComponent);
             fixture.detectChanges();
 
-            let checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
-            let checkboxNativeElement = checkboxDebugElement.nativeElement;
+            const checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            const checkboxNativeElement = checkboxDebugElement.nativeElement;
             testComponent = fixture.debugElement.componentInstance;
             checkboxInstance = checkboxDebugElement.componentInstance;
             inputElement = <HTMLInputElement>checkboxNativeElement.querySelector('input');
         });
 
         it('should validate with RequiredTrue validator', () => {
-            let checkboxElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
-            let ngModel = checkboxElement.injector.get<NgModel>(NgModel);
+            const checkboxElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            const ngModel = checkboxElement.injector.get<NgModel>(NgModel);
 
             testComponent.isRequired = true;
             inputElement.click();
@@ -425,7 +601,36 @@ fdescribe('apto-checkbox', () => {
     });
 
     describe('with form control', () => {
+        let checkboxDebugElement: DebugElement;
+        let checkboxInstance: AptoCheckboxComponent;
+        let testComponent: CheckboxWithFormControlComponent;
+        let inputElement: HTMLInputElement;
 
+        beforeEach(() => {
+            fixture = createComponent(CheckboxWithFormControlComponent);
+            fixture.detectChanges();
+
+            checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            checkboxInstance = checkboxDebugElement.componentInstance;
+            testComponent = fixture.debugElement.componentInstance;
+            inputElement = <HTMLInputElement>checkboxDebugElement.nativeElement.querySelector('input');
+        });
+
+        it('should toggle the disabled state', () => {
+            expect(checkboxInstance.disabled).toBe(false);
+
+            testComponent.formControl.disable();
+            fixture.detectChanges();
+
+            expect(checkboxInstance.disabled).toBe(true);
+            expect(inputElement.disabled).toBe(true);
+
+            testComponent.formControl.enable();
+            fixture.detectChanges();
+
+            expect(checkboxInstance.disabled).toBe(false);
+            expect(inputElement.disabled).toBe(false);
+        });
     });
 
     describe('with name attribute', () => {
@@ -435,8 +640,8 @@ fdescribe('apto-checkbox', () => {
         });
 
         it('should forward name value to input element', () => {
-            let checkboxElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
-            let inputElement = <HTMLInputElement> checkboxElement.nativeElement.querySelector('input');
+            const checkboxElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
+            const inputElement = <HTMLInputElement> checkboxElement.nativeElement.querySelector('input');
 
             expect(inputElement.getAttribute('name')).toBe('test-name');
         });

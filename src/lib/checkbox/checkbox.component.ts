@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { coerceBooleanProperty } from '../utils';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CanDisable, HasTabIndex } from '../core';
 
 let nextUniqueId = 0;
 
@@ -32,35 +33,62 @@ export const APTO_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-    moduleId: module.id,
     selector: 'apto-checkbox',
     templateUrl: 'checkbox.html',
     styleUrls: ['./checkbox.scss'],
     host: {
         'class': 'AptoCheckbox',
+        '[id]': 'id',
         '[class.AptoCheckbox--checked]': 'checked',
-        '[class.AptoCheckbox--disabled]': 'disabled',
-        '[class.AptoCheckbox--required]': 'required'
+        '[class.AptoCheckbox--disabled]': 'disabled'
     },
     providers: [APTO_CHECKBOX_CONTROL_VALUE_ACCESSOR],
-    inputs: ['tabIndex'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class AptoCheckboxComponent implements ControlValueAccessor {
+export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlValueAccessor {
     private _uniqueId = `AptoCheckbox-${++nextUniqueId}`;
-    public tabIndex = 0;
+
     @Input() public name: string | null = null;
     @Input() public value: string | null = null;
-    @Input() id: string = this._uniqueId;
-    @Input('aria-label') ariaLabel = '';
-    @Input('aria-labelledby') ariaLabelledby: string | null = null;
+    @Input() public id: string = this._uniqueId;
+    @Input('aria-label') public ariaLabel = '';
+    @Input('aria-labelledby') public ariaLabelledby: string | null = null;
+    @Input() public tabIndex: number;
+    @Input()
+        get checked(): boolean { return this._checked; }
+        set checked(value: boolean) {
+            if (value !== this.checked) {
+                this._checked = coerceBooleanProperty(value);
+                this._changeDetectorRef.markForCheck();
+            }
+        }
+    private _checked = false;
+
+    @Input()
+        get disabled() { return this._disabled; }
+        set disabled(value: boolean) {
+            if (value !== this.disabled) {
+                this._disabled = coerceBooleanProperty(value);
+                this._changeDetectorRef.markForCheck();
+            }
+        }
+    private _disabled = false;
+
+    @Input()
+        get required(): boolean { return this._required; }
+        set required(value: boolean) {
+            this._required = coerceBooleanProperty(value);
+        }
+    private _required = false;
+
     @ViewChild('input') public _inputElement: ElementRef;
-    @ViewChild('checkboxLabel') public _labelElement: ElementRef;
+
     @Output() readonly change: EventEmitter<AptoCheckboxChange> =
         new EventEmitter<AptoCheckboxChange>();
 
     constructor(
+        elementRef: ElementRef,
         private _changeDetectorRef: ChangeDetectorRef,
         @Attribute('tabindex') tabIndex: string
     ) {
@@ -72,42 +100,10 @@ export class AptoCheckboxComponent implements ControlValueAccessor {
     }
 
     public _onTouched: () => any = () => {};
+
     private _controlValueAccessorChangeFn: (value: any) => void = () => {};
 
-    @Input()
-        get checked(): boolean {
-            return this._checked;
-        }
-        set checked(value: boolean) {
-            if (value !== this.checked) {
-                this._checked = coerceBooleanProperty(value);
-                this._changeDetectorRef.markForCheck();
-            }
-        }
-    private _checked = false;
-
-    @Input()
-        get disabled() {
-            return this._disabled;
-        }
-        set disabled(value: boolean) {
-            if (value !== this.disabled) {
-                this._disabled = coerceBooleanProperty(value);
-                this._changeDetectorRef.markForCheck();
-            }
-        }
-    private _disabled = false;
-
-    @Input()
-        get required(): boolean {
-            return this._required;
-        }
-        set required(value: boolean) {
-            this._required = coerceBooleanProperty(value);
-        }
-    private _required = false;
-
-    private _emitChangeEvent() {
+    private _emitChangeEvent(): void {
         const event = new AptoCheckboxChange();
         event.source = this;
         event.checked = this.checked;
@@ -120,11 +116,11 @@ export class AptoCheckboxComponent implements ControlValueAccessor {
         return this.checked ? 'true' : 'false';
     }
 
-    public _onInputChange(e: Event): void {
+    public _onInteractionEvent(e: Event): void {
         event.stopPropagation();
     }
 
-    public _onLabelTextChange() {
+    public _onLabelTextChange(): void {
         this._changeDetectorRef.markForCheck();
     }
 
@@ -146,17 +142,17 @@ export class AptoCheckboxComponent implements ControlValueAccessor {
     }
 
     // Implemented as part of ControlValueAccessor.
-    registerOnChange(fn: (value: any) => void): void {
+    public registerOnChange(fn: (value: any) => void): void {
         this._controlValueAccessorChangeFn = fn;
     }
 
     // Implemented as part of ControlValueAccessor.
-    registerOnTouched(fn: any): void {
+    public registerOnTouched(fn: any): void {
         this._onTouched = fn;
     }
 
     // Implemented as part of ControlValueAccessor.
-    public setDisabledState(isDisabled: boolean) {
+    public setDisabledState(isDisabled: boolean): void {
         this.disabled = coerceBooleanProperty(isDisabled);
     }
 
