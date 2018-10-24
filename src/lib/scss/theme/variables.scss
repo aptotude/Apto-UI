@@ -19,7 +19,7 @@ $blue-500:      #64B5F6 !default;
 $blue-400:      #BBDEFB !default;
 $blue-300:      #EDF4FA !default;
 
-// Assorted Colors
+// Orange Family
 $orange-700:    #D48004 !default;
 $orange-500:    #FF9800 !default;
 $orange-400:    #F6A623 !default;
@@ -27,21 +27,25 @@ $orange-350:    #FAC68C !default;
 $orange-300:    #FDDFB4 !default;
 $orange-200:    #FFF2E3 !default;
 
-$purple-500:    #b175e8 !default;
-
+// Red Family
 $red-700:       #981818 !default;
 $red-500:       #D32F2F !default;
 $red-400:       #dc3545 !default;
 $red-300:       #FEE9E9 !default;
 
+// Green Family
 $green-700:     #4CAF50 !default;
 $green-500:     #61DC66 !default;
 $green-300:     #E4F7E5 !default;
 
+// Yellow Family
 $yellow-700:    #B89D11 !default;
 $yellow-600:    #DCBC13 !default;
 $yellow-500:    #F9D100 !default;
 $yellow-300:    #FFF9D4 !default;
+
+// Purple Family
+$purple-500:    #b175e8 !default;
 
 // Named Colors
 $black:         $gray-800 !default;
@@ -59,6 +63,7 @@ $body-text:     $gray-700 !default;
 $font-family-sans-serif:      	"Open Sans", sans-serif !default;
 $font-family-base:            	$font-family-sans-serif !default;
 
+$font-size-xl:                  2.2rem !default; // 22px
 $font-size-lg:               	1.8rem !default; // 18px
 $font-size-base:             	1.4rem !default; // 14px
 $font-size-md:                  1.2rem !default; // 12px
@@ -72,15 +77,15 @@ $font-weight-bold:            	700 !default;
 $font-weight-base:            	$font-weight-normal !default;
 $line-height-base:            	1.5 !default;
 
-$h1-font-size:                	2.2rem !default; // 22px
-$h2-font-size:                	1.8rem !default; // 18px
-$h3-font-size:                	1.4rem !default; // 14px
-$h4-font-size:                	1.2rem !default; // 12px
-$h5-font-size:                	1.2rem !default; // 12px
-$h6-font-size:                	1.2rem !default; // 12px
+$h1-font-size:                	$font-size-xl !default; // 22px
+$h2-font-size:                	$font-size-lg !default; // 18px
+$h3-font-size:                	$font-size-base !default; // 14px
+$h4-font-size:                	$font-size-md !default; // 12px
+$h5-font-size:                	$font-size-md !default; // 12px
+$h6-font-size:                	$font-size-md !default; // 12px
 
-$form-label-font-size:          1.2rem !default; // 12px
-$help-text-font-size:           1.0rem !default; // 10px
+$form-label-font-size:          $font-size-md !default; // 12px
+$help-text-font-size:           $font-size-sm !default; // 10px
 
 $grid-breakpoints: (
     xs: 0,
