@@ -6,6 +6,7 @@ import {AptoIconComponentModule} from './index';
 import {AptoIconRegistry, getAptoIconNoHttpProviderError} from './icon-registry';
 import {FAKE_SVGS} from './fake-svgs';
 import {IconColors} from './icon.component';
+import { sortedClassNames } from '../utils/sorted-classname';
 
 @Component({template: `<apto-icon [circleColor]="iconColor" [icon]="iconName"></apto-icon>`})
 class IconWithColorComponent {
@@ -46,11 +47,6 @@ class IconWithBindingAndNgIfComponent {
 @Component({template: `<apto-icon [icon]="iconName"><div>Hello</div></apto-icon>`})
 class SvgIconWithUserContentComponent {
     iconName: string | undefined = '';
-}
-
-/** Returns the CSS classes assigned to an element as a sorted array. */
-function sortedClassNames(element: Element): string[] {
-    return element.className.split(' ').sort();
 }
 
 /**

@@ -3,13 +3,13 @@ import { AptoHeaderComponentModule } from './header.module';
 import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as headersMd from './docs/headers.md';
 
-storiesOf('Typography', module)
+storiesOf('Header', module)
     .addDecorator(
         moduleMetadata({
             imports: [ AptoHeaderComponentModule ]
         })
     )
-    .add('Headings', withMarkdownNotes(headersMd)(() => ({
+    .add('Basic Usage', withMarkdownNotes(headersMd)(() => ({
         template: `
             <apto-header type="1">Heading H1</apto-header>
             <apto-header type="2">Heading H2</apto-header>

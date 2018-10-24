@@ -12,8 +12,8 @@ const paths = {
 };
 
 gulp.task('copy', function () {
-    // move scss
-    gulp.src(`${paths.scss}/**/*`)
+    // move variables scss
+    gulp.src(`${paths.scss}/theme/variables.scss`)
         .pipe(gulp.dest(`${paths.dist}/scss`));
 
     // move svg sprites

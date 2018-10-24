@@ -11,3 +11,4 @@ export * from './tabs/index';
 export * from './tooltip/index';
 export * from './utils/index';
 export * from './thumbnail/index';
+export * from './help-text/index';
