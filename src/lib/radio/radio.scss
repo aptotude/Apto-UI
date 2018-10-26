@@ -12,24 +12,28 @@ $AptoRadioButton-fillColor: $white;
 $AptoRadioButton-hoverBackgroundColor: $gray-300;
 
 .AptoRadioButton {
-    cursor: pointer;
     display: inline-block;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 
     &.AptoRadioButton--block {
         display: block;
     }
+
+    &.AptoRadioButton--disabled {
+        .AptoRadioButton-label {
+            cursor: default;
+        }
+        opacity: 0.5;
+    }
 }
+
 .AptoRadioButton-label {
-    cursor: inherit;
+    cursor: pointer;
     align-items: baseline;
     vertical-align: middle;
     display: inline-flex;
     white-space: nowrap;
-}
-
-.AptoRadioButton-labelContainer {
-    line-height: $AptoRadioButton-height;
 }
 
 .AptoRadioButton-container {
@@ -39,10 +43,7 @@ $AptoRadioButton-hoverBackgroundColor: $gray-300;
     line-height: 0;
     margin: auto;
     margin-right: $AptoRadioButton-marginRight;
-    order: 0;
     position: relative;
-    vertical-align: middle;
-    white-space: nowrap;
     flex-shrink: 0;
 
     &.AptoRadioButton-container--noSideMargin {
@@ -65,6 +66,7 @@ $AptoRadioButton-hoverBackgroundColor: $gray-300;
         border-radius: 50%;
         background-color: transparent;
         border: 1px solid $AptoRadioButton-borderColor;
+        transition: background-color 0.25s, border-color 0.25s;
         &:after {
             content: "";
             background-color: transparent;
@@ -75,6 +77,7 @@ $AptoRadioButton-hoverBackgroundColor: $gray-300;
             position: absolute;
             margin: 2px;
             border-radius: 50%;
+            transition: background-color 0.25s;
         }
         &:hover {
             background-color: $AptoRadioButton-hoverBackgroundColor;
@@ -95,6 +98,6 @@ $AptoRadioButton-hoverBackgroundColor: $gray-300;
     }
 }
 
-.AptoRadioButton--disabled {
-    cursor: default;
+.AptoRadioButton-labelContainer {
+    line-height: $AptoRadioButton-height;
 }

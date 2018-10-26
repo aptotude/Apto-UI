@@ -13,7 +13,14 @@ import {
 } from '@angular/core';
 import { coerceBooleanProperty } from '../utils';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CanDisable, HasTabIndex } from '../core';
+import {
+    CanDisable,
+    HasTabIndex,
+    HasTabIndexCtor,
+    CanDisableCtor,
+    mixinTabIndex,
+    mixinDisabled
+} from '../core';
 
 let nextUniqueId = 0;
 
@@ -32,29 +39,44 @@ export const APTO_CHECKBOX_CONTROL_VALUE_ACCESSOR: any = {
     multi: true
 };
 
+export class AptoCheckboxBase {}
+
+export const _AptoCheckboxMixinBase:
+    HasTabIndexCtor &
+    CanDisableCtor &
+    typeof AptoCheckboxBase =
+        mixinTabIndex(mixinDisabled(AptoCheckboxBase));
+
 @Component({
     selector: 'apto-checkbox',
     templateUrl: 'checkbox.html',
     styleUrls: ['./checkbox.scss'],
     host: {
         'class': 'AptoCheckbox',
-        '[id]': 'id',
+        '[attr.id]': 'id',
+        '[attr.tabindex]': 'null',
         '[class.AptoCheckbox--checked]': 'checked',
-        '[class.AptoCheckbox--disabled]': 'disabled'
+        '[class.AptoCheckbox--disabled]': 'disabled',
+        '[class.AptoCheckbox--block]': 'block'
     },
     providers: [APTO_CHECKBOX_CONTROL_VALUE_ACCESSOR],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlValueAccessor {
+export class AptoCheckboxComponent extends _AptoCheckboxMixinBase
+    implements CanDisable, HasTabIndex, ControlValueAccessor {
     private _uniqueId = `AptoCheckbox-${++nextUniqueId}`;
+    private _checked = false;
+    private _block = false;
+    private _disabled = false;
+    private _required = false;
 
+    @Input() public tabIndex: number;
     @Input() public name: string | null = null;
     @Input() public value: string | null = null;
     @Input() public id: string = this._uniqueId;
     @Input('aria-label') public ariaLabel = '';
     @Input('aria-labelledby') public ariaLabelledby: string | null = null;
-    @Input() public tabIndex: number;
     @Input()
         get checked(): boolean { return this._checked; }
         set checked(value: boolean) {
@@ -63,8 +85,13 @@ export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlVa
                 this._changeDetectorRef.markForCheck();
             }
         }
-    private _checked = false;
-
+    @Input()
+        get block() { return this._block; }
+        set block(value: boolean) {
+            if (value !== this.block) {
+                this._block = coerceBooleanProperty(value);
+            }
+        }
     @Input()
         get disabled() { return this._disabled; }
         set disabled(value: boolean) {
@@ -73,14 +100,11 @@ export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlVa
                 this._changeDetectorRef.markForCheck();
             }
         }
-    private _disabled = false;
-
     @Input()
         get required(): boolean { return this._required; }
         set required(value: boolean) {
             this._required = coerceBooleanProperty(value);
         }
-    private _required = false;
 
     @ViewChild('input') public _inputElement: ElementRef;
 
@@ -92,24 +116,13 @@ export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlVa
         private _changeDetectorRef: ChangeDetectorRef,
         @Attribute('tabindex') tabIndex: string
     ) {
+        super();
+
         this.tabIndex = parseInt(tabIndex, 10) || 0;
     }
 
     public get inputId(): string {
         return `${this.id || this._uniqueId}-input`;
-    }
-
-    public _onTouched: () => any = () => {};
-
-    private _controlValueAccessorChangeFn: (value: any) => void = () => {};
-
-    private _emitChangeEvent(): void {
-        const event = new AptoCheckboxChange();
-        event.source = this;
-        event.checked = this.checked;
-
-        this._controlValueAccessorChangeFn(this.checked);
-        this.change.emit(event);
     }
 
     public _getAriaChecked(): 'true' | 'false' {
@@ -135,6 +148,8 @@ export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlVa
     public setValue(value: any): void {
         this.checked = !!value;
     }
+
+    public _onTouched: () => any = () => {};
 
     // Implemented as part of ControlValueAccessor.
     public writeValue(value: any): void {
@@ -162,5 +177,16 @@ export class AptoCheckboxComponent implements CanDisable, HasTabIndex, ControlVa
             this.toggle();
             this._emitChangeEvent();
         }
+    }
+
+    private _controlValueAccessorChangeFn: (value: any) => void = () => {};
+
+    private _emitChangeEvent(): void {
+        const event = new AptoCheckboxChange();
+        event.source = this;
+        event.checked = this.checked;
+
+        this._controlValueAccessorChangeFn(this.checked);
+        this.change.emit(event);
     }
 }

@@ -14,6 +14,7 @@ import { By } from '@angular/platform-browser';
             [value]="value"
             [name]="name"
             [id]="id"
+            [block]="isBlock"
             [aria-label]="ariaLabel"
             [aria-labelledby]="ariaLabelledby"
             [tabindex]="tabindex"
@@ -26,6 +27,7 @@ class TestComponent {
     isChecked = false;
     isRequired = false;
     isDisabled = false;
+    isBlock = false;
     value = 'my_value';
     name = null;
     id = 'my-id';
@@ -123,8 +125,8 @@ describe('apto-checkbox', () => {
 
     function createComponent<T>(componentType: Type<T>): ComponentFixture<T> {
         TestBed.configureTestingModule({
-          imports: [AptoCheckboxComponentModule, FormsModule, ReactiveFormsModule],
-          declarations: [componentType],
+            imports: [AptoCheckboxComponentModule, FormsModule, ReactiveFormsModule],
+            declarations: [componentType],
         }).compileComponents();
         return TestBed.createComponent<T>(componentType);
     }
@@ -140,7 +142,6 @@ describe('apto-checkbox', () => {
         beforeEach(ngAsync(() => {
             fixture = createComponent(TestComponent);
             fixture.detectChanges();
-
 
             checkboxDebugElement = fixture.debugElement.query(By.directive(AptoCheckboxComponent));
             checkboxNativeElement = checkboxDebugElement.nativeElement;
@@ -217,6 +218,20 @@ describe('apto-checkbox', () => {
             expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--disabled');
             expect(inputElement.tabIndex).toBe(0);
             expect(inputElement.disabled).toBe(false);
+        });
+
+        it('should add and remove block state', () => {
+            expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--block');
+
+            testComponent.isBlock = true;
+            fixture.detectChanges();
+
+            expect(checkboxNativeElement.classList).toContain('AptoCheckbox--block');
+
+            testComponent.isBlock = false;
+            fixture.detectChanges();
+
+            expect(checkboxNativeElement.classList).not.toContain('AptoCheckbox--block');
         });
 
         it('should not toggle checked state upon click while disabled', () => {

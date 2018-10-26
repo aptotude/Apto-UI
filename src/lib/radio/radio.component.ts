@@ -9,34 +9,43 @@ import {
     EventEmitter,
     forwardRef,
     Input,
-    Attribute,
     OnInit,
     Optional,
     Output,
     QueryList,
     ViewChild,
     ViewEncapsulation,
+    OnDestroy,
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import { coerceBooleanProperty } from '../utils';
-import { HasTabIndex, mixinDisabled, CanDisable, mixinTabIndex } from '../core';
+import {
+    HasTabIndex,
+    mixinDisabled,
+    CanDisable,
+    mixinTabIndex,
+    HasTabIndexCtor,
+    CanDisableCtor
+} from '../core';
+import { UniqueSelectionDispatcher } from './unique-selection-dispatcher';
 
 let nextUniqueId = 0;
 
 export const APTO_RADIO_GROUP_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => AptoRadioGroup),
+    useExisting: forwardRef(() => AptoRadioGroupDirective),
     multi: true
 };
 
 export class AptoRadioChange {
     constructor(
-        public source: AptoRadioButton,
+        public source: AptoRadioButtonComponent,
         public value: any) {}
 }
 
 export class AptoRadioGroupBase { }
-export const _AptoRadioGroupMixinBase = mixinDisabled(AptoRadioGroupBase);
+export const _AptoRadioGroupMixinBase: CanDisableCtor & typeof AptoRadioGroupBase =
+    mixinDisabled(AptoRadioGroupBase);
 
 /**
  * A group of radio buttons. May contain one or more `<mat-radio-button>` elements.
@@ -49,17 +58,15 @@ export const _AptoRadioGroupMixinBase = mixinDisabled(AptoRadioGroupBase);
         'class': 'AptoRadioGroup',
     }
 })
-export class AptoRadioGroup extends _AptoRadioGroupMixinBase
+export class AptoRadioGroupDirective extends _AptoRadioGroupMixinBase
     implements AfterContentInit, ControlValueAccessor, CanDisable {
 
     private _value: any = null;
-    private _name: string = `AptoRadioGroup-${nextUniqueId++}`;
-    private _selected: AptoRadioButton | null = null;
-    private _isInitialized: boolean = false;
-    private _disabled: boolean = false;
-    private _required: boolean = false;
-    public _controlValueAccessorChangeFn: (value: any) => void = () => {};
-    public onTouched: () => any = () => {};
+    private _name = `AptoRadioGroup-${nextUniqueId++}`;
+    private _selected: AptoRadioButtonComponent | null = null;
+    private _isInitialized = false;
+    private _disabled = false;
+    private _required = false;
 
     @Input()
         get name(): string { return this._name; }
@@ -79,12 +86,12 @@ export class AptoRadioGroup extends _AptoRadioGroupMixinBase
         }
     @Input()
         get selected() { return this._selected; }
-        set selected(selected: AptoRadioButton | null) {
+        set selected(selected: AptoRadioButtonComponent | null) {
             this._selected = selected;
             this.value = selected ? selected.value : null;
             this._checkSelectedRadioButton();
         }
-    @Input()
+    @Input('disabled')
         get disabled(): boolean { return this._disabled; }
         set disabled(value) {
             this._disabled = coerceBooleanProperty(value);
@@ -99,7 +106,9 @@ export class AptoRadioGroup extends _AptoRadioGroupMixinBase
 
     @Output() readonly change: EventEmitter<AptoRadioChange> = new EventEmitter<AptoRadioChange>();
 
-    @ContentChildren(forwardRef(() => AptoRadioButton), { descendants: true }) _radios: QueryList<AptoRadioButton>;
+    @ContentChildren(
+        forwardRef(() => AptoRadioButtonComponent),
+        { descendants: true }) _radios: QueryList<AptoRadioButtonComponent>;
 
     constructor(private _changeDetectorRef: ChangeDetectorRef) {
         super();
@@ -111,7 +120,7 @@ export class AptoRadioGroup extends _AptoRadioGroupMixinBase
         }
     }
 
-    ngAfterContentInit(): void  {
+    public ngAfterContentInit(): void  {
         this._isInitialized = true;
     }
 
@@ -119,6 +128,44 @@ export class AptoRadioGroup extends _AptoRadioGroupMixinBase
         if (this.onTouched) {
             this.onTouched();
         }
+    }
+
+    public _emitChangeEvent(): void {
+        if (this._isInitialized) {
+            this.change.emit(new AptoRadioChange(this._selected!, this._value));
+        }
+    }
+
+    public _controlValueAccessorChangeFn: (value: any) => void = () => {};
+
+    public onTouched: () => any = () => {};
+
+    public _markRadiosForCheck(): void  {
+        if (this._radios) {
+            this._radios.forEach(radio => radio._markForCheck());
+        }
+    }
+
+    // Implemented as part of ControlValueAccessor.
+    public writeValue(value: any): void  {
+        this.value = value;
+        this._changeDetectorRef.markForCheck();
+    }
+
+    // Implemented as part of ControlValueAccessor.
+    public registerOnChange(fn: (value: any) => void): void  {
+        this._controlValueAccessorChangeFn = fn;
+    }
+
+    // Implemented as part of ControlValueAccessor.
+    public registerOnTouched(fn: any): void  {
+        this.onTouched = fn;
+    }
+
+    // Implemented as part of ControlValueAccessor.
+    public setDisabledState(isDisabled: boolean): void {
+        this.disabled = isDisabled;
+        this._changeDetectorRef.markForCheck();
     }
 
     private _updateRadioButtonNames(): void {
@@ -130,7 +177,6 @@ export class AptoRadioGroup extends _AptoRadioGroupMixinBase
     }
 
     private _updateSelectedRadioFromValue(): void {
-        // If the value already matches the selected radio, do nothing.
         const isAlreadySelected = this._selected !== null && this._selected.value === this._value;
 
         if (this._radios && !isAlreadySelected) {
@@ -143,42 +189,14 @@ export class AptoRadioGroup extends _AptoRadioGroupMixinBase
             });
         }
     }
-
-    public _emitChangeEvent(): void {
-        if (this._isInitialized) {
-            this.change.emit(new AptoRadioChange(this._selected!, this._value));
-        }
-    }
-
-    public _markRadiosForCheck(): void  {
-        if (this._radios) {
-            this._radios.forEach(radio => radio._markForCheck());
-        }
-    }
-
-    public writeValue(value: any): void  {
-        this.value = value;
-        this._changeDetectorRef.markForCheck();
-    }
-
-    public registerOnChange(fn: (value: any) => void): void  {
-        this._controlValueAccessorChangeFn = fn;
-    }
-
-    public registerOnTouched(fn: any): void  {
-        this.onTouched = fn;
-    }
-
-    public setDisabledState(isDisabled: boolean): void {
-        this.disabled = isDisabled;
-        this._changeDetectorRef.markForCheck();
-    }
 }
 
 export class AptoRadioButtonBase {
     disabled: boolean;
 }
-export const _AptoRadioButtonMixinBase = mixinTabIndex(AptoRadioButtonBase);
+export const _AptoRadioButtonMixinBase:
+    HasTabIndexCtor & typeof AptoRadioButtonBase =
+        mixinTabIndex(AptoRadioButtonBase);
 
 @Component({
     selector: 'apto-radio-button',
@@ -190,20 +208,23 @@ export const _AptoRadioButtonMixinBase = mixinTabIndex(AptoRadioButtonBase);
         '[class.AptoRadioButton--disabled]': 'disabled',
         '[class.AptoRadioButton--block]': 'block',
         '[attr.id]': 'id',
+        '[attr.tabindex]': 'null',
         '(focus)': '_inputElement.nativeElement.focus()'
     },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AptoRadioButton extends _AptoRadioButtonMixinBase implements OnInit, HasTabIndex {
-    private _uniqueId: string = `AptoRadioButton-${++nextUniqueId}`;
-    public radioGroup: AptoRadioGroup;
-    private _checked: boolean = false;
-    private _disabled: boolean;
-    private _required: boolean;
+export class AptoRadioButtonComponent extends _AptoRadioButtonMixinBase
+    implements OnInit, OnDestroy, HasTabIndex {
+    private _uniqueId = `AptoRadioButton-${++nextUniqueId}`;
+    public radioGroup: AptoRadioGroupDirective;
+    private _checked = false;
+    private _disabled = false;
+    private _required = false;
     private _value: any = null;
     private _block = false;
 
+    @Input() public tabIndex: number;
     @Input() id: string = this._uniqueId;
     @Input() name: string;
     @Input('aria-label') ariaLabel: string;
@@ -220,6 +241,11 @@ export class AptoRadioButton extends _AptoRadioButtonMixinBase implements OnInit
                 } else if (!newCheckedState && this.radioGroup && this.radioGroup.value === this.value) {
                     this.radioGroup.selected = null;
                 }
+
+                if (newCheckedState) {
+                    this._radioDispatcher.notify(this.id, this.name);
+                }
+
                 this._changeDetectorRef.markForCheck();
             }
         }
@@ -252,9 +278,7 @@ export class AptoRadioButton extends _AptoRadioButtonMixinBase implements OnInit
     @Input()
         get block() { return this._block; }
         set block(value: boolean) {
-            if (value !== this.block) {
-                this._block = coerceBooleanProperty(value);
-            }
+            this._block = coerceBooleanProperty(value);
         }
     @Input()
         get required(): boolean {
@@ -270,14 +294,31 @@ export class AptoRadioButton extends _AptoRadioButtonMixinBase implements OnInit
     @ViewChild('input') public _inputElement: ElementRef;
 
     constructor(
-        @Optional() radioGroup: AptoRadioGroup,
-        @Attribute('tabindex') tabIndex: string,
-        private _changeDetectorRef: ChangeDetectorRef
+        @Optional() radioGroup: AptoRadioGroupDirective,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _radioDispatcher: UniqueSelectionDispatcher
     ) {
         super();
 
         this.radioGroup = radioGroup;
-        this.tabIndex = parseInt(tabIndex, 10) || 0;
+
+        this._removeUniqueSelectionListener =
+            _radioDispatcher.listen((id: string, name: string) => {
+                if (id !== this.id && name === this.name) {
+                    this.checked = false;
+                }
+            });
+    }
+
+    public ngOnInit(): void {
+        if (this.radioGroup) {
+            this.checked = this.radioGroup.value === this._value;
+            this.name = this.radioGroup.name;
+        }
+    }
+
+    public ngOnDestroy(): void {
+        this._removeUniqueSelectionListener();
     }
 
     public get inputId(): string {
@@ -290,17 +331,6 @@ export class AptoRadioButton extends _AptoRadioButtonMixinBase implements OnInit
 
     public _markForCheck(): void {
         this._changeDetectorRef.markForCheck();
-    }
-
-    ngOnInit(): void {
-        if (this.radioGroup) {
-            this.checked = this.radioGroup.value === this._value;
-            this.name = this.radioGroup.name;
-        }
-    }
-
-    private _emitChangeEvent(): void {
-        this.change.emit(new AptoRadioChange(this, this._value));
     }
 
     public _onInputClick(event: Event): void  {
@@ -321,5 +351,11 @@ export class AptoRadioButton extends _AptoRadioButtonMixinBase implements OnInit
                 this.radioGroup._emitChangeEvent();
             }
         }
+    }
+
+    private _removeUniqueSelectionListener: () => void = () => {};
+
+    private _emitChangeEvent(): void {
+        this.change.emit(new AptoRadioChange(this, this._value));
     }
 }

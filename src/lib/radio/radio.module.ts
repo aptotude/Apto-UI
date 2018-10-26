@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AptoRadioButton, AptoRadioGroup } from './radio.component';
+import { AptoRadioButtonComponent, AptoRadioGroupDirective } from './radio.component';
+import { UniqueSelectionDispatcher } from './unique-selection-dispatcher';
 
 @NgModule({
     imports: [
         CommonModule
     ],
     declarations: [
-        AptoRadioGroup,
-        AptoRadioButton
+        AptoRadioGroupDirective,
+        AptoRadioButtonComponent
     ],
     exports: [
-        AptoRadioGroup,
-        AptoRadioButton
+        AptoRadioGroupDirective,
+        AptoRadioButtonComponent
+    ],
+    providers: [
+        UniqueSelectionDispatcher
     ]
 })
-export class AptoRadioComponentModule { }
+export class AptoRadioButtonComponentModule { }
