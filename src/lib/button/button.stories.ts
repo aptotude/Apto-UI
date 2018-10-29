@@ -5,8 +5,11 @@ import { withMarkdownNotes } from '@storybook/addon-notes';
 import * as primaryButtonMd from './docs/primary-button.md';
 import * as primaryLinkButtonMd from './docs/link-primary-button.md';
 import * as secondaryLinkButtonMd from './docs/link-secondary-button.md';
+import * as dangerLinkButtonMd from './docs/link-danger-button.md';
 import * as secondaryDarkLinkButtonMd from './docs/link-secondary-dark-button.md';
 import * as buttonPropsMd from './docs/properties.md';
+import * as holdButtonMd from './docs/hold.md';
+import { action } from '@storybook/addon-actions';
 
 storiesOf('Buttons/Button', module)
     .addDecorator(
@@ -19,7 +22,7 @@ storiesOf('Buttons/Button', module)
             <apto-button>Button</apto-button>
             <br><br>
             <apto-button
-                [disabled]="true">Disabled Button</apto-button>
+                disabled>Disabled Button</apto-button>
             <br><br>
             <apto-button
                 automation="foo">Button with data-automation="foo"</apto-button>
@@ -39,7 +42,7 @@ storiesOf('Buttons/Link', module)
                 type="${ButtonTypes.Link}">Button</apto-button>
             <br><br>
             <apto-button
-                [disabled]="true"
+                disabled
                 kind="${ButtonKinds.Primary}"
                 type="${ButtonTypes.Link}">Disabled Button</apto-button>
             <br><br>
@@ -54,7 +57,7 @@ storiesOf('Buttons/Link', module)
             <apto-button kind="${ButtonKinds.Secondary}" type="${ButtonTypes.Link}">Button</apto-button>
             <br><br>
             <apto-button
-                [disabled]="true"
+                disabled
                 kind="${ButtonKinds.Secondary}"
                 type="${ButtonTypes.Link}">Disabled Button</apto-button>
             <br><br>
@@ -69,7 +72,7 @@ storiesOf('Buttons/Link', module)
             <apto-button kind="${ButtonKinds.SecondaryDark}" type="${ButtonTypes.Link}">Button</apto-button>
             <br><br>
             <apto-button
-                [disabled]="true"
+                disabled
                 kind="${ButtonKinds.SecondaryDark}"
                 type="${ButtonTypes.Link}">Disabled Button</apto-button>
             <br><br>
@@ -78,5 +81,46 @@ storiesOf('Buttons/Link', module)
                 kind="${ButtonKinds.SecondaryDark}"
                 type="${ButtonTypes.Link}">Button  with data-automation="foo"</apto-button>
         `
+    })))
+    .add('Danger', withMarkdownNotes(`${dangerLinkButtonMd}${buttonPropsMd}`)(() => ({
+        template: `
+            <apto-button kind="${ButtonKinds.Danger}" type="${ButtonTypes.Link}">Button</apto-button>
+            <br><br>
+            <apto-button
+                disabled
+                kind="${ButtonKinds.Danger}"
+                type="${ButtonTypes.Link}">Disabled Button</apto-button>
+            <br><br>
+            <apto-button
+                automation="foo"
+                kind="${ButtonKinds.Danger}"
+                type="${ButtonTypes.Link}">Button  with data-automation="foo"</apto-button>
+        `
+    })))
+;
+storiesOf('Buttons/Hold', module)
+    .addDecorator(
+        moduleMetadata({
+            imports: [ AptoButtonComponentModule ]
+        })
+    )
+    .add('Hold', withMarkdownNotes(`${holdButtonMd}${buttonPropsMd}`)(() => ({
+        template: `
+            <apto-button
+                (hold)="holdEvent($event)"
+                holdButton
+                kind="${ButtonKinds.Danger}"
+                type="${ButtonTypes.Link}">Hold To Delete</apto-button>
+            <br><br>
+            <apto-button
+                disabled
+                (hold)="holdEvent($event)"
+                holdButton
+                kind="${ButtonKinds.Danger}"
+                type="${ButtonTypes.Link}">Disabled Hold To Delete</apto-button>
+            `,
+        props: {
+            holdEvent: action()
+        }
     })))
 ;
