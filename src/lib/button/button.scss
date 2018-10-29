@@ -22,6 +22,19 @@ $button-secondaryDark-link-color:           $gray-650 !default;
 $button-secondaryDark-link-hover-color:     darken($blue-500, 15%) !default;
 $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-color, 15%) !default;
 
+$button-danger-link-color:           $red-500 !default;
+$button-danger-link-hover-color:     darken($red-500, 15%) !default;
+$button-danger-link-disabled-color:  lighten($button-danger-link-color, 15%) !default;
+
+$button-danger-color:                       $white !default;
+$button-danger-BackgroundColor:             $red-500 !default;
+$button-danger-hover-BackgroundColor:       darken($button-danger-BackgroundColor, 15%) !default;
+$button-danger-disabled-BackgroundColor:    lighten($button-danger-BackgroundColor, 15%) !default;
+
+$button-holdProgressBar-backgroundColor: $red-500 !default;
+$button-holdPregressContainer-backgroundColor: $gray-500 !default;
+$button-holdPregressContainer-size: 3px !default;
+
 .AptoButton {
     display: inline-block;
     margin: 0;
@@ -57,6 +70,17 @@ $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-c
     }
 }
 
+.AptoButton--danger {
+    color: $button-danger-color;
+    background-color: $button-danger-BackgroundColor;
+    &:hover {
+        background-color: $button-danger-hover-BackgroundColor;
+    }
+    &:disabled {
+        background-color: $button-danger-disabled-BackgroundColor;
+    }
+}
+
 .AptoButton--link.AptoButton--primary {
     color: $button-primary-link-color;
     background-color: transparent;
@@ -79,7 +103,7 @@ $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-c
     }
 }
 
-.apto-button--link.apto-button--secondaryDark {
+.AptoButton--link.AptoButton--secondaryDark {
     color: $button-secondaryDark-link-color;
     background-color: transparent;
     &:hover {
@@ -87,5 +111,38 @@ $button-secondaryDark-link-disabled-color:  lighten($button-secondaryDark-link-c
     }
     &:disabled {
         color: $button-secondaryDark-link-disabled-color;
+    }
+}
+
+.AptoButton--link.AptoButton--danger {
+    color: $button-danger-link-color;
+    background-color: transparent;
+    &:hover {
+        color: $button-danger-link-hover-color;
+    }
+    &:disabled {
+        color: $button-danger-link-disabled-color;
+    }
+}
+
+.AptoHold {
+    background-color: $button-holdPregressContainer-backgroundColor;
+    border-radius: $button-holdPregressContainer-size;
+    height: $button-holdPregressContainer-size;
+    display: block;
+    visibility: hidden;
+    .AptoHold-progressBar {
+        background-color: $button-holdProgressBar-backgroundColor;
+        border-radius: $button-holdPregressContainer-size;
+        height: $button-holdPregressContainer-size;
+        width: 0;
+        display: block;
+    }
+    &.AptoHold--active {
+        visibility: visible;
+        .AptoHold-progressBar {
+            width: 100%;
+            transition: width 2s linear;
+        }
     }
 }
