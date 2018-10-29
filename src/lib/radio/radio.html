@@ -1,0 +1,31 @@
+<label
+    #label
+    class="AptoRadioButton-label"
+    [attr.for]="inputId">
+    <div
+        class="AptoRadioButton-container"
+        [class.AptoRadioButton-container--noSideMargin]="!radioLabel.textContent || !radioLabel.textContent.trim()">
+        <input
+            #input
+            [id]="inputId"
+            type="radio"
+            [attr.name]="name"
+            [attr.value]="value"
+            [checked]="checked"
+            [disabled]="disabled"
+            [required]="required"
+            [tabIndex]="tabIndex"
+            [attr.aria-label]="ariaLabel || null"
+            [attr.aria-labelledby]="ariaLabelledby"
+            [attr.aria-describedby]="ariaDescribedby"
+            (change)="_onInputChange($event)"
+            (click)="_onInputClick($event)">
+        <span class="AptoRadioButton-state"></span>
+    </div>
+    <span
+        #radioLabel
+        class="AptoRadioButton-labelContainer">
+        <span style="display:none">&nbsp;</span>
+        <ng-content></ng-content>
+    </span>
+</label>

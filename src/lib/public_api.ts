@@ -14,3 +14,4 @@ export * from './utils/index';
 export * from './thumbnail/index';
 export * from './help-text/index';
 export * from './checkbox/index';
+export * from './radio/index';

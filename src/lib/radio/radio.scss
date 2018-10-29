@@ -1,0 +1,103 @@
+@import '../scss/theme/variables.scss';
+@import '../scss/mixins/helpers';
+
+$AptoRadioButton-height: 14px;
+$AptoRadioButton-width: 14px;
+$AptoRadioButton-marginRight: 8px;
+$AptoRadioButton-activeBorderColor: $blue-500;
+$AptoRadioButton-activeBackgroundColor: $blue-500;
+$AptoRadioButton-borderColor: $gray-500;
+$AptoRadioButton-backgroundColor: $white;
+$AptoRadioButton-fillColor: $white;
+$AptoRadioButton-hoverBackgroundColor: $gray-300;
+
+.AptoRadioButton {
+    display: inline-block;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+
+    &.AptoRadioButton--block {
+        display: block;
+    }
+
+    &.AptoRadioButton--disabled {
+        .AptoRadioButton-label {
+            cursor: default;
+        }
+        opacity: 0.5;
+    }
+}
+
+.AptoRadioButton-label {
+    cursor: pointer;
+    align-items: baseline;
+    vertical-align: middle;
+    display: inline-flex;
+    white-space: nowrap;
+}
+
+.AptoRadioButton-container {
+    display: inline-block;
+    height: $AptoRadioButton-height;
+    width: $AptoRadioButton-width;
+    line-height: 0;
+    margin: auto;
+    margin-right: $AptoRadioButton-marginRight;
+    position: relative;
+    flex-shrink: 0;
+
+    &.AptoRadioButton-container--noSideMargin {
+        margin-right: 0;
+    }
+
+    input {
+        bottom: 0;
+        left: 50%;
+        @include visually-hidden();
+    }
+
+    .AptoRadioButton-state {
+        display: block;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid $AptoRadioButton-borderColor;
+        transition: background-color 0.25s, border-color 0.25s;
+        &:after {
+            content: "";
+            background-color: transparent;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            margin: 2px;
+            border-radius: 50%;
+            transition: background-color 0.25s;
+        }
+        &:hover {
+            background-color: $AptoRadioButton-hoverBackgroundColor;
+        }
+    }
+    input:focus + .AptoRadioButton-state {
+        background-color: $AptoRadioButton-hoverBackgroundColor;
+    }
+    input:checked + .AptoRadioButton-state {
+        border-color: $AptoRadioButton-activeBorderColor;
+        background-color: transparent;
+        &:after {
+            background-color: $AptoRadioButton-activeBackgroundColor;
+        }
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}
+
+.AptoRadioButton-labelContainer {
+    line-height: $AptoRadioButton-height;
+}

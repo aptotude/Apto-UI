@@ -5,7 +5,9 @@ export interface CanDisable {
     disabled: boolean;
 }
 
-export function mixinDisabled<T extends Constructor<{}>>(base: T): Constructor<CanDisable> & T {
+export type CanDisableCtor = Constructor<CanDisable>;
+
+export function mixinDisabled<T extends Constructor<{}>>(base: T): CanDisableCtor & T {
     return class extends base {
         private _disabled = false;
 
