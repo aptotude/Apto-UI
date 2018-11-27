@@ -26,6 +26,7 @@ import { IconColors } from './icon.component';
                 <apto-col sm="2"><apto-icon icon="home"></apto-icon><span class="icon-meta">home</span></apto-col>
                 <apto-col sm="2"><apto-icon aria-label="Email" icon="email"></apto-icon><span class="icon-meta">email</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="phone"></apto-icon><span class="icon-meta">phone</span></apto-col>
+                <apto-col sm="2"><apto-icon icon="fax"></apto-icon><span class="icon-meta">fax</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="smartPhone"></apto-icon><span class="icon-meta">smartPhone</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="folder"></apto-icon><span class="icon-meta">folder</span></apto-col>
                 <apto-col sm="2"><apto-icon icon="file"></apto-icon><span class="icon-meta">file</span></apto-col>
