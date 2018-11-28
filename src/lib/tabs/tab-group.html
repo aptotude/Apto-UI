@@ -6,7 +6,7 @@
         <a
             *ngFor="let tab of tabs; let i = index"
             role="tab"
-            tabindex="{{ i }}"
+            tabindex="{{ selectedIndex == i ? 0 : -1 }}"
             class="AptoTabNav-item"
             [id]="getTabNavId(i)"
             [attr.href]="getTabNavPaneId(i)"
@@ -33,6 +33,7 @@
         [content]="tab.contentRef"
         [active]="tab.active"
         [class.AptoTabPane--active]="selectedIndex == i"
+        [attr.aria-hidden]="selectedIndex == i ? false : true"
         [attr.aria-labelledby]="getAriaLabelledby(i)"
         [attr.data-automation]="tab.automation">
     </div>
