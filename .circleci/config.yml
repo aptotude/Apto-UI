@@ -22,7 +22,7 @@ jobs:
       - run: yarn test:headless
       - add_ssh_keys:
           fingerprints:
-              - "3a:b6:ac:01:7d:ef:5f:2c:73:e9:5f:f3:52:09:ff:7c"
+              - "a8:26:24:e0:0a:8e:bb:6c:5b:81:4e:df:c5:7d:51:5d"
       - run: >
           if [ "$CIRCLE_BRANCH" == "master" ]; then
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc

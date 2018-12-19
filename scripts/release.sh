@@ -14,10 +14,10 @@ sudo npm install gulp-cli -g
 git config user.email "$GIT_EMAIL"
 git config user.name "$GIT_USER"
 
-echo "GIT INFO U: $GIT_USER E: $GIT_EMAIL"
-
 # Get the latest version from NPM
 LATEST_RELEASE_VERSION=$(npm view apto-ui version)
+
+echo "Latest npm releases: $LATEST_RELEASE_VERSION"
 
 # Bump the package.json version
 npm version $LATEST_RELEASE_VERSION --no-git-tag-version --allow-same-version

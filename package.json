@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/aptotude/apto-ui.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "ng": "ng",
     "gulp": "gulp",
