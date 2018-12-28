@@ -32,7 +32,7 @@ gulp.task('copy', function () {
 gulp.task('versions', function () {
     const file = `${paths.dist}/package.json`;
     gulp.src(file)
-        .pipe(replace('0.0.0-PLACEHOLDER', appVersion))
+        .pipe(replace('x.x.x', appVersion))
         .pipe(gulp.dest(paths.dist));
 });
 
