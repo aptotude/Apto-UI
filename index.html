@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="storybook-version" content="3.4.11">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <title>Storybook</title>
+    <style>
+        /*
+          When resizing panels, the drag event breaks if the cursor
+          moves over the iframe. Add the 'dragging' class to the body
+          at drag start and remove it when the drag ends.
+         */
+        .dragging iframe {
+            pointer-events: none;
+        }
+
+        /* Styling the fuzzy search box placeholders */
+        .searchBox::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .searchBox::-moz-placeholder { /* Firefox 19+ */
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .searchBox:focus{
+            border-color: #EEE !important;
+        }
+
+        .btn:hover{
+            background-color: #eee
+        }
+    </style>
+    <script>document.title = 'Apto UI';</script>
+<style>
+  .addon-notes-container {
+    font-size: 15px;
+    line-height: 1.7;
+    overflow: hidden; }
+  .addon-notes-container > *:first-child {
+    margin-top: 0 !important; }
+  .addon-notes-container > *:last-child {
+    margin-bottom: 0 !important; }
+  .addon-notes-container a.absent {
+    color: #c00; }
+  .addon-notes-container a.anchor {
+    display: block;
+    padding-left: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0; }
+  .addon-notes-container h1, .addon-notes-container h2, .addon-notes-container h3, .addon-notes-container h4, .addon-notes-container h5, .addon-notes-container h6 {
+    margin: 1em 0 15px;
+    padding: 0;
+    font-weight: bold;
+    line-height: 1.7;
+    cursor: text;
+    position: relative; }
+    .addon-notes-container h1 .octicon-link, .addon-notes-container h2 .octicon-link, .addon-notes-container h3 .octicon-link, .addon-notes-container h4 .octicon-link, .addon-notes-container h5 .octicon-link, .addon-notes-container h6 .octicon-link {
+      display: none;
+      color: #000; }
+    .addon-notes-container h1:hover a.anchor, .addon-notes-container h2:hover a.anchor, .addon-notes-container h3:hover a.anchor, .addon-notes-container h4:hover a.anchor, .addon-notes-container h5:hover a.anchor, .addon-notes-container h6:hover a.anchor {
+      text-decoration: none;
+      line-height: 1;
+      padding-left: 0;
+      margin-left: -22px;
+      top: 15%; }
+      .addon-notes-container h1:hover a.anchor .octicon-link, .addon-notes-container h2:hover a.anchor .octicon-link, .addon-notes-container h3:hover a.anchor .octicon-link, .addon-notes-container h4:hover a.anchor .octicon-link, .addon-notes-container h5:hover a.anchor .octicon-link, .addon-notes-container h6:hover a.anchor .octicon-link {
+        display: inline-block; }
+    .addon-notes-container h1 tt, .addon-notes-container h1 code, .addon-notes-container h2 tt, .addon-notes-container h2 code, .addon-notes-container h3 tt, .addon-notes-container h3 code, .addon-notes-container h4 tt, .addon-notes-container h4 code, .addon-notes-container h5 tt, .addon-notes-container h5 code, .addon-notes-container h6 tt, .addon-notes-container h6 code {
+      font-size: inherit; }
+  .addon-notes-container h1 {
+    font-size: 2.5em;
+    border-bottom: 1px solid #ddd; }
+  .addon-notes-container h2 {
+    font-size: 2em;
+    border-bottom: 1px solid #eee; }
+  .addon-notes-container h3 {
+    font-size: 1.5em; }
+  .addon-notes-container h4 {
+    font-size: 1.2em; }
+  .addon-notes-container h5 {
+    font-size: 1em; }
+  .addon-notes-container h6 {
+    color: #777;
+    font-size: 1em; }
+  .addon-notes-container p,
+  .addon-notes-container blockquote,
+  .addon-notes-container ul, .addon-notes-container ol, .addon-notes-container dl,
+  .addon-notes-container table,
+  .addon-notes-container pre {
+    margin: 15px 0; }
+  .addon-notes-container hr {
+    background: transparent;
+    border: 0 none;
+    color: #ccc;
+    height: 4px;
+    padding: 0;
+    margin: 15px 0; }
+  .addon-notes-container li p.first {
+    display: inline-block; }
+  .addon-notes-container ul, .addon-notes-container ol {
+    padding-left: 30px; }
+    .addon-notes-container ul.no-list, .addon-notes-container ol.no-list {
+      list-style-type: none;
+      padding: 0; }
+  .addon-notes-container ul ul,
+  .addon-notes-container ul ol,
+  .addon-notes-container ol ol,
+  .addon-notes-container ol ul {
+    margin-top: 0;
+    margin-bottom: 0; }
+  .addon-notes-container dl {
+    padding: 0; }
+  .addon-notes-container dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin-top: 15px; }
+  .addon-notes-container dl dd {
+    margin-bottom: 15px;
+    padding: 0 15px; }
+  .addon-notes-container blockquote {
+    border-left: 4px solid #DDD;
+    padding: 0 15px;
+    color: #777; }
+    .addon-notes-container blockquote > :first-child {
+      margin-top: 0px; }
+    .addon-notes-container blockquote > :last-child {
+      margin-bottom: 0px; }
+  .addon-notes-container table {
+    width: 100%;
+    overflow: auto;
+    display: block;
+    border-spacing: 0;
+    border-collapse: collapse; }
+    .addon-notes-container table th {
+      font-weight: bold; }
+    .addon-notes-container table th, .addon-notes-container table td {
+      border: 1px solid #ddd;
+      padding: 6px 13px; }
+    .addon-notes-container table tr {
+      border-top: 1px solid #ccc;
+      background-color: #fff; }
+      .addon-notes-container table tr:nth-child(2n) {
+        background-color: #f8f8f8; }
+  .addon-notes-container img {
+    max-width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .addon-notes-container span.frame {
+    display: block;
+    overflow: hidden; }
+    .addon-notes-container span.frame > span {
+      border: 1px solid #ddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto; }
+    .addon-notes-container span.frame span img {
+      display: block;
+      float: left; }
+    .addon-notes-container span.frame span span {
+      clear: both;
+      color: #333;
+      display: block;
+      padding: 5px 0 0; }
+  .addon-notes-container span.align-center {
+    display: block;
+    overflow: hidden;
+    clear: both; }
+    .addon-notes-container span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center; }
+    .addon-notes-container span.align-center span img {
+      margin: 0 auto;
+      text-align: center; }
+  .addon-notes-container span.align-right {
+    display: block;
+    overflow: hidden;
+    clear: both; }
+    .addon-notes-container span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right; }
+    .addon-notes-container span.align-right span img {
+      margin: 0;
+      text-align: right; }
+  .addon-notes-container span.float-left {
+    display: block;
+    margin-right: 13px;
+    overflow: hidden;
+    float: left; }
+    .addon-notes-container span.float-left span {
+      margin: 13px 0 0; }
+  .addon-notes-container span.float-right {
+    display: block;
+    margin-left: 13px;
+    overflow: hidden;
+    float: right; }
+    .addon-notes-container span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right; }
+  .addon-notes-container code, .addon-notes-container tt {
+    margin: 0 2px;
+    padding: 0px 5px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-radius: 3px; }
+  .addon-notes-container code {
+    white-space: nowrap; }
+  .addon-notes-container pre > code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent; }
+  .addon-notes-container .highlight pre, .addon-notes-container pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px; }
+  .addon-notes-container pre code, .addon-notes-container pre tt {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none; }
+</style>
+
+</head>
+<body style="margin: 0;">
+    <div id="root"></div>
+<script type="text/javascript" src="static/manager.add0049a57dec271ebad.bundle.js"></script></body>
+</html>
