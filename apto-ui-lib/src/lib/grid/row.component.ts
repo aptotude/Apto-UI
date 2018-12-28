@@ -2,7 +2,7 @@ import { Component, Input, HostBinding, ViewEncapsulation, Directive, ChangeDete
 import { coerceBooleanProperty } from '../utils';
 
 @Directive({
-    selector: 'apto-col'
+    selector: '[apto-col],apto-col'
 })
 export class AptoGridColumnDirective {
     @Input() public xs: number|string|boolean;

@@ -1,11 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
 import { DOCUMENT } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
@@ -21,15 +13,19 @@ import {
   SafeResourceUrl,
   SafeHtml
 } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
-import { forkJoin } from 'rxjs/observable/forkJoin';
-import { of as observableOf } from 'rxjs/observable/of';
-import { _throw as observableThrow } from 'rxjs/observable/throw';
-import { catchError } from 'rxjs/operators/catchError';
-import { tap } from 'rxjs/operators/tap';
-import { finalize } from 'rxjs/operators/finalize';
-import { map } from 'rxjs/operators/map';
-import { share } from 'rxjs/operators/share';
+import {
+    Observable,
+    forkJoin,
+    of as observableOf,
+    throwError as observableThrow
+} from 'rxjs';
+import {
+    catchError,
+    tap,
+    finalize,
+    map,
+    share
+} from 'rxjs/operators';
 
 /**
  * Returns an exception to be thrown in the case when attempting to

@@ -1,0 +1,461 @@
+.icon {
+    font-size: 10px;
+}
+
+.icon:before {
+    content:' ';
+    vertical-align:middle;
+    display: inline-block;
+    background-image: url("../apto-icon-sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 51.2em 184em;
+}
+
+.no-svg .icon:before {
+    background-image: url("../apto-icon-sprite.png");
+}
+
+
+
+  .icon.add:before {
+      background-position: 0em 0em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.apto:before {
+      background-position: 0em -2.4em;
+      width: 20em;
+      height: 20em;
+  }
+
+
+
+
+  .icon.arrowBack:before {
+      background-position: 0em -22.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.arrowForward:before {
+      background-position: 0em -24.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.assignment:before {
+      background-position: 0em -27.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.briefCase:before {
+      background-position: 0em -29.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.callList:before {
+      background-position: 0em -32em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.check:before {
+      background-position: 0em -34.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.checkCircle:before {
+      background-position: 0em -36.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.checkboxChecked:before {
+      background-position: 0em -39.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.checkboxOutline:before {
+      background-position: 0em -41.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.close:before {
+      background-position: 0em -44em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.company:before {
+      background-position: 0em -46.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.down:before {
+      background-position: 0em -48.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.download:before {
+      background-position: 0em -51.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.dropDown:before {
+      background-position: 0em -53.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.dropUp:before {
+      background-position: 0em -56em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.edit:before {
+      background-position: 0em -58.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.email:before {
+      background-position: 0em -60.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.fax:before {
+      background-position: 0em -63.2em;
+      width: 51.2em;
+      height: 51.2em;
+  }
+
+
+
+
+  .icon.file:before {
+      background-position: 0em -114.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.folder:before {
+      background-position: 0em -116.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.help:before {
+      background-position: 0em -119.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.home:before {
+      background-position: 0em -121.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.left:before {
+      background-position: 0em -124em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.link:before {
+      background-position: 0em -126.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.list:before {
+      background-position: 0em -128.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.loyalty:before {
+      background-position: 0em -131.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.meeting:before {
+      background-position: 0em -133.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.menu:before {
+      background-position: 0em -136em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.money:before {
+      background-position: 0em -138.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.peaks:before {
+      background-position: 0em -140.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.people:before {
+      background-position: 0em -143.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.person:before {
+      background-position: 0em -145.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.personCircle:before {
+      background-position: 0em -148em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.phone:before {
+      background-position: 0em -150.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.property:before {
+      background-position: 0em -152.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.radioChecked:before {
+      background-position: 0em -155.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.radioOutline:before {
+      background-position: 0em -157.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.right:before {
+      background-position: 0em -160em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.search:before {
+      background-position: 0em -162.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.smartPhone:before {
+      background-position: 0em -164.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.space:before {
+      background-position: 0em -167.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.task:before {
+      background-position: 0em -169.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.thumbUp:before {
+      background-position: 0em -172em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.time:before {
+      background-position: 0em -174.4em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.trendingDown:before {
+      background-position: 0em -176.8em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.trendingUp:before {
+      background-position: 0em -179.2em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+  .icon.up:before {
+      background-position: 0em -181.6em;
+      width: 2.4em;
+      height: 2.4em;
+  }
+
+
+
+
+

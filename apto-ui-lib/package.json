@@ -1,0 +1,27 @@
+{
+  "name": "apto-ui",
+  "version": "1.0.0",
+  "description": "Apto UI for Angular 6+",
+  "homepage": "https://github.com/aptotude/apto-ui",
+  "bugs": "https://github.com/aptotude/apto-ui/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aptotude/apto-ui.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^6.1.10",
+    "@angular/compiler": "^6.1.10",
+    "@angular/core": "^6.1.10",
+    "@angular/forms": "^6.1.10",
+    "@angular/http": "^6.1.10",
+    "@angular/platform-browser": "^6.1.10",
+    "@angular/platform-browser-dynamic": "^6.1.10",
+    "intl": "~1.2.5",
+    "rxjs": "~6.3.3",
+    "zone.js": "~0.8.26"
+  }
+}

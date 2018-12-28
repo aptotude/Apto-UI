@@ -9,7 +9,7 @@ import {
     SimpleChanges
 } from '@angular/core';
 import { AptoIconRegistry } from './icon-registry';
-import { take } from 'rxjs/operators/take';
+import { take } from 'rxjs/operators';
 import { coerceBooleanProperty } from '../utils';
 
 export enum IconColors {
