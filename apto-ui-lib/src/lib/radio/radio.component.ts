@@ -51,7 +51,7 @@ export const _AptoRadioGroupMixinBase: CanDisableCtor & typeof AptoRadioGroupBas
  * A group of radio buttons. May contain one or more `<mat-radio-button>` elements.
  */
 @Directive({
-    selector: 'apto-radio-group',
+    selector: '[apto-radio-group],apto-radio-group',
     providers: [APTO_RADIO_GROUP_CONTROL_VALUE_ACCESSOR],
     host: {
         'role': 'radiogroup',

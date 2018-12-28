@@ -23,16 +23,16 @@ echo "Latest npm releases: $LATEST_RELEASE_VERSION"
 npm version $LATEST_RELEASE_VERSION --no-git-tag-version --allow-same-version
 npm version patch -f --allow-same-version
 
-# Build the project
-NODE_ENV=prod npm run packagr
+# Build the lib
+NODE_ENV=prod npm run build
 
 # Pack and publish to NPM
-cd dist/
+cd dist/apto-ui-lib
 TARBALL=$(npm pack)
 npm publish $TARBALL --verbose
 
 # Push Git commit and tag to Github
-cd ../
+cd ../../
 git push origin master
 CURRENT_VERSION=$(node -p "require('./package.json').version")
 git push origin v$CURRENT_VERSION

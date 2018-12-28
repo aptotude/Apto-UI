@@ -77,7 +77,9 @@ export class AptoTabGroupComponent implements AfterContentChecked {
     }
 
     public keyDownHandler(event: KeyboardEvent) {
-        switch (event.keyCode) {
+        const code = event.which || event.keyCode;
+
+        switch (code) {
             case HOME:
                 this._setFirstItemActive();
                 event.preventDefault();

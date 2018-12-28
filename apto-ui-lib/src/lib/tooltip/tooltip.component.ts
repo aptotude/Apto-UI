@@ -11,15 +11,15 @@ import {
     OnDestroy
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Directive({
-    selector: 'apto-tooltip-content'
+    selector: '[apto-tooltip-content],apto-tooltip-content'
 })
 export class AptoTooltipContentDirective {}
 
 @Directive({
-    selector: 'apto-tooltip-trigger'
+    selector: '[apto-tooltip-trigger],apto-tooltip-trigger'
 })
 export class AptoTooltipTriggerDirective {}
 

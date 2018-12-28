@@ -6,14 +6,14 @@ const svgSprite = require('gulp-svg-sprites');
 const runSequence = require('run-sequence');
 const appVersion = require('./package.json').version;
 const paths = {
-    dist: './dist',
-    src: './src',
+    dist: './dist/apto-ui-lib',
+    src: './apto-ui-lib/src',
     scss: './src/lib/scss'
 };
 
 gulp.task('copy', function () {
     // move variables scss
-    gulp.src(`${paths.scss}/theme/variables.scss`)
+    gulp.src(`${paths.src}/lib/scss/theme/variables.scss`)
         .pipe(gulp.dest(`${paths.dist}/scss/theme`));
 
     // move svg sprites
@@ -47,7 +47,7 @@ gulp.task('sprites', function() {
         .pipe(gulp.dest(`${paths.src}/assets`));
 });
 
-gulp.task('publish', function(cb) {
+gulp.task('package', function(cb) {
     runSequence('sprites', 'copy', 'versions', cb);
 });
 
